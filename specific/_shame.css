@@ -1,0 +1,15 @@
+
+/**
+ *  Quick fixes.
+ *
+ *  @see http://csswizardry.com/2013/04/shame-css
+ */
+
+/*  Because we've split the top arrow of a message bubble
+    from its container, the white space creates a gap.
+    This relative displacement is an attempt to close it.
+*/
+#collapsible-user-menu {
+    position: relative;
+    top: -0.0625rem;
+}

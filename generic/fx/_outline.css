@@ -1,0 +1,54 @@
+
+/**
+ *  @file
+ *  Effects styles
+ */
+
+.fx-outline-grow {
+    display: inline-block;
+    position: relative;
+}
+.fx-outline-grow:focus::before,
+.fx-outline-grow:hover::before {
+    top: -.5em;
+    right: -.5em;
+    bottom: -.5em;
+    left: -.5em;
+    
+    border-color: pink;
+    border-color: rgba(255, 0, 86, .15);
+    /*
+    background-color: pink;
+    box-shadow: 0 0 1em .5em #FF0056;
+    box-shadow: 0 0 1em .5em rgba(255, 0, 86, .15);
+    */
+}
+.fx-outline-grow::before {
+    content: '';
+    position: absolute;
+    border: transparent solid .25em;
+    
+    /*
+    border-radius: .5em;
+    */
+    border-radius: 200%;
+    
+    /*
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    */
+    top: .5em;
+    right: .5em;
+    bottom: .5em;
+    left: .5em;
+    
+    /*
+    transition-duration: 0.3s;
+    transition-property: top, right, bottom, left;
+    */
+    transition: all 0.2s ease;
+}
+
+

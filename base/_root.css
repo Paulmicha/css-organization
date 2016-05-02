@@ -1,0 +1,45 @@
+
+/**
+ *  Document root : fundamental styles
+ *  @require base/typography.vars.css
+ *  @require base/colors.vars.css
+ */
+
+:root {
+    --html-bg-color: var(--color-1);
+    --text-color: white;
+    --text-color-inverse: var(--color-grey-4);
+}
+
+@viewport {
+    width: device-width;
+}
+
+
+/*  No "root" font-size declaration.
+    @see http://www.filamentgroup.com/lab/how-we-learned-to-leave-body-font-size-alone.html
+*/
+html,
+.domroot {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--html-bg-color);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    text-rendering: optimizeLegibility;
+}
+@media (--mobile) {
+    html,
+    .domroot {
+        font-size: var(--sm-font-size-modifier);
+    }
+}
+@media (--wide) {
+    html,
+    .domroot {
+        font-size: var(--xl-font-size-modifier);
+    }
+}

@@ -1,0 +1,41 @@
+
+/**
+ *  Generic styles : colors
+ */
+
+.u-color-white {
+    color: white;
+}
+.u-color-transparent-white-light {
+    color: var(--transparent-white-light);
+}
+.u-color-transparent-white {
+    color: var(--transparent-white);
+}
+
+.u-color-black {
+    color: black;
+}
+
+.u-color-blue-bright {
+    color: var(--blue-bright);
+}
+
+.u-color-pink {
+    color: var(--pink);
+}
+
+.u-color-green-bright {
+    color: var(--green-bright);
+}
+
+.u-color-orange-bright {
+    color: var(--orange-bright);
+}
+
+.u-color-grey-dark {
+    color: var(--grey-dark);
+}
+.u-color-grey {
+    color: var(--grey);
+}

@@ -1,0 +1,13 @@
+
+/**
+ *  @file
+ *  Effects styles
+ */
+
+:root {
+    --box-shadow: 0 0 1em .5em rgba(255, 255, 255, .9);
+}
+
+.fx-box-shadow {
+    box-shadow: var(--box-shadow);
+}

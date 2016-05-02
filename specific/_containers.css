@@ -1,0 +1,117 @@
+
+/**
+ *  Specific styles : containers / zones.
+ *
+ *  1. Attempt to centralize links colors on inverse background color.
+ *
+ *  @see css/base/_links.css
+ *  @see css/generic/_sizes.css
+ */
+
+
+/*  Wrapper for inverse colors (root or base text color is bright on dark BG).
+*/
+%bg-content {
+    background: white;
+    color: var(--color-grey-4);
+
+    & a {
+        color: var(--link-color-inverse); /* 1 */
+    }
+    & a.is-active,
+    & a.is-on,
+    & a:hover {
+        color: var(--link-color-inverse--hover); /* 1 */
+        border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover); /* 1 */
+    }
+    & a:focus {
+        color: var(--link-color-inverse); /* 1 */
+        border-bottom: var(--link-border-width--focus) solid var(--link-border-color--focus); /* 1 */
+    }
+    & a:visited {
+        color: var(--link-color-inverse); /* 1 */
+        border-bottom: var(--link-border-width--visited) solid var(--link-border-color--visited); /* 1 */
+    }
+    & a:active {
+        color: var(--link-color-inverse); /* 1 */
+        border-bottom: var(--link-border-width--active) solid var(--link-border-color--active); /* 1 */
+        transition: none;
+    }
+}
+.bg-content {
+    @extend %bg-content;
+}
+
+/*  Containers contenu génériques (zones fond blanc).
+*/
+%s-content {
+    @extend %bg-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--padding-ratio)rem;
+    max-width: var(--w-typo-ratio-l)rem;
+}
+%s-content--s {
+    @extend %bg-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--padding-ratio)rem;
+    max-width: var(--w-typo-ratio)rem;
+}
+.s-content {
+    @extend %s-content;
+}
+.s-content-s {
+    @extend %s-content--s;
+}
+
+
+
+/*  Typography : measure
+        “Anything from 45 to 75 characters is widely regarded as a satisfactory length of line
+        for a single-column page set in a serifed text face in a text size.
+        The 66-character line (counting both letters and spaces) is widely regarded as ideal.
+        For multiple column work, a better average is 40 to 50 characters.”
+        @see http://webtypography.net/2.1.2
+*/
+
+.u-typo-block-w {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--w-typo-ratio)em;
+}
+
+.u-typo-block-w--l {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--w-typo-ratio-l)em;
+}
+
+
+/*  Drupal-specific debug style.
+*/
+.krumo-root {
+    color: black;
+}
+
+
+/*  Max-widths.
+*/
+
+#user-register-form {
+    max-width: 40em;
+}
+
+#user-login {
+    max-width: 33em;
+}
+
+
+/*  [deprecated] @todo remove dead code after final checks.
+*/
+.text {
+    max-width: 33em;
+    color: white;
+}

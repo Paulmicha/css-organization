@@ -1,0 +1,27 @@
+
+/**
+ *  Extends FlexEmbed component.
+ *
+ *  @see https://github.com/suitcss/components-flex-embed
+ */
+
+
+/*  Forces any direct child element to occupy all available space.
+*/
+.FlexEmbed-content--inner-max > * {
+    width: 100%;
+    height: 100%;
+}
+
+/*  Breakpoint-specific ratios.
+*/
+@media (--tablet) {
+    .FlexEmbed-tablet-ratio--2by1 {
+        padding-bottom: 50%;
+    }
+}
+@media (--mobile) {
+    .FlexEmbed-mobile-ratio--square {
+        padding-bottom: 100%;
+    }
+}

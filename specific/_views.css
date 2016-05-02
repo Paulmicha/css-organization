@@ -1,0 +1,35 @@
+
+/**
+ *  Views specific styles.
+ *
+ *  1. Temporarily hide exposed filters for courses, because there are none at
+ *    the moment (so this filter makes no sense just yet).
+ *    @todo when ready, re-enable it.
+ */
+
+#views-exposed-form-opigno-my-courses-page-my-courses {
+  display: none; /* 1 */
+}
+
+.views-field-opigno-course-image {
+    text-align: center;
+}
+    .views-field-opigno-course-image .field-content,
+    .views-field-opigno-course-image img {
+        display: inline-block;
+    }
+
+.view-header {
+  font-size: var(--font-size-ratio-m)rem;
+  margin: 0 auto var(--margin-ratio)rem auto;
+  max-width: var(--w-typo-ratio-l)em;
+  text-align: center;
+}
+ .view-header > * {
+  text-align: left;
+  display: inline-block;
+ }
+
+.form-item-operation + .form-submit {
+  margin-left: var(--margin-ratio)em;
+}

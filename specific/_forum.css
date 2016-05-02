@@ -1,0 +1,46 @@
+
+/**
+ *  Forum specific styles.
+ *
+ *  1. @todo See if we should group this with declarations in _pages.css,
+ *    or move the declarations currently in _page.css to _users.css ?
+ *
+ *  @see css/specific/_containers.css
+ *  @see css/specific/_pages.css
+ */
+
+.page-forum .region-content,
+.node-type-forum .region-content {
+    @extend %s-content; /* 1 */
+}
+
+
+%forum-footer-info {
+    font-size: var(--font-size-ratio-s)rem;
+}
+
+.forum-topic-legend {
+    @extend %forum-footer-info;
+}
+
+#forum-statistics,
+.forum-list-icon-legend {
+    @extend %forum-footer-info;
+    float: left;
+    padding: var(--padding-ratio)em;
+    width: 50%;
+}
+
+#forum {
+    @extend %cf;
+}
+
+#forum-statistics-latest-users {
+    margin-top: var(--margin-ratio)em;
+}
+
+.forum-list-legend-item,
+#forum-statistics-header,
+#forum-statistics-statistics-header {
+    margin-bottom: var(--margin-ratio)em;
+}

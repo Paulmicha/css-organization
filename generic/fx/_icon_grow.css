@@ -1,0 +1,66 @@
+
+/**
+ *  @file
+ *  Effects styles
+ */
+
+.fx-icon-heart-grow-rotate {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+.fx-icon-heart-grow-rotate::before {
+    transition: all 0.2s ease;
+    content: '\e803';
+    font-size: 0;
+    line-height: 1;
+    color: transparent;
+    
+    /*
+    */
+    display: inline-block;
+    vertical-align: middle;
+    
+    position: absolute;
+    z-index: -1;
+    
+    /**
+    top: 100%;
+    right: 100%;
+    bottom: 100%;
+    left: 100%;
+    /**/
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    /**/
+}
+
+.fx-icon-heart-grow-rotate:focus::before,
+.fx-icon-heart-grow-rotate:hover::before {
+    
+    font-size: 300%;
+    color: white;
+    
+    /*
+    text-shadow: 0 0 .25em rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 .25em .1em rgba(255, 255, 255, 0.5);
+    */
+    /**
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    /**
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    /**/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /**/
+}

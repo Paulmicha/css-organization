@@ -1,0 +1,53 @@
+
+/**
+ *  @file
+ *  Base styles
+ *  (=reset/normalize, raw HTML tags styles only)
+ *  @see https://github.com/paulrobertlloyd/barebones
+ */
+
+@media print {
+    @page {
+        margin: 0.5cm;
+    }
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        box-shadow: none;
+    }
+    p, h1, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+    blockquote {
+        border-left: 4px solid #ccc;
+        padding: 0 1em;
+        page-break-inside: avoid;
+    }
+    a,
+    a:visited {
+        color: #000 !important;
+        border-bottom: 1px dotted #999;
+        padding-left: 0 !important;
+    }
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    textarea {
+        border-bottom: 1px solid #999;
+        box-shadow: none;
+    }
+}

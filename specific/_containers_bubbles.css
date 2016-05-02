@@ -1,0 +1,50 @@
+
+/**
+ *  Specific container styles; speech bubbles.
+ */
+
+.bubble {
+    position: relative;
+    padding: var(--padding-ratio)em;
+    color: var(--text-color-inverse);
+    background: white;
+    border-radius: .4em;
+    }
+    .bubble--tl::after {
+        content: "";
+        position: absolute;
+        top: -1.875em;
+        left: 10%;
+        border: 1em solid transparent;
+        border-bottom-color: white;
+        display: block;
+        width: 0;
+    }
+    .bubble--tr::after {
+        content: "";
+        position: absolute;
+        top: -1.875em;
+        right: 30%;
+        border: 1em solid transparent;
+        border-bottom-color: white;
+        display: block;
+        width: 0;
+    }
+
+
+/*  When placing the arrow outside the bubble element, we need to render just
+    the pointy bit.
+*/
+
+.bubble-arrow {
+    position: relative;
+    }
+    .bubble-arrow--t.is-on::after {
+        content: "";
+        position: absolute;
+        bottom: -1.9375em;
+        border: 1em solid transparent;
+        border-bottom-color: white;
+        display: block;
+        width: 0;
+    }

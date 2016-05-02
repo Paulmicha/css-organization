@@ -1,0 +1,46 @@
+
+/**
+ *  Breakpoint-specific "stateful" generic styles.
+ *
+ *  @evol generate with https://github.com/antyakushev/postcss-for ?
+ */
+
+
+/*  Visibility.
+*/
+
+@media (--mobile) {
+    .u-mobile-hidden {
+        display: none !important;
+    }
+    .u-mobile-block {
+        display: block !important;
+    }
+    .u-mobile-inline-block {
+        display: inline-block !important;
+    }
+}
+
+@media (--tablet) {
+    .u-tablet-hidden {
+        display: none !important;
+    }
+    .u-tablet-block {
+        display: block !important;
+    }
+    .u-tablet-inline-block {
+        display: inline-block !important;
+    }
+}
+
+@media (--desktop) {
+    .u-desktop-hidden {
+        display: none !important;
+    }
+    .u-desktop-block {
+        display: block !important;
+    }
+    .u-desktop-inline-block {
+        display: inline-block !important;
+    }
+}

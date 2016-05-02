@@ -1,0 +1,30 @@
+
+/**
+ *  Effects styles : Grow rotate
+ */
+
+:root {
+    --transition-grow-rotate-duration: .3s;
+    --transition-grow-rotate-scale: 1.5;
+    --transition-grow-rotate-angle: -18deg;
+}
+
+.fx-grow-rotate,
+.fx-pgrow-rotate {
+    display: inline-block;
+    transition-duration: var(--transition-grow-rotate-duration);
+    transition-property: transform;
+    transform: translateZ(0);
+}
+
+.fx-grow-rotate.is-on,
+.fx-grow-rotate:focus,
+.fx-grow-rotate:hover,
+.is-on > .fx-pgrow-rotate,
+*:focus > .fx-pgrow-rotate,
+*:hover > .fx-pgrow-rotate {
+    transform: scale(var(--transition-grow-rotate-scale)) rotate(var(--transition-grow-rotate-angle));
+}
+
+
+

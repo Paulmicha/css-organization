@@ -1,0 +1,25 @@
+
+/**
+ *  Border utilities.
+ */
+
+:root {
+    --border: 1px solid rgba(0, 0, 0, .3);
+}
+
+.no-b,
+.no-b:hover,
+.no-b:active,
+.no-b:focus,
+.no-border {
+    border: 0 none !important;
+}
+
+.no-b--children > *,
+.no-b--descendants * {
+    border: 0 none;
+}
+
+.b-t {
+    border-top: var(--border);
+}

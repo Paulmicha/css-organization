@@ -1,0 +1,73 @@
+
+/**
+ * @file
+ * Specific form styles.
+ */
+
+/*  Custom selects.
+    @see
+*/
+
+.t-select,
+.container-inline .t-select {
+    position: relative;
+    display: inline-block;
+    }
+    .t-select select {
+        padding-right: 1.5em;
+    }
+    .t-select::after {
+        position: absolute;
+        /*z-index: 1;*/
+        right: .33em;
+
+        font-family: 'icomoon';
+    	speak: none;
+    	font-style: normal;
+    	font-weight: normal;
+    	font-variant: normal;
+    	text-transform: none;
+    	-webkit-font-smoothing: antialiased;
+    	-moz-osx-font-smoothing: grayscale;
+    	vertical-align: middle;
+
+    	line-height: 1;
+        content: "\e612";
+        pointer-events: none;
+        padding: .8em 0 0 0;
+    }
+    .t-select .chosen-container-multi .chosen-choices li.search-field input[type="text"],
+    .t-select .chosen-choices input[type="text"] {
+        padding: var(--Button-padding);
+    }
+
+
+/*  Buttons colors.
+*/
+
+.Button--primary,
+a.Button--primary,
+.form-actions .Button--primary,
+.Button--primary:hover,
+.form-actions .Button--primary:hover,
+.bg-content .form-actions .Button--primary:hover,
+.Button--primary:focus,
+.form-actions .Button--primary:focus,
+.bg-content .form-actions .Button--primary:focus {
+    background-color: var(--color-8);
+    border-color: var(--color-8);
+    color: white;
+}
+.Button--delete,
+a.Button--delete,
+.form-actions .Button--delete,
+.Button--delete:hover,
+.form-actions .Button--delete:hover,
+.bg-content .form-actions .Button--delete:hover,
+.Button--delete:focus,
+.form-actions .Button--delete:focus,
+.bg-content .form-actions .Button--delete:focus {
+    background-color: var(--color-7);
+    border-color: var(--color-7);
+    color: white;
+}

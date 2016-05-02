@@ -1,0 +1,21 @@
+
+/**
+ *  Inline-block-based Grid object - variant : vertically spaced items
+ *  @require generic/_grid_inline_block.css
+ *  @todo use https://github.com/robwierzbowski/node-pixrem
+ */
+
+:root {
+    --grid-margin: var(--margin);
+    --grid-margin-ratio: var(--margin-ratio);
+}
+
+.o-grid--vspace {
+    margin-top: var(--grid-margin)px;
+    margin-top: var(--grid-margin-ratio)rem;
+    }
+    .o-grid--vspace > .o-grid__item {
+        margin-bottom: var(--grid-margin)px;
+        margin-bottom: var(--grid-margin-ratio)rem;
+    }
+

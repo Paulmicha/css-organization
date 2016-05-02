@@ -1,0 +1,58 @@
+
+/**
+ *  Tables specific styles.
+ *
+ *  1. The scope class "s-rich-text" is manually selected as a CEF modifier.
+ *
+ *  2. @todo : implement <thead> on the left variant. For now, only <thead> on
+ *      top is handled.
+ *
+ *  3. @todo handle once and for all links' color collisions.
+ *      @see css/base/_links.css
+ *
+ *  4. Hacky fix for Drupal's default caret image (keep on same line).
+ *      → @todo do it better.
+ */
+
+%readable-table {
+    margin: var(--margin-ratio)rem auto 0 auto;
+    text-align: center;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    & thead {
+        border-bottom: var(--border);
+    }
+        & th {
+            text-align: center; /* 2 */
+            font-weight: var(--font-weight-bold);
+        }
+            & th > a {
+                color: var(--link-color-inverse); /* 3 */
+            }
+            & th > a[href*="sort"] {
+                white-space: nowrap; /* 4 */
+            }
+            & th > a[href*="sort"] > img {
+                padding-left: var(--padding-ratio-s)em; /* 4 */
+            }
+
+    & tr + tr {
+        border-top: var(--border);
+    }
+        & th,
+        & td {
+            padding: var(--padding-ratio)rem;
+        }
+}
+
+
+.views-table,
+.forum-table,
+table.sticky-header,
+.opigno-quiz-app-results-table,
+.s-rich-text table { /* 1 */
+    @extend %readable-table;
+}

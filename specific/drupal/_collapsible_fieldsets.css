@@ -1,0 +1,102 @@
+
+/**
+ * Drupal-specific component : collapsible fieldsets.
+ * @todo make a proper component.
+ *
+ * @see collapse.js
+ */
+
+:root {
+  --drupal-collapsible-margin-tb-ratio: var(--drupal-form-padding-ratio);
+  --drupal-collapsible-padding-ratio: var(--drupal-form-padding-ratio);
+
+  --drupal-collapsible-title-padding: var(--Button-padding);
+  --drupal-collapsible-title-color: white;
+  --drupal-collapsible-title-bg-color: var(--color-1);
+}
+
+
+fieldset.collapsible {
+  border: 0 none;
+  margin: var(--drupal-collapsible-margin-tb-ratio)rem 0;
+  padding: 0;
+  }
+  fieldset.collapsible > .fieldset-wrapper {
+    padding: var(--drupal-collapsible-padding-ratio)rem;
+    background: var(--color-black-t-3);
+  }
+
+html.js fieldset.collapsed {
+  height: auto;
+}
+
+
+html.js fieldset.collapsible > legend,
+html.js fieldset.collapsible > legend > * {
+  display: block;
+}
+html.js fieldset.collapsible > legend {
+  width: 100%;
+  padding: 0;
+  font-size: inherit;
+  font-variant: normal;
+}
+
+html.js fieldset.collapsible > legend > * > .fieldset-title {
+  display: block;
+  border: 0 none;
+  padding: var(--drupal-collapsible-title-padding);
+  background: var(--drupal-collapsible-title-bg-color);
+  color: var(--drupal-collapsible-title-color);
+  padding-left: .33em;
+  transition: box-shadow linear .3s;
+}
+html.js fieldset.collapsible > legend > * > .fieldset-title:focus,
+html.js fieldset.collapsible > legend > * > .fieldset-title:hover {
+  outline: 0 none;
+  box-shadow: var(--fx-shadow-form-active);
+}
+
+/*  Custom icon : bottom chevron
+*/
+html.js fieldset.collapsible > legend > * > .fieldset-title::before {
+  content: "\e612";
+  font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*  Custom icon : right chevron
+*/
+html.js fieldset.collapsed > legend > * > .fieldset-title::before {
+  content: "\e614";
+  font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/*  Summary (?)
+*/
+.fieldset-legend span.summary {
+  color: #999;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+
+  /*  hack temp : remove to avoid glitch.
+  */
+  display: none;
+}

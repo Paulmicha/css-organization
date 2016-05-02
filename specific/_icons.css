@@ -1,0 +1,286 @@
+
+/**
+ *  Icons injection from parent element.
+ *
+ *  @example
+ *    <div class="iconb-foobar">Text</div>
+ *  is equivalent to :
+ *    <div><span class="icon-foobar"></span> Text</div>
+ */
+
+[class^="iconb-"]::before,
+[class*=" iconb-"]::before {
+    padding-right: .5em;
+    font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	vertical-align: top;
+}
+
+
+/*  Special : allow multiple classes.
+*/
+
+.icon-delete::before,
+.iconb-delete::before {
+	content: "\e62a";
+}
+
+
+/*  Below : copy/paste + search & replace.
+*/
+
+.iconb-asterisk::before {
+    content: "\e900";
+}
+.iconb-edit::before {
+    content: "\e648";
+}
+.iconb-search::before {
+    content: "\e602";
+}
+.iconb-question::before {
+    content: "\e604";
+}
+.iconb-chevron-left::before {
+    content: "\e611";
+}
+.iconb-chevron-bottom::before {
+    content: "\e612";
+}
+.iconb-chevron-top::before {
+    content: "\e613";
+}
+.iconb-chevron-right::before {
+    content: "\e614";
+}
+.iconb-arrow-right-max::before {
+    content: "\e651";
+}
+.iconb-arrow-left-max::before {
+    content: "\e650";
+}
+.iconb-zoom-in::before {
+    content: "\e609";
+}
+.iconb-zoom-out::before {
+    content: "\e60a";
+}
+.iconb-home::before {
+    content: "\e646";
+}
+.iconb-camera::before {
+    content: "\e616";
+}
+.iconb-books::before {
+    content: "\e649";
+}
+.iconb-tag::before {
+    content: "\e617";
+}
+.iconb-tags::before {
+    content: "\e618";
+}
+.iconb-notebook::before {
+    content: "\e647";
+}
+.iconb-location::before {
+    content: "\e619";
+}
+.iconb-compass::before {
+    content: "\e61a";
+}
+.iconb-map::before {
+    content: "\e61b";
+}
+.iconb-clock::before {
+    content: "\e61c";
+}
+.iconb-calendar::before {
+    content: "\e61d";
+}
+.iconb-reply::before {
+    content: "\e622";
+}
+.iconb-bubble::before {
+    content: "\e623";
+}
+.iconb-bubbles::before {
+    content: "\e624";
+}
+.iconb-bubbles-alt::before {
+    content: "\e625";
+}
+.iconb-user::before {
+    content: "\e64a";
+}
+.iconb-users::before {
+    content: "\e64b";
+}
+.iconb-spinner::before {
+    content: "\e600";
+}
+.iconb-reload::before {
+    content: "\e601";
+}
+.iconb-expand::before {
+    content: "\e64c";
+}
+.iconb-contract::before {
+    content: "\e64d";
+}
+.iconb-key::before {
+    content: "\e64e";
+}
+.iconb-lock::before {
+    content: "\e626";
+}
+.iconb-unlock::before {
+    content: "\e627";
+}
+.iconb-fire::before {
+    content: "\e628";
+}
+.iconb-lab::before {
+    content: "\e629";
+}
+.iconb-remove::before {
+    content: "\e62a";
+}
+.iconb-power::before {
+    content: "\e62b";
+}
+.iconb-menu::before {
+    content: "\e62c";
+}
+.iconb-flag::before {
+    content: "\e62d";
+}
+.iconb-eye::before {
+    content: "\e64f";
+}
+.iconb-eye-off::before {
+    content: "\e608";
+}
+.iconb-star::before {
+    content: "\e603";
+}
+.iconb-star-full::before {
+    content: "\e61e";
+}
+.iconb-heart::before {
+    content: "\e605";
+}
+.iconb-heart-broken::before {
+    content: "\e606";
+}
+.iconb-thumbs-up::before {
+    content: "\e62e";
+}
+.iconb-thumbs-down::before {
+    content: "\e62f";
+}
+.iconb-s-happy::before {
+    content: "\e630";
+}
+.iconb-s-smile::before {
+    content: "\e631";
+}
+.iconb-s-tongue::before {
+    content: "\e632";
+}
+.iconb-s-sad::before {
+    content: "\e633";
+}
+.iconb-s-wink::before {
+    content: "\e634";
+}
+.iconb-s-grin::before {
+    content: "\e635";
+}
+.iconb-s-cool::before {
+    content: "\e636";
+}
+.iconb-s-angry::before {
+    content: "\e637";
+}
+.iconb-s-evil::before {
+    content: "\e638";
+}
+.iconb-s-shocked::before {
+    content: "\e639";
+}
+.iconb-s-confused::before {
+    content: "\e63a";
+}
+.iconb-s-neutral::before {
+    content: "\e63b";
+}
+.iconb-s-wondering::before {
+    content: "\e63c";
+}
+.iconb-warning::before {
+    content: "\e621";
+}
+.iconb-info::before {
+    content: "\e607";
+}
+.iconb-forbid::before {
+    content: "\e60b";
+}
+.iconb-cancel-circle::before {
+    content: "\e60c";
+}
+.iconb-check-circle::before {
+    content: "\e60d";
+}
+.iconb-warning-alt::before {
+    content: "\e60e";
+}
+.iconb-error::before {
+    content: "\e61f";
+}
+.iconb-check::before {
+    content: "\e620";
+}
+.iconb-minus::before {
+    content: "\e63d";
+}
+.iconb-plus::before {
+    content: "\e63e";
+}
+.iconb-play::before {
+    content: "\e63f";
+}
+.iconb-pause::before {
+    content: "\e640";
+}
+.iconb-stop::before {
+    content: "\e641";
+}
+.iconb-loop::before {
+    content: "\e60f";
+}
+.iconb-shuffle::before {
+    content: "\e610";
+}
+.iconb-arrow-right::before {
+    content: "\e642";
+}
+.iconb-arrow-left::before {
+    content: "\e643";
+}
+.iconb-google::before {
+    content: "\e615";
+}
+.iconb-facebook::before {
+    content: "\e644";
+}
+.iconb-twitter::before {
+    content: "\e645";
+}

@@ -1,0 +1,26 @@
+
+/**
+ *  Effects styles : fade
+ *  Naming convention for this case,
+ *  when trigger comes from parent element : prepend "p" ?
+ */
+
+:root {
+    --transition-fade-duration: .3s;
+}
+
+.fx-fade,
+.fx-pfade {
+    opacity: 0;
+    transition: opacity var(--transition-fade-duration);
+}
+
+.fx-fade.is-on,
+.fx-fade:focus,
+.fx-fade:hover,
+.is-on > .fx-pfade,
+*:focus > .fx-pfade,
+*:hover > .fx-pfade {
+    opacity: 1;
+}
+

@@ -1,0 +1,43 @@
+
+/**
+ *  Padding utilities.
+ */
+
+:root {
+    --padding-s: calc(var(--font-size) * var(--line-height) / 3);
+    --padding-ratio-s: calc(var(--line-height) / 3);
+}
+
+.p--s {
+    padding: var(--padding-ratio-s)rem;
+}
+
+
+/*  Directions
+*/
+
+.p-t--s {
+    padding-top: var(--padding-ratio-s)rem;
+}
+.p-r--s {
+    padding-right: var(--padding-ratio-s)rem;
+}
+.p-b--s {
+    padding-bottom: var(--padding-ratio-s)rem;
+}
+.p-l--s {
+    padding-left: var(--padding-ratio-s)rem;
+}
+
+
+/*  Bi-directions
+*/
+
+.p-v--s {
+    padding-top: var(--padding-ratio-s)rem;
+    padding-bottom: var(--padding-ratio-s)rem;
+}
+.p-h--s {
+    padding-right: var(--padding-ratio-s)rem;
+    padding-left: var(--padding-ratio-s)rem;
+}

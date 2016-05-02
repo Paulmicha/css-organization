@@ -1,0 +1,136 @@
+
+/**
+ * @file
+ * Specific form styles : inline entity forms.
+ */
+
+
+/*  "Elements" fieldsets.
+    @todo make a reusable fieldset component.
+    @see specific/drupal/_collapsible_fieldsets.css (for <legend> style)
+*/
+
+fieldset[id^="edit-field-cef-elements"] {
+  border: 0 none;
+  margin: var(--drupal-collapsible-margin-tb-ratio)rem 0;
+  padding: 0;
+  }
+  fieldset[id^="edit-field-cef-elements"] > .fieldset-wrapper {
+    padding: var(--drupal-collapsible-padding-ratio)rem;
+    background: var(--color-black-t-3);
+  }
+  fieldset[id^="edit-field-cef-elements"] input[type="submit"],
+  fieldset[id^="edit-field-cef-elements"] input[type="text"],
+  fieldset[id^="edit-field-cef-elements"] input[type="password"],
+  fieldset[id^="edit-field-cef-elements"] input[type="email"],
+  fieldset[id^="edit-field-cef-elements"] input[type="tel"],
+  fieldset[id^="edit-field-cef-elements"] input[type="url"],
+  fieldset[id^="edit-field-cef-elements"] input[type="search"],
+  fieldset[id^="edit-field-cef-elements"] button,
+  fieldset[id^="edit-field-cef-elements"] textarea,
+  fieldset[id^="edit-field-cef-elements"] select {
+    background-color: white;
+  }
+  fieldset[id^="edit-field-cef-elements"] input[type="text"],
+  fieldset[id^="edit-field-cef-elements"] input[type="password"],
+  fieldset[id^="edit-field-cef-elements"] input[type="email"],
+  fieldset[id^="edit-field-cef-elements"] input[type="tel"],
+  fieldset[id^="edit-field-cef-elements"] input[type="url"],
+  fieldset[id^="edit-field-cef-elements"] input[type="search"] {
+    box-shadow: 0 0 .25em .25em white;
+  }
+
+fieldset[id^="edit-field-cef-elements"] > legend,
+fieldset[id^="edit-field-cef-elements"] > legend > * {
+  display: block;
+}
+fieldset[id^="edit-field-cef-elements"] > legend {
+  width: 100%;
+  padding: 0;
+  font-size: inherit;
+  font-variant: normal;
+}
+fieldset[id^="edit-field-cef-elements"] > legend > * {
+  display: block;
+  border: 0 none;
+  padding: var(--drupal-collapsible-title-padding);
+  background: var(--drupal-collapsible-title-bg-color);
+  color: var(--drupal-collapsible-title-color);
+  padding-left: .33em;
+}
+
+.ief-entity-operations,
+.ief-entity-table + .container-inline,
+fieldset[id^="edit-field-cef-elements"] [id*="-actions"] {
+  font-size: var(--font-size-ratio-s)rem;
+  text-align: center;
+  }
+  .ief-entity-table + .container-inline div {
+    display: inline-block;
+  }
+  .ief-entity-operations > input[type="submit"],
+  fieldset[id^="edit-field-cef-elements"] [id*="-actions"] > input[type="submit"],
+  .ief-entity-table + .container-inline > * {
+    margin: var(--margin-ratio-s)rem;
+  }
+
+.ief-entity-table + .container-inline {
+  margin: var(--margin-ratio)rem 0 0 0;
+}
+
+
+/*  Adjustments IEF preview.
+*/
+
+.ief-entity-table {
+  width: 100%;
+  }
+  .ief-entity-table > thead {
+    display: none;
+  }
+  .ief-entity-table td[class^="inline-entity-form"] {
+    padding-right: var(--padding-ratio)rem;
+  }
+  .ief-tabledrag-handle {
+    padding-right: var(--padding-ratio)rem;
+    padding-left: var(--padding-ratio)rem;
+  }
+  /*.ief-entity-table tr.even {*/
+  tr[class*="ief-row-"] + tr[class*="ief-row-"] {
+    border-top: 1px solid var(--color-black-t-3);
+  }
+  tr[class*="ief-row-"] > td {
+    padding-top: .2em;
+    padding-bottom: .3em;
+  }
+
+/*  Make some inner element parts smaller.
+    ex: repeatable text inputs controls, selects, buttons...
+*/
+.tabledrag-toggle-weight,
+.wysiwyg-toggle-wrapper,
+.ief-form .field-multiple-table th,
+.ief-form select,
+.ief-form .t-select,
+.ief-form input[type="submit"] {
+  font-size: var(--font-size-ratio-s)rem;
+}
+
+.ief-form fieldset legend,
+.ief-form fieldset .fieldset-legend {
+  font-size: 90%;
+}
+
+
+/*  Enlarge outside of form wrapper the 1st fieldset CEF elements.
+*/
+
+#edit-field-cef-elements {
+  position: relative;
+  background: white;
+  z-index: 2;
+  padding: 1em;
+  width: 96vw;
+  left: 50%;
+  transform: translateX(-48vw);
+}

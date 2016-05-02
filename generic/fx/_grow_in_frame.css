@@ -1,0 +1,23 @@
+
+/**
+ *  @file
+ *  Effects styles
+ */
+
+.fx-grow-in-frame {
+    display: block;
+    overflow: hidden;
+}
+
+.fx-grow-in-frame__obj {
+    transform: translateZ(0);
+    transition-duration: 0.5s;
+    transition-property: transform;
+}
+
+.fx-grow-in-frame.is-on .fx-grow-in-frame__obj,
+.fx-grow-in-frame:focus .fx-grow-in-frame__obj,
+.fx-grow-in-frame:hover .fx-grow-in-frame__obj {
+    transform: scale(1.2);
+}
+

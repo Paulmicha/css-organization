@@ -1,0 +1,39 @@
+
+/**
+ *  Generic styles : img
+ */
+
+:root {
+    --img-placeholder-bg: var(--color-grey-t-2);
+    --img-placeholder-color: var(--text-color);
+    --img-placeholder-size-ratio-s: 3;
+    --img-placeholder-size-s: calc(var(--img-placeholder-size-ratio-s) * var(--font-size));
+    --img-placeholder-size-ratio-m: 10;
+    --img-placeholder-size-m: calc(var(--img-placeholder-size-ratio-m) * var(--font-size));
+}
+
+
+.u-round,
+.u-round--children > *,
+.u-round--descendants *,
+.u-round--child-img > img,
+.u-round--descendant-img img {
+    border-radius: 100% !important;
+}
+
+.img-placeholder {
+    background: var(--img-placeholder-bg);
+    color: var(--img-placeholder-color);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img-placeholder--s {
+    width: var(--img-placeholder-size-ratio-s)rem;
+    height: var(--img-placeholder-size-ratio-s)rem;
+}
+
+.img-placeholder--m {
+    width: var(--img-placeholder-size-ratio-m)rem;
+    height: var(--img-placeholder-size-ratio-m)rem;
+}

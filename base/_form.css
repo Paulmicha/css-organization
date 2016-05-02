@@ -1,0 +1,356 @@
+
+/**
+ *  Base styles : Form elements
+ *  @see https://github.com/suitcss/components-button/
+ *
+ *  @require base/_colors.vars.css
+ *  @require base/_root.css
+ *  @require base/_links.css
+ *  @require generic/box-model/_border.css
+ *  @require generic/box-model/_margin.css
+ *  @require generic/box-model/_padding.css
+ */
+
+:root {
+    --label-line-height: 1.5;
+
+    /*  Base styles for buttons, submit, etc : using SuitCSS's Button component
+    */
+
+    --Button-border-color: var(--color-grey-2);
+    --Button-border-width: .0625em;
+    --Button-color: inherit;
+    --Button-background: transparent;
+    --Button-disabled-opacity: 0.6;
+    --Button-font: inherit;
+    --Button-padding: 0.4em 0.75em;
+    --Button-color--hover: var(--text-color);
+    --Button-color-inverse--hover: var(--text-color-inverse);
+    --Button-border-color--hover: var(--color-4);
+
+
+    /*  Text inputs : textfields, search, email, telephone, textareas
+    */
+
+    --input-text-color: var(--color-1);
+    --input-text-border-color: var(--Button-border-color);
+    --input-text-border-color--hover: var(--Button-border-color--hover);
+    --input-text-border-width: var(--Button-border-width);
+    --input-text-border-width-ratio: .125;
+    --input-text-padding-ratio: var(--padding-ratio);
+    --input-text-padding-ratio-s: .33;
+    --input-text-background: inherit;
+
+
+    /*  Special
+    */
+
+    --select-bg-color: inherit;
+    --fx-shadow-form-active: inset 0 var(--input-text-border-width-ratio)em var(--input-text-border-width-ratio)em rgba(0,0,0,.075), 0 0 .75em var(--color-4);
+
+
+    /*  Fieldsets
+    */
+
+    --fieldset-border: var(--border);
+    --fieldset-margin-tb-ratio: var(--margin-ratio);
+    --fieldset-padding-ratio: var(--padding-ratio);
+}
+
+
+fieldset {
+    border: var(--fieldset-border);
+    margin: var(--fieldset-margin-tb-ratio)rem 0;
+    padding: var(--fieldset-padding-ratio)rem;
+    width: 100%;
+    min-width: 0;
+}
+legend {
+    margin: 0;
+    font-variant: small-caps;
+    padding: 0 var(--padding-ratio)rem;
+    font-size: var(--font-size-ratio-m)rem;
+    letter-spacing: .0625em;
+}
+label {
+    line-height: var(--label-line-height);
+    cursor: pointer;
+}
+button,
+input,
+select,
+textarea {
+    color: inherit;
+    font-family: inherit;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    max-width: 100%;
+}
+select {
+    border-color: var(--Button-border-color);
+    border-style: solid;
+    border-width: var(--Button-border-width);
+    padding: var(--Button-padding);
+    cursor: pointer;
+}
+select,
+option {
+    background: var(--select-bg-color);
+}
+
+
+/**
+ * 1. Corrects inability to style clickable `input` types in iOS.
+ * 2. Normalize `box-sizing` across all elements that this component could be
+ *    applied to.
+ * 3. Inherit text color from ancestor.
+ * 4. Inherit font styles from ancestor.
+ * 5. Normalize `line-height`. For `input`, it can't be changed from `normal` in Firefox 4+.
+ * 6. Prevent button text from being selectable.
+ * 7. Make sure `input` will wrap text across multiple lines.
+ */
+
+.Button,
+button,
+input[type="button"],
+input[type="submit"] {
+    -webkit-appearance: none; /* 1 */
+    background: var(--Button-background);
+    border-color: var(--Button-border-color);
+    border-style: solid;
+    border-width: var(--Button-border-width);
+    box-sizing: border-box; /* 2 */
+    color: var(--Button-color); /* 3 */
+    cursor: pointer;
+    display: inline-block;
+    font: var(--Button-font); /* 4 */
+    line-height: normal; /* 5 */
+    margin: 0;
+    padding: var(--Button-padding);
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none; /* 6 */
+    white-space: normal; /* 7 */
+    transition: all .2s ease;
+
+    background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
+    border-radius: .3em;
+}
+
+/*  Specificity issue : fight the light BG scope on default links.
+    @see _links.css
+*/
+a.Button,
+a.Button:visited {
+    border-color: var(--Button-border-color);
+}
+
+
+/**
+ * Remove excess padding and border in Firefox 4+
+ */
+
+.Button::-moz-focus-inner,
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * Work around a Firefox/IE bug where the transparent `button` background
+ * results in a loss of the default `button` focus styles.
+ */
+
+.Button:focus,
+a.Button:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+/**
+ * UI states
+ */
+
+.Button:hover,
+a.Button:hover,
+a.Button:active,
+a.Button:focus,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.Button:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus {
+    text-decoration: none;
+    color: var(--Button-color--hover);
+    border-color: var(--Button-border-color--hover);
+    border-width: var(--Button-border-width);
+}
+
+/*  Scope to inverse colors container.
+*/
+.bg-content .Button:hover,
+.bg-content a.Button:hover,
+.bg-content a.Button:active,
+.bg-content a.Button:focus,
+.bg-content button:hover,
+.bg-content input[type="button"]:hover,
+.bg-content input[type="submit"]:hover,
+.bg-content .Button:focus,
+.bg-content button:focus,
+.bg-content input[type="button"]:focus,
+.bg-content input[type="submit"]:focus {
+    color: var(--Button-color-inverse--hover);
+}
+
+.Button:disabled,
+a.Button:disabled,
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+button.is-disabled,
+input[type="button"].is-disabled,
+input[type="submit"].is-disabled {
+    cursor: default;
+    opacity: var(--Button-disabled-opacity);
+    border-width: var(--Button-border-width);
+}
+
+
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 0.25em;
+}
+input[type="search"] {
+    -webkit-appearance: none;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+[disabled] {
+    cursor: default;
+}
+
+
+
+/*  Text inputs
+*/
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"] {
+    border: 0 none;
+    border-bottom: var(--input-text-border-width-ratio)em solid var(--input-text-border-color);
+    padding: var(--input-text-padding-ratio-s)rem 0;
+    background: var(--input-text-background);
+    min-width: 15em;
+    max-width: 100%;
+    color: var(--input-text-color);
+}
+
+textarea {
+    border: var(--input-text-border-width-ratio)em solid var(--input-text-border-color);
+    margin: var(--margin-ratio)rem 0;
+    padding: var(--input-text-padding-ratio)rem;
+    background: var(--input-text-background);
+    min-width: 15em;
+    max-width: 100%;
+}
+
+
+/*  Transitions.
+*/
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"] {
+    transition: border linear .5s;
+}
+.Button,
+button,
+input[type="button"],
+input[type="submit"],
+select {
+    transition: border linear .5s, box-shadow linear .3s;
+    box-shadow: .0625em .125em .09em 0 rgba(0, 0, 0, 0.075);
+}
+
+.Button:focus,
+.Button:hover,
+button:focus,
+button:hover,
+input[type="button"]:focus,
+input[type="button"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:hover,
+select:focus,
+select:hover,
+textarea:focus,
+textarea:hover,
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="password"]:focus,
+input[type="password"]:hover,
+input[type="email"]:focus,
+input[type="email"]:hover,
+input[type="tel"]:focus,
+input[type="tel"]:hover,
+input[type="url"]:focus,
+input[type="url"]:hover,
+input[type="search"]:focus,
+input[type="search"]:hover {
+    border-color: var(--input-text-border-color--hover);
+}
+.Button:focus,
+.Button:hover,
+button:focus,
+button:hover,
+input[type="button"]:focus,
+input[type="button"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:hover,
+select:focus,
+select:hover {
+    box-shadow: var(--fx-shadow-form-active);
+}
+
+
+
+/*  Placeholder
+*/
+
+::-webkit-input-placeholder {
+    color: #999;
+    }
+    :focus::-webkit-input-placeholder {
+        color: #ccc;
+    }
+:-moz-placeholder {
+    color: #999;
+    }
+    :focus:-moz-placeholder {
+        color: #ccc;
+    }
+:-ms-input-placeholder {
+    color: #999;
+    }
+    :focus:-ms-input-placeholder {
+       color: #ccc;
+    }

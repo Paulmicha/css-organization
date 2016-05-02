@@ -1,0 +1,13 @@
+
+/**
+ *  Toggledisplay components.
+ */
+
+.toggle-display,
+.toggle-display.is-on {
+    display: block;
+}
+
+.toggle-display.is-off {
+    display: none;
+}

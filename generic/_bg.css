@@ -1,0 +1,35 @@
+
+/**
+ *  Generic styles :
+ *  Background utils
+ */
+
+:root {
+    --bg-color-dark-t: rgba(0, 0, 0, .78);
+    --bg-color-light-dark-t: rgba(0, 0, 0, .2);
+    
+    /*--bg-color-grey: var(--grey);*/
+    --bg-color-grey: var(--grey-t);
+    --bg-color-grey-dark: var(--grey-dark);
+    
+    --bg-color-light-t: rgba(255, 255, 255, .1);
+}
+
+.u-bg-grey {
+    background: var(--bg-color-grey);
+}
+.u-bg-grey-dark {
+    background: var(--bg-color-grey-dark);
+}
+
+.u-bg-dark-t {
+    background: var(--bg-color-dark-t);
+}
+.u-bg-light-dark-t {
+    background: var(--bg-color-light-dark-t);
+}
+
+.u-bg-light-t  {
+    background: var(--bg-color-light-t);
+}
+

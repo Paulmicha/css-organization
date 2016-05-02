@@ -1,0 +1,43 @@
+
+/**
+ *  Effects styles : toggle
+ */
+
+.fx-toggle,
+.fx-toggle--inline,
+.fx-toggle--inline-block,
+.fx-toggle--table,
+.fx-toggle--table-cell {
+    display: none;
+}
+
+.is-on > .fx-toggle,
+:focus > .fx-toggle,
+:hover > .fx-toggle {
+    display: block;
+}
+
+.is-on > .fx-toggle--inline,
+:focus > .fx-toggle--inline,
+:hover > .fx-toggle--inline {
+    display: inline;
+}
+
+.is-on > .fx-toggle--inline-block,
+:focus > .fx-toggle--inline-block,
+:hover > .fx-toggle--inline-block {
+    display: inline-block;
+}
+
+.is-on > .fx-toggle--table,
+:focus > .fx-toggle--table,
+:hover > .fx-toggle--table {
+    display: table;
+}
+
+.is-on > .fx-toggle--table-cell,
+:focus > .fx-toggle--table-cell,
+:hover > .fx-toggle--table-cell {
+    display: table-cell;
+}
+

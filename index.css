@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/**
+ *  CSS compilation entry point.
+ */
+
+
+/*  NPM dependencies.
+*/
+@import "sanitize.css";
+@import "suitcss-components-flex-embed";
+
+
+/*  Base.
+*/
+@import "./base/_typography.vars.css";
+@import "./base/_colors.vars.css";
+
+@import "./base/_root.css";
+@import "./base/_print.css";
+@import "./base/_links.css";
+@import "./base/_embedding.css";
+@import "./base/_grouping.css";
+@import "./base/_form.css";
+
+
+/*  Generic.
+*/
+@import "./generic/_text.css";
+@import "./generic/_img.css";
+@import "./generic/_layout.css";
+@import "./generic/_grouping.css";
+@import "./generic/_sizes.css";
+@import "./generic/_extend_flexembed.css";
+@import "./generic/_breakpoint_states.css";
+@import "./generic/_js_util_states.css";
+
+@import "./generic/box-model/_border.css";
+@import "./generic/box-model/_margin_s.css";
+@import "./generic/box-model/_margin.css";
+@import "./generic/box-model/_margin_l.css";
+@import "./generic/box-model/_margin_xl.css";
+@import "./generic/box-model/_padding_s.css";
+@import "./generic/box-model/_padding.css";
+@import "./generic/box-model/_padding_l.css";
+@import "./generic/box-model/_padding_xl.css";
+
+@import "./generic/grids/_grid_inline_block.css";
+@import "./generic/grids/_grid_table.css";
+
+@import "./generic/fx/_box_shadow.css";
+@import "./generic/fx/_slide_maxh.css";
+
+
+/*  Specific : Drupal core and contrib replacements.
+
+    Procedure :
+    • copy/paste the file to override from drupal core into specific/drupal dir
+    • rename and import like below
+    • prevent original css file load in hook_css_alter()
+*/
+@import "./specific/drupal/_system.base.css";
+@import "./specific/drupal/_system.messages.css";
+@import "./specific/drupal/_collapsible_fieldsets.css";
+@import "./specific/drupal/_form.css";
+@import "./specific/drupal/_tabledrag.css";
+@import "./specific/drupal/_tableselect.css";
+@import "./specific/drupal/_field.css";
+@import "./specific/drupal/_views.css";
+
+
+/*  Custom media queries.
+    Must be placed after all imports.
+*/
+@custom-media --narrow (max-width:20.5rem);
+@custom-media --mobile (max-width:40rem);
+@custom-media --tablet (min-width:40rem);
+@custom-media --tablet-max (max-width:55rem);
+@custom-media --desktop (min-width:55rem);
+@custom-media --desktop-max (max-width:62.5rem);
+@custom-media --wide (min-width:81.25rem);

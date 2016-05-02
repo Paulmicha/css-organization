@@ -1,0 +1,113 @@
+
+/**
+ *  Inline-block-based Grid object
+ *
+ *  [1] Remove white space between children
+ *  [2] Portability
+ *  [3] Restore font-size from document,
+ *      @see base/_typography.vars.css
+ *  [4] Restore text-orientation inside grid item
+ *      @todo bi-directionnal text support
+ *
+ *  @require base/_typography.vars.css
+ *  @require generic/_padding.css
+ */
+
+:root {
+    --grid-padding-ratio: var(--padding-ratio);
+    --grid-padding-ratio-s: var(--padding-ratio-s);
+    --grid-padding-ratio-xs: .125;
+}
+
+
+/**
+ * Inline-block-based Grid object.
+ *
+ * [1] Remove white space between children
+ * [2] Portability
+ * [3] Restore font-size from document
+ * [4] Restore text-orientation inside grid item
+ *
+ * @todo bi-directionnal (text) support
+ */
+
+.o-ibgrid {
+    display: block;
+    font-size: 0; /* [1] */
+    padding: 0; /* [2] */
+}
+    .o-ibgrid__item {
+        display: inline-block;
+        vertical-align: top;
+        font-size: var(--font-size-ratio)rem; /* [3] */
+    }
+
+
+.o-ibgrid--gutter {
+    margin-right: -var(--grid-padding-ratio)rem;
+    margin-left: -var(--grid-padding-ratio)rem;
+}
+    .o-ibgrid--gutter > .o-ibgrid__item {
+        box-sizing: border-box; /* [2] */
+        padding: 0 var(--grid-padding-ratio)rem;
+    }
+
+
+.o-ibgrid--gutter-xs {
+    margin-right: -var(--grid-padding-ratio-xs)rem;
+    margin-left: -var(--grid-padding-ratio-xs)rem;
+}
+    .o-ibgrid--gutter-xs > .o-ibgrid__item {
+        box-sizing: border-box; /* [2] */
+        padding: 0 var(--grid-padding-ratio-xs)rem;
+    }
+
+
+.o-ibgrid--gutter-s {
+    margin-right: -var(--grid-padding-ratio-s)rem;
+    margin-left: -var(--grid-padding-ratio-s)rem;
+}
+    .o-ibgrid--gutter-s > .o-ibgrid__item {
+        box-sizing: border-box; /* [2] */
+        padding: 0 var(--grid-padding-ratio-s)rem;
+    }
+
+
+.o-ibgrid--center,
+.o-ibgrid--center-desc {
+    text-align: center;
+}
+    .o-ibgrid--center > .o-ibgrid__item {
+        text-align: left; /* [4] */
+    }
+
+
+    .o-ibgrid--inward > .o-ibgrid__item {
+        text-align: right;
+    }
+    .o-ibgrid--inward > .o-ibgrid__item + .o-ibgrid__item {
+        text-align: left;
+    }
+
+
+.o-ibgrid--nowrap {
+    white-space: nowrap;
+}
+    .o-ibgrid--nowrap > .o-ibgrid__item {
+        white-space: normal;
+    }
+
+
+    .o-ibgrid--middle > .o-ibgrid__item {
+        vertical-align: middle;
+    }
+
+
+    .o-ibgrid--bottom > .o-ibgrid__item {
+        vertical-align: bottom;
+    }
+
+
+    .o-ibgrid--s > .o-ibgrid__item {
+        font-size: var(--font-size-ratio-s)rem;
+    }

@@ -1,0 +1,21 @@
+
+/**
+ *  Base : embedding content
+ */
+
+audio,
+video,
+canvas {
+    display: inline-block;
+}
+
+img {
+    border: 0;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+iframe {
+    border: 0 none;
+}

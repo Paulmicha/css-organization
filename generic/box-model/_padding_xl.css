@@ -1,0 +1,54 @@
+
+/**
+ *  Padding utilities.
+ */
+
+:root {
+    --padding-xl: calc(var(--font-size) * var(--line-height) * 2);
+    --padding-ratio-xl: calc(var(--line-height) * 2);
+}
+
+.p--xl {
+    padding: var(--padding-ratio-xl)rem;
+}
+
+
+/*  Directions
+*/
+
+.p-t--xl {
+    padding-top: var(--padding-ratio-xl)rem;
+}
+.p-r--xl {
+    padding-right: var(--padding-ratio-xl)rem;
+}
+.p-b--xl {
+    padding-bottom: var(--padding-ratio-xl)rem;
+}
+.p-l--xl {
+    padding-left: var(--padding-ratio-xl)rem;
+}
+
+
+/*  Bi-directions
+*/
+
+.p-v--xl {
+    padding-top: var(--padding-ratio-xl)rem;
+    padding-bottom: var(--padding-ratio-xl)rem;
+}
+.p-h--xl {
+    padding-right: var(--padding-ratio-xl)rem;
+    padding-left: var(--padding-ratio-xl)rem;
+}
+
+
+/*  Responsive behaviors.
+*/
+
+@media (--tablet-max) {
+    .p-tablet-max-h--xl {
+        padding-right: var(--padding-ratio-xl)rem;
+        padding-left: var(--padding-ratio-xl)rem;
+    }
+}

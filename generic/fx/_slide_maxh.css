@@ -1,0 +1,21 @@
+
+/**
+ *  @file
+ *  Sliding transition using max-height.
+ *
+ *  @see vendor/RickStrahl/tr_slide_maxh.js
+ *  @see vendor/Paulmicha/toggler_tr_maxh.js
+ *  @see http://weblog.west-wind.com/posts/2014/Feb/22/Using-CSS-Transitions-to-SlideUp-and-SlideDown
+ */
+
+/*  Accessibility : only apply JS-enabled interactions styles when JS support is
+    detected.
+*/
+html.js .fx-js-tr-slide-max-h {
+    overflow-y: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+html.js .fx-js-tr-slide-max-h.is-off {
+    max-height: 0;
+}

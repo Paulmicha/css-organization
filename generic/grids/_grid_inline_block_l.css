@@ -1,0 +1,17 @@
+
+/**
+ *  Inline-block-based Grid object - variant : large gutter
+ *  @require generic/_grid_inline_block.css
+ *  @todo use https://github.com/robwierzbowski/node-pixrem
+ */
+
+:root {
+    --grid-padding-ratio-l: calc(var(--padding-ratio-l) / 2);
+}
+
+.o-ibgrid--gutter-l {
+    margin: 0 -var(--grid-padding-ratio-l)rem;
+    }
+    .o-ibgrid--gutter-l > .o-ibgrid__item {
+        padding: 0 var(--grid-padding-ratio-l)rem;
+    }

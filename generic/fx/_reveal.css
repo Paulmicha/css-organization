@@ -1,0 +1,49 @@
+
+/**
+ *  Effects styles : reveal
+ *  @todo rename effect : "slide" ?
+ *  but there could be variants for other types of transitions :
+ *  @see http://ianlunn.github.io/Hover/
+ */
+
+.fx-reveal {
+    position: relative;
+}
+
+.fx-reveal__frame {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+
+/*  Default :
+        transition : slide from bottom,
+        active state : aligned bottom
+*/
+
+.fx-reveal__obj {
+    position: absolute;
+    left: 0;
+    /*
+    top: 100%;
+    */
+    bottom: -100%;
+    
+    width: 100%;
+    transition: all .2s ease;
+}
+
+.fx-reveal.is-on .fx-reveal__obj,
+.fx-reveal:focus .fx-reveal__obj,
+.fx-reveal:hover .fx-reveal__obj {
+    bottom: 0;
+    /*
+    top: 0;
+    */
+}
+

@@ -1,0 +1,12 @@
+
+/**
+ *  Pages specific styles.
+ *
+ *  1. @todo preprocess page or region + add single class.
+ */
+
+.page-user-myresults .region-content,
+.page-user-h5p-results .region-content,
+.page-user-achievements .region-content {
+    @extend %s-content; /* 1 */
+}

@@ -1,0 +1,44 @@
+
+/**
+ *  Base : grouping content
+ */
+
+:root {
+    --ul-margin-ratio: 1;
+}
+
+
+/*  lists
+
+    @todo consider scoping typography-related "grouping" styles to a rich-text
+    context - e.g. ".s-rich-text".
+*/
+
+ul {
+    list-style: disc;
+    list-style-position: outside;
+    /*list-style-image: url('data:image/svg+xml;utf8,<svg height="100" width="10"><circle cx="5" cy="50" r="50" fill="black" /></svg>');*/
+    margin-left: var(--ul-margin-ratio)rem;
+}
+ul[role="menubar"] { /* 1 */
+    list-style: none;
+    margin: 0;
+}
+
+
+/*  Side by Side definition lists
+*/
+
+dl::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+dt {
+    float: left;
+}
+dd::after {
+    content: "";
+    display: block;
+    clear: left;
+}

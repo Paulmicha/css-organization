@@ -1,0 +1,25 @@
+
+/**
+ *  JS utils styles.
+ *
+ *  @todo decide if we prefix everything with u-js-* ?
+ */
+
+.is-off > .js-hide-off,
+.is-off .js-hide-off--deep {
+    display: none !important;
+}
+.is-on > .js-hide-on,
+.is-on .js-hide-on--deep {
+    display: none !important;
+}
+
+/*  Accessibility : only initialize JS-enabled interactions when JS support is
+    detected.
+*/
+html.js .u-js-invisible {
+    display: none;
+}
+html.js .u-js-invisible.is-on {
+    display: block;
+}

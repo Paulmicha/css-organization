@@ -1,0 +1,106 @@
+
+/**
+ * @file
+ * Specific link and button styles.
+ */
+
+:root {
+    --pill-radius: .45em;
+    --pill-padding-v-ratio: .3;
+    --pill-padding-h-ratio: .5;
+    --pill-color: var(--color-1);
+    --pill-bg-color: white;
+    --pill-color-active: white;
+    --pill-bg-color-active: var(--color-2);
+
+    --tab-h-padding-v-ratio: .15;
+    --tab-h-padding-h-ratio: .4;
+}
+
+a.is-active {
+    color: var(--link-color--hover);
+    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
+}
+a.is-active.no-b {
+    border-bottom: 0 none;
+}
+
+th > a,
+th > a.active,
+th > a.is-on {
+    color: var(--link-color);
+    border-bottom: var(--link-border-width) solid var(--link-border-color);
+}
+
+th > a:hover {
+    color: var(--link-color--hover);
+    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
+}
+
+
+/*  Pill button link style.
+*/
+
+.Pill {
+    display: inline-block;
+    border-radius: var(--pill-radius);
+    padding: var(--pill-padding-v-ratio)em var(--pill-padding-h-ratio)em;
+    background: var(--pill-bg-color);
+    color: var(--pill-color);
+    transition: all .2s;
+}
+
+.Pill:hover,
+.Pill:focus,
+.Pill.is-active,
+:hover > .Pill,
+:focus > .Pill,
+.is-active > .Pill {
+    background: var(--pill-bg-color-active);
+    color: var(--pill-color-active);
+    box-shadow: var(--fx-shadow-form-active);
+}
+
+
+/*  Horizontal tabs link style.
+*/
+
+.tab-h {
+    display: inline-block;
+    border-radius: var(--pill-radius) var(--pill-radius) 0 0;
+
+    border-top: 1px solid var(--html-bg-color) !important;
+    border-right: 1px solid var(--html-bg-color) !important;
+    border-left: 1px solid var(--html-bg-color) !important;
+    border-bottom: 0 none !important;
+
+    padding: var(--tab-h-padding-v-ratio)em var(--tab-h-padding-h-ratio)em;
+    background: white;
+    color: var(--text-color-inverse);
+    font-variant: small-caps;
+    letter-spacing: 0.125em;
+    transition: all .2s;
+
+    font-size: var(--font-size-ratio-s)em;
+}
+
+.tab-h:hover,
+.tab-h:focus,
+.tab-h.active,
+.tab-h.is-active {
+    background: var(--html-bg-color);
+    color: var(--text-color);
+}
+
+/*  Specificity war : .bg-content a
+*/
+
+.bg-content .tab-h {
+    color: var(--pill-color);
+}
+.bg-content .tab-h:hover,
+.bg-content .tab-h:focus,
+.bg-content .tab-h.active,
+.bg-content .tab-h.is-active {
+    color: var(--text-color);
+}

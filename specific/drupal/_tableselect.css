@@ -1,0 +1,18 @@
+
+/**
+ * @file
+ * Basic styling for common markup.
+ */
+
+/**
+ * TableSelect behavior.
+ *
+ * @see tableselect.js
+*/
+tr.selected td {
+  background: #ffc;
+}
+td.checkbox,
+th.checkbox {
+  text-align: center;
+}

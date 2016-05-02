@@ -1,0 +1,13 @@
+
+/**
+ *  @file
+ *  Generic styles
+ */
+
+:root {
+    --bg-primary: var(--color-1);
+}
+
+.bg-primary {
+    background: var(--bg-primary);
+}

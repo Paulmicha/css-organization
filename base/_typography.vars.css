@@ -1,0 +1,52 @@
+
+/**
+ *  @file
+ *  Typography
+ */
+
+:root {
+
+    /*  var(--font-size) and var(--line-height) are Fundamental Typographic values :
+            they will be used to determine many proportions. They are unitless values on purpose.
+            @todo use https://github.com/robwierzbowski/node-pixrem
+    */
+    --font-size-ratio: 1;
+    --font-size: calc(var(--font-size-ratio) * 16);
+    --line-height: 1.4; /* Note : this is a ratio */
+
+    /*  With the use of rem or em units, this allows to "propagate"
+            responsive changes in size automatically - for ex. to margins, paddings, etc.
+            @see mandatory custom media queries declaration
+    */
+    --sm-font-size-modifier: 90%;
+    --xl-font-size-modifier: 115%;
+
+    --font-family: 'Raleway', sans-serif;
+    --font-weight: 500;
+    --font-weight-bold: 600;
+    --font-weight-light: 400;
+
+
+    /*  Presets : XS < S < M < L < XL
+    */
+
+    --font-size-ratio-xs: .6;
+    --font-size-xs: calc(var(--font-size) * var(--font-size-ratio-xs));
+    --line-height-xs: var(--line-height);
+
+    --font-size-ratio-s: .8;
+    --font-size-s: calc(var(--font-size) * var(--font-size-ratio-s));
+    --line-height-s: var(--line-height);
+
+    --font-size-ratio-m: 1.25;
+    --font-size-m: calc(var(--font-size) * var(--font-size-ratio-m));
+    --line-height-m: var(--line-height);
+
+    --font-size-ratio-l: 1.5;
+    --font-size-l: calc(var(--font-size) * var(--font-size-ratio-l));
+    --line-height-l: var(--line-height);
+
+    --font-size-ratio-xl: 2;
+    --font-size-xl: calc(var(--font-size) * var(--font-size-ratio-xl));
+    --line-height-xl: 1.1;
+}

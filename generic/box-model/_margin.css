@@ -1,0 +1,70 @@
+
+/**
+ *  Margin utilities.
+ */
+
+:root {
+    --margin-ratio: calc(var(--line-height) / 2);
+    --margin: calc(var(--font-size) * var(--margin-ratio));
+}
+
+.no-m,
+.m-reset,
+.no-margin {
+    margin: 0;
+}
+.m-center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.m {
+    margin: var(--margin-ratio)rem;
+}
+
+
+/*  Directions
+*/
+
+.m-t {
+    margin-top: var(--margin-ratio)rem;
+}
+.m-r {
+    margin-right: var(--margin-ratio)rem;
+}
+.m-b {
+    margin-bottom: var(--margin-ratio)rem;
+}
+.m-l {
+    margin-left: var(--margin-ratio)rem;
+}
+
+
+/*  Bi-directions
+*/
+
+.m-v {
+    margin-top: var(--margin-ratio)rem;
+    margin-bottom: var(--margin-ratio)rem;
+}
+.m-h {
+    margin-right: var(--margin-ratio)rem;
+    margin-left: var(--margin-ratio)rem;
+}
+
+
+/*  Nullify
+*/
+
+.no-m-t {
+    margin-top: 0;
+}
+.no-m-r {
+    margin-right: 0;
+}
+.no-m-b {
+    margin-bottom: 0;
+}
+.no-m-l {
+    margin-left: 0;
+}

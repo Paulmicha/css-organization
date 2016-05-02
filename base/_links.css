@@ -1,0 +1,112 @@
+
+/**
+ *  Base styles : links.
+ */
+
+:root {
+    --link-color: var(--text-color);
+    --link-color-inverse: var(--color-1);
+
+    --link-border-width: .0625em;
+    --link-border-color: var(--link-color);
+
+    /*--link-color--hover: var(--color-3);*/
+    --link-color--hover: var(--color-5);
+    --link-border-width--hover: .125em;
+    --link-border-color--hover: var(--color-2);
+    --link-color-inverse--hover: var(--color-3);
+
+    --link-color--focus: var(--link-color--hover);
+    --link-border-width--focus: var(--link-border-width);
+    --link-border-color--focus: var(--link-color--focus);
+
+    --link-color--active: var(--link-color--hover);
+    --link-border-width--active: var(--link-border-width);
+    --link-border-color--active: var(--link-color--active);
+
+    --link-color--visited: var(--link-color);
+    --link-border-width--visited: var(--link-border-width);
+    --link-border-color--visited: var(--link-color--visited);
+}
+
+a,
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: var(--link-border-width) solid var(--link-border-color);
+    transition: all .2s ease;
+}
+a:visited,
+.link:visited {
+    color: var(--link-color--visited);
+    border-bottom: var(--link-border-width--visited) solid var(--link-border-color--visited);
+}
+a:focus,
+.link:focus {
+    color: var(--link-color--focus);
+}
+a.is-active,
+a.is-on,
+a:hover,
+.link.is-active,
+.link.is-on,
+.link:hover {
+    color: var(--link-color--hover);
+    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
+}
+a:active,
+.link:active {
+    color: var(--link-color--active);
+    border-bottom: var(--link-border-width--active) solid var(--link-border-color--active);
+    transition: none;
+}
+
+
+/*  Here, default BG is dark, so the default text color is light.
+    But text content usually is wrapped inside a white bg container.
+    That scope needs to be reflected here, on the base tag.
+    This impacts Button class :
+    @see _form.css
+*/
+
+.messages a,
+.link--inverse {
+    color: var(--link-color-inverse);
+}
+.messages a:visited,
+.link--inverse:visited {
+    color: var(--link-color-inverse);
+    border-bottom: var(--link-border-width--visited) solid var(--link-border-color--visited);
+}
+.messages a:focus,
+.link--inverse:focus {
+    color: var(--link-color-inverse);
+    border-bottom: var(--link-border-width--focus) solid var(--link-border-color--focus);
+}
+.messages a.is-active,
+.link--inverse.is-active,
+.link--inverse.is-on,
+.link--inverse:hover {
+    color: var(--link-color-inverse--hover);
+    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
+}
+.messages a:active,
+.link--inverse:active {
+    color: var(--link-color-inverse);
+    border-bottom: var(--link-border-width--active) solid var(--link-border-color--active);
+    transition: none;
+}
+
+
+[role="menuitem"] a {
+    border: 0 none;
+}
+
+
+/*  Undo style for forms.
+*/
+
+a.Button {
+    border-width: var(--Button-border-width);
+    border-color: var(--Button-border-color);
+}

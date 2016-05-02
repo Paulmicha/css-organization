@@ -1,0 +1,51 @@
+
+.views-exposed-form {
+  text-align: center;
+}
+  .views-exposed-widget {
+    display: inline-block;
+    text-align: left;
+  }
+  .views-exposed-widget + .views-exposed-widget {
+    margin-left: var(--margin-ratio)rem;
+  }
+
+  .views-exposed-widget.views-submit-button {
+    display: block;
+    margin: var(--margin-ratio)rem 0 0 0;
+    padding: var(--padding-ratio)rem;
+    text-align: center;
+  }
+    .views-exposed-widget.views-submit-button > .form-submit {
+      display: inline-block;
+    }
+
+.views-exposed-form .form-item,
+.views-exposed-form .form-submit {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.views-exposed-form label {
+  font-weight: bold;
+}
+
+/* table style column align */
+.views-align-left {
+  text-align: left;
+}
+.views-align-right {
+  text-align: right;
+}
+.views-align-center {
+  text-align: center;
+}
+
+/* Remove the border on tbody that system puts in */
+.views-view-grid tbody {
+  border-top: none;
+}
+
+.view .progress-disabled {
+  float: none;
+}

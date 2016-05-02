@@ -1,0 +1,79 @@
+
+/**
+ * Table-based grid object.
+ *
+ * [1] inward variant : 2 cells text-aligned "towards" their side in contact.
+ * [2] make the cell fill the remaining space.
+ * [3] outward variant : 2 cells text-aligned in the opposite direction
+ *  of their side in contact.
+ *
+ * @see https://github.com/suitcss/components-arrange
+ */
+
+:root {
+    --tgrid-padding-ratio: var(--padding-ratio);
+    --tgrid-padding-ratio-s: var(--padding-ratio-s);
+}
+
+.o-tgrid {
+    display: table;
+    table-layout: auto;
+    min-width: 100%;
+}
+
+.o-tgrid--equal {
+    table-layout: fixed;
+    width: 100%;
+}
+
+    .o-tgrid__item {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .o-tgrid--middle > .o-tgrid__item {
+        vertical-align: middle;
+    }
+    .o-tgrid--bottom > .o-tgrid__item {
+        vertical-align: bottom;
+    }
+    .o-tgrid--equal > .o-tgrid__item {
+        width: 1%;
+    }
+
+    .o-tgrid--inward > .o-tgrid__item {
+        text-align: right; /* [1] */
+    }
+    .o-tgrid--inward > .o-tgrid__item + .o-tgrid__item {
+        text-align: left; /* [1] */
+    }
+
+    .o-tgrid__item--fill {
+        width: 100%; /* [2] */
+    }
+
+    .o-tgrid--outward > .o-tgrid__item {
+        text-align: left; /* [3] */
+    }
+    .o-tgrid--outward > .o-tgrid__item + .o-tgrid__item {
+        text-align: right; /* [3] */
+    }
+
+    .o-tgrid--gutter > .o-tgrid__item {
+        padding-right: var(--tgrid-padding-ratio)rem;
+    }
+    .o-tgrid--gutter > .o-tgrid__item:last-child {
+        padding-right: 0;
+    }
+
+    .o-tgrid--gutter-s > .o-tgrid__item {
+        padding-right: var(--tgrid-padding-ratio-s)rem;
+    }
+    .o-tgrid--gutter-s > .o-tgrid__item:last-child {
+        padding-right: 0;
+    }
+
+    .o-tgrid__item--bottom,
+    .o-tgrid > .o-tgrid__item--bottom {
+        vertical-align: bottom;
+    }

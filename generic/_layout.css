@@ -1,0 +1,119 @@
+
+
+/**
+ *  Layout utilities.
+ */
+
+.u-block {
+    display: block;
+}
+.u-inline-block {
+    display: inline-block;
+}
+
+.u-float-l {
+    float: left;
+}
+.u-float-r {
+    float: right;
+}
+.u-float-none {
+    float: none;
+}
+
+.u-clear {
+    clear: both;
+}
+.u-clear-l {
+    clear: left;
+}
+.u-clear-r {
+    clear: right;
+}
+
+.u-valign-t {
+    vertical-align: top !important;
+}
+.u-valign-m {
+    vertical-align: middle !important;
+}
+.u-valign-b {
+    vertical-align: bottom !important;
+}
+
+.u-overflow-hidden {
+    overflow: hidden;
+}
+
+
+/*  Vertical centering :
+    inline-block-only children method.
+*/
+
+.o-vcenter {
+    white-space: nowrap;
+}
+    .o-vcenter::before {
+        content: "";
+        height: 100%;
+    }
+    .o-vcenter > *,
+    .o-vcenter::before {
+        display: inline-block;
+        vertical-align: middle !important;
+    }
+    .o-vcenter > * {
+        white-space: normal;
+    }
+
+
+/*  Squared container
+*/
+
+.o-squared {
+    padding-bottom: 100%;
+    position: relative;
+}
+.o-squared__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+/*  Accessibility
+*/
+
+.hidden,
+.accessibility {
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+
+/*  Clearfix
+*/
+
+%cf {
+    display: block;
+    &::before,
+    &::after {
+        content: "";
+        display: table;
+    }
+    &::after {
+        clear: both;
+    }
+}
+
+.cf {
+    @extend %cf;
+}

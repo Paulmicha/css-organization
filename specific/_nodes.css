@@ -1,0 +1,18 @@
+
+/**
+ *  Nodes specific styles.
+ *
+ *  1. @todo DRY this behavior with '.views-field-opigno-course-image'.
+ *  @see css/specific/_views.css
+ */
+
+.head-image {
+    text-align: center;
+}
+    .head-image img {
+        display: inline-block;
+    }
+
+.s-node-content > .field + .field {
+    margin-top: var(--margin-ratio)rem;
+}

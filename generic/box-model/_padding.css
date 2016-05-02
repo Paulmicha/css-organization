@@ -1,0 +1,98 @@
+
+/**
+ *  Padding utilities.
+ */
+
+:root {
+    --padding: calc(var(--font-size) * var(--line-height) / 2);
+    --padding-ratio: calc(var(--line-height) / 2);
+}
+
+.no-p,
+.p-reset,
+.no-padding {
+    padding: 0 !important;
+}
+
+.p {
+    padding: var(--padding-ratio)rem;
+}
+
+
+/*  Directions
+*/
+
+.p-t {
+    padding-top: var(--padding-ratio)rem;
+}
+.p-r {
+    padding-right: var(--padding-ratio)rem;
+}
+.p-b {
+    padding-bottom: var(--padding-ratio)rem;
+}
+.p-l {
+    padding-left: var(--padding-ratio)rem;
+}
+
+
+/*  Bi-directions
+*/
+
+.p-v {
+    padding-top: var(--padding-ratio)rem;
+    padding-bottom: var(--padding-ratio)rem;
+}
+.p-h {
+    padding-right: var(--padding-ratio)rem;
+    padding-left: var(--padding-ratio)rem;
+}
+
+
+/*  Nullify
+*/
+
+.no-p-t,
+[class*="p-"].no-p-t {
+    padding-top: 0;
+}
+.no-p-r,
+[class*="p-"].no-p-r {
+    padding-right: 0;
+}
+.no-p-b,
+[class*="p-"].no-p-b {
+    padding-bottom: 0;
+}
+.no-p-l,
+[class*="p-"].no-p-l {
+    padding-left: 0;
+}
+
+
+/*  Adjacent padding utils
+*/
+
+.u-adjacent-p-t + .u-adjacent-p-t {
+    padding-top: var(--padding-ratio)rem;
+}
+.u-adjacent-p-r + .u-adjacent-p-r {
+    padding-right: var(--padding-ratio)rem;
+}
+.u-adjacent-p-b + .u-adjacent-p-b {
+    padding-bottom: var(--padding-ratio)rem;
+}
+.u-adjacent-p-l + .u-adjacent-p-l {
+    padding-left: var(--padding-ratio)rem;
+}
+
+
+/*  Responsive behaviors.
+*/
+
+@media (--tablet-max) {
+    .p-tablet-max-h {
+        padding-right: var(--padding-ratio)rem;
+        padding-left: var(--padding-ratio)rem;
+    }
+}

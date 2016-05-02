@@ -1,0 +1,362 @@
+
+/**
+ *  CSS - specific styles : Drupal
+ *  Core forms
+ *
+ *  @require generic/_margin.css
+ *  @require generic/_margin_xl.css
+ */
+
+:root {
+    --drupal-form-margin-t-ratio: var(--margin-ratio-xl);
+    --drupal-form-margin-b-ratio: var(--margin-ratio-xl);
+    --drupal-form-padding-ratio: var(--padding-ratio-l);
+    --drupal-form-bg: var(--color-grey-3);
+
+    --drupal-form-items-margin-b-ratio: var(--margin-ratio-l);
+
+    --drupal-form-items-desc-font-size-ratio: var(--font-size-ratio-s);
+    --drupal-form-items-desc-padding-ratio: var(--padding-ratio);
+}
+
+
+
+/*  Registration form.
+*/
+
+div.form-item div.password-suggestions {
+    margin-top: 0;
+}
+
+div.form-item div.password-suggestions {
+    width: auto;
+    border: 0 none;
+}
+
+@media (--mobile) {
+    .password-strength {
+        display: none;
+    }
+}
+
+/*  Remove fieldset border + legend on student profile fields.
+*/
+#edit-profile-student {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    }
+    #edit-profile-student > legend {
+        display: none;
+    }
+
+/*  Date fields : idem.
+*/
+.field-type-datetime fieldset {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    }
+    .field-type-datetime legend {
+        font-variant: normal;
+        letter-spacing: normal;
+        font-size: inherit;
+        padding: 0;
+    }
+    #edit-profile-student-field-birthdate-und-0-value {
+        padding: 0;
+    }
+
+
+
+/*  Containers
+*/
+
+[role="main"] > form {
+    margin-top: var(--drupal-form-items-margin-b-ratio)rem;
+    margin-bottom: var(--drupal-form-margin-b-ratio)rem;
+    padding: var(--drupal-form-padding-ratio)rem;
+    background: var(--drupal-form-bg);
+}
+
+.form-item {
+    margin-bottom: var(--drupal-form-items-margin-b-ratio)rem;
+}
+
+td > .form-item {
+    margin: 0 auto;
+}
+
+
+/*  Labels.
+*/
+
+.form-item > label {
+    display: block;
+}
+.form-type-checkbox > label,
+.form-type-radio > label {
+    display: inline;
+}
+.form-actions {
+    text-align: center;
+    /*font-size: 115%;*/
+    margin: var(--margin-ratio-s)rem 0;
+}
+.node-form > .form-actions {
+    font-size: var(--font-size-ratio-l)rem;
+    margin: var(--margin-ratio-l)rem 0;
+}
+.form-actions > * + *,
+.form-actions > input[type=submit] + input[type=submit] {
+    margin-left: .5em;
+}
+
+
+/*  Form elements.
+*/
+
+.form-item.form-item-date-time,
+.form-item.form-item-date-date,
+.form-item.form-type-radio,
+.form-item.form-type-checkbox {
+    margin: .33rem 0 0 0;
+}
+.form-item.form-type-radio:first-child,
+.form-item.form-type-checkbox:first-child {
+    margin: 0;
+    }
+    .form-item.form-type-radio,
+    .form-item.form-type-checkbox,
+    .form-item.form-type-radio label,
+    .form-item.form-type-checkbox label {
+        line-height: 1.1;
+    }
+
+.form-item > .description {
+    font-size: var(--drupal-form-items-desc-font-size-ratio)em;
+    padding: var(--drupal-form-items-desc-padding-ratio)em 0;
+}
+td .form-item > .description {
+    padding: 0;
+}
+
+
+.form-item > .description {
+    color: var(--color-grey-5);
+    font-size: var(--font-size-ratio-s)rem;
+    line-height: var(--line-height-s);
+}
+
+
+/*      Misc.
+*/
+
+.resizable-textarea .grippie {
+    border: 0 none;
+    background-color: var(--input-text-border-color);
+    transition: all linear .5s;
+}
+.resizable-textarea .grippie:hover,
+.resizable-textarea :focus + .grippie,
+.resizable-textarea :hover + .grippie {
+    background-color: var(--input-text-border-color--hover);
+}
+
+.draggable a {
+    border: 0 none;
+}
+
+table.sticky-header {
+    background: inherit;
+}
+
+.form-required {
+    padding-left: .33em;
+    color: var(--color-2);
+}
+
+.form-disabled {
+    opacity: .5;
+}
+
+a.token-dialog {
+    display: inline-block;
+    margin-bottom: var(--margin-ratio)rem;
+}
+
+
+/*      contrib / core overrides
+        (mode rush)
+*/
+
+.ui-dialog-content *,
+.ui-dialog-content form [type] {
+    color: black;
+    border-color: rgba(0, 0, 0, .3);
+}
+.ui-dialog-content select,
+.ui-dialog-content option,
+.ui-dialog-content input {
+    background-color: inherit;
+}
+.views-displays,
+.views-display-top,
+.views-displays .secondary a,
+.views-display-column > .ctools-collapsible-handle,
+.views-ui-display-tab-bucket {
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.field-formatter-settings-edit-form.form-wrapper {
+    text-align: left;
+}
+
+
+
+/*  Vertical tabs.
+*/
+
+.vertical-tab-button {
+    font-size: var(--font-size-ratio-s)rem;
+}
+.vertical-tabs-pane {
+    font-size: var(--font-size-ratio-s)rem;
+    }
+    .vertical-tabs-pane .form-wrapper {
+        margin-top: var(--margin-ratio)rem;
+    }
+    .vertical-tabs-pane > .fieldset-wrapper {
+        padding: var(--padding-ratio-l)rem 0;
+    }
+    .vertical-tabs-pane > .fieldset-wrapper > * + p {
+        margin-top: var(--margin-ratio)rem;
+    }
+    .vertical-tabs-pane br:first-child {
+        display: none;
+    }
+
+
+
+/*  Hack : no format
+*/
+
+.text-format-wrapper > .filter-wrapper {
+    display: none;
+}
+
+
+
+/*  Table styles based on the "Seven" core theme.
+*/
+
+.form-item > table {
+  width: 100%;
+  /*font-size: 0.923em;*/
+  margin: 0 0 .625em;
+  border: 1px solid #bebfb9;
+}
+.form-item > table td,
+.form-item > table th {
+  vertical-align: middle;
+  text-align: left;
+  padding: .5em .625em;
+  border: 0;
+  color: #000;
+}
+.form-item > table tr.even,
+.form-item > table tr.odd {
+  border-width: 0 1px 0 1px;
+  border-style: solid;
+  border-color: #bebfb9;
+  background: #f3f4ee;
+}
+.form-item > table tr.odd {
+  background: #fff;
+}
+.form-item > table tr.drag {
+  background: #fe7;
+}
+.form-item > table tr.drag-previous {
+  background: #ffb;
+}
+.form-item > table th {
+  text-transform: uppercase;
+  background: #e1e2dc;
+  font-weight: normal;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #bebfb9;
+  padding: 3px 10px;
+}
+/**
+ * Force browsers to calculate the width of a 'select all' TH element.
+ */
+.form-item > table th.select-all {
+  width: 1px;
+}
+.form-item > table th.active {
+  background: #bdbeb9;
+}
+.form-item > table th a {
+  display: block;
+  position: relative;
+}
+.form-item > table th.active a {
+  padding: 0 25px 0 0; /* LTR */
+}
+.form-item > table th.active img {
+  position: absolute;
+  top: 3px;
+  right: 3px; /* LTR */
+}
+.form-item > table td.active {
+  background: #e9e9dd;
+}
+.form-item > table tr.odd td.active {
+  background: #f3f4ee;
+}
+.form-item > table tr.selected td.active,
+.form-item > table tr.selected td {
+  background: #ffc;
+  border-color: #eeb;
+}
+table.system-status-report tr {
+  border-bottom: 1px solid #ccc;
+}
+table.system-status-report tr.ok {
+  color: #255b1e;
+  background-color: #e5ffe2;
+}
+table.system-status-report tr.info {
+  color: #040f37;
+  background-color: #bdf;
+}
+table.system-status-report tr.warning {
+  color: #840;
+  background-color: #fffce5;
+}
+table.system-status-report tr.error {
+  color: #8c2e0b;
+  background-color: #fef5f1;
+}
+/**
+ * Exception for webkit bug with the right border of the last cell
+ * in some tables, since it's webkit only, we can use :last-child
+ */
+.form-item > table tr td:last-child {
+  border-right: 1px solid #bebfb9; /* LTR */
+}
+
+
+/*  Node forms.
+*/
+
+.node-form > div > .form-actions {
+    font-size: var(--font-size-ratio-l)rem;
+    padding: 1.5em 1em;
+}
+.node-form > div > .form-actions > * + *,
+.node-form > div > .form-actions > input[type=submit] + input[type=submit] {
+    margin-left: 1em;
+}

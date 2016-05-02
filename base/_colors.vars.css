@@ -1,0 +1,52 @@
+
+/**
+ *  Color variables.
+ */
+
+:root {
+
+    /* -----------------------------------------------
+            Declaration :
+            actual color values
+    */
+
+    /*  Main colors
+    */
+    --color-1: #004a8f;
+    --color-2: #f25921;
+    --color-3: #d71920;
+    --color-4: #0084FF;
+    --color-5: #FFB969;
+    --color-6: #1CB841;
+    --color-7: #CA3C3C;
+    --color-8: #0078e7;
+
+    /*  Greys, blacks, whites
+    */
+    --color-grey-1: #151515;
+    --color-grey-2: #DDD;
+    --color-grey-3: #292929;
+    --color-grey-4: #1c1c1c;
+    --color-grey-5: #717171;
+
+    --color-grey-t-1: rgba(28, 28, 28, .88);
+    --color-grey-t-2: rgba(41, 41, 41, .88);
+    --color-grey-t-3: rgba(75, 75, 75, .88);
+
+    --color-black-t-1: rgba(0, 0, 0, .5);
+    --color-black-t-2: rgba(0, 0, 0, .8);
+    --color-black-t-3: rgba(0, 0, 0, .05);
+
+    --color-white-t-1: rgba(255, 255, 255, .5);
+    --color-white-t-2: rgba(255, 255, 255, .1);
+
+
+    /* -----------------------------------------------
+            Usage :
+            contextual aliases
+            (purpose : inform about intended use,
+            bind to actual CSS rules)
+
+            @see base/_root.css
+    */
+}
