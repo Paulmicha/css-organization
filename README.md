@@ -106,7 +106,7 @@ More info :
 
 ## CSS Coding Style and Naming Conventions
 - All imported CSS files should have the `_` prefix in their filename.
-- File naming convention may also follow [InuitCSS's file naming conventions](https://github.com/inuitcss/getting-started).
+- File naming convention may also follow [InuitCSS's file naming conventions](https://github.com/inuitcss/getting-started) or [ITCSS](http://itcss.io/) ([Inverted Triangle](http://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731/2) metaphore - see [example](https://github.com/itcss/itcss-netmag/tree/master/css)).
 - Follow @csswizardry's [Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) (see [BEMIT](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/))
 - Tolerate alternative [SUIT CSS naming convention](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md)
 - Use additional namespaces (custom class prefixes) :
