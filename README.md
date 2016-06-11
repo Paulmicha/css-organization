@@ -62,35 +62,106 @@ path/to/project/
 ### Modular, Component-oriented, Self-contained Structure
 Similar to [eCSS file organization (ch.5)](http://ecss.io/chapter5.html), inspired by [@necolas's talk](https://www.youtube.com/watch?v=m0oMHG6ZXvo).
 ```
-path/to/project/
-    └── modules/
-        ├── base/               <- 1
-        │   ├── node_modules/   <- (gitignored deps)
-        │   │   ├── sanitize.css
-        │   │   └── ...
-        │   └── my_component    <- custom component
-        │       ├── css/
-        │       │   └── ...
-        │       ├── js/
-        │       └── ...
-        ├── generic/            <- 2
-        │   ├── node_modules/   <- (gitignored deps)
-        │   └── my_component    <- custom component
-        │       ├── css/
-        │       │   └── ...
-        │       ├── js/
-        │       └── ...
-        ├── specific/           <- 3
-        │   └── my_component    <- custom component
-        │       ├── css/
-        │       │   └── ...
-        │       ├── js/
-        │       └── ...
-        ├── critical.css        <- 4
-        ├── main.css            <- Output (compiled result)
-        ├── main.js
-        └── ...
+path/to/project/modules/
+    ├── node_modules/       <- (gitignored deps)
+    │   ├── sanitize.css/
+    │   └── ...
+    ├── base/               <- 1
+    │   ├── my-component/   <- *
+    │   │   └── ...
+    │   └── ...
+    ├── generic/            <- 2
+    │   ├── my-component/   <- *
+    │   │   └── ...
+    │   └── ...
+    ├── specific/           <- 3
+    │   ├── my-component/   <- *
+    │   │   └── ...
+    │   └── ...
+    ├── critical.css        <- 4
+    ├── main.css            <- Output (compiled result)
+    ├── main.js
+    └── ...
 ```
+Another example explicitly differencing sources from compiled files (can be `src/` / `dist`, `build`, etc.) :
+```
+path/to/project/
+    ├── node_modules/       <- (gitignored deps)
+    │   ├── sanitize.css/
+    │   └── ...
+    ├── src/
+    │   ├── base/               <- 1
+    │   │   ├── my-component/   <- *
+    │   │   │   └── ...
+    │   │   └── ...
+    │   ├── generic/            <- 2
+    │   │   ├── my-component/   <- *
+    │   │   │   └── ...
+    │   │   └── ...
+    │   ├── specific/           <- 3
+    │   │   ├── my-component/   <- *
+    │   │   │   └── ...
+    │   │   └── ...
+    ├── dist/
+    │   ├── critical.css        <- 4
+    │   ├── main.css            <- Output (compiled result)
+    │   ├── main.js
+    │   └── ...
+    └── ...
+```
+
+### * Individual Components
+
+This is the central aspect in the process of establishing a standard design system component architecture, [such as GE’s Predix's for example](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891).
+
+The goal is to progressively publish a growing library of packaged components (ideally MIT-licensed, which was my original objective when I started the [reusable-components Github organization](https://github.com/reusable-components)), so that other projects can reuse these just like any other NPM package (e.g. in `node_modules/` gitignored folder).
+
+Here's [@benfrain's (eCSS) example structure](http://ecss.io/chapter5.html) :
+```
+shopping-cart-template/
+    ├── shopping-cart.html
+    ├── shopping-cart.css
+    └── shopping-cart.js
+```
+
+Here's another proposition, focusing on transpilation for maximum reusability (across various project stacks - e.g. templates like Twig, Jade/Pug, etc.), planned [standard web-components](https://github.com/mateusortiz/webcomponents-the-right-way) support, and integration into existing [living styleguides](https://www.smashingmagazine.com/2015/04/an-in-depth-overview-of-living-style-guide-tools/) techniques :
+```
+my-component/
+    ├── src/
+    │   ├── my-component.css
+    │   ├── my-component.js
+    │   ├── my-component.*                  <- source for transpiling into different tpl formats
+    │   └── ...
+    ├── tpl/                                <- transpiled template formats (e.g. for CMSes)
+    │   ├── jsx/
+    │   │   └── my-component.jsx
+    │   ├── phptemplate/
+    │   │   └── my-component.tpl.php
+    │   ├── twig/
+    │   │   └── my-component.html.twig
+    │   └── ...
+    ├── my-component.html                   <- standard-compliant Web Component (à la Polymer)
+    ├── index.html                          <- static, standard-compliant HTML (e.g. for living styleguides)
+    ├── index.css
+    ├── index.js
+    ├── README.md                           <- usage, building, contributing instructions, etc.
+    ├── package.json
+    └── ...
+```
+
+@TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
+@TODO : elaborate on approaches to extend components and/or to handle variation.
+
+#### Terminology / Designation
+- modules : sometimes used to refer to individual components.
+- components : designate any reusable, modular, differenciable fragment or pattern of the interface.
+- (design) pattern : traditional software engineering principle, sometimes used for meaning UI design pattern.
+- UI design pattern : user interface components or interaction patterns.
+
+#### Roadmap
+
+- Make an alternative to [Axure](http://www.axure.com/) tailored to that kind of design system, for ex. based on [Electron](https://github.com/sindresorhus/awesome-electron) (see also [Photon](https://github.com/connors/photon))
+- Look into [Yeoman](http://yeoman.io/) for boilerplate automation
 
 ### 1. `base/` : Bare HTML tags & global declarations
 This corresponds to the original [SMACSS category](http://snook.ca/archives/html_and_css/avoid-overstyling-base-styles) of the same name.
@@ -102,20 +173,20 @@ Additional considerations :
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
 
-Note : some base styles can be specific to the current project (typographic settings, default tags appearance, etc).
+Note : some base styles are likely specific to the current project (typographic settings, default tags appearance, etc) → @TODO : discuss alternative structures.
 
 #### Terminology / Designation
 @bradfrost's terminology : **Atoms** / proposed alternative (common designation) : **Elements**
 
 ### 2. `generic/` : Immutable Utilities, Objects, Components
-Styles with potential for reuse. Ideally, these should be included as third-party / vendor components (e.g. `node_modules`), but sometimes we need a place to start something reusable outside of the other folders.
+Styles with potential for reuse. Ideally, these should be included as third-party / vendor components (e.g. `node_modules`), but sometimes we need a place to start something reusable outside of the other folders. See the **"individual components"** section regarding reusability.
 
 Important consideration : look at what [CSS Modules](https://github.com/css-modules) are doing for this.
 
 Examples of styles belonging in this category :
 - SUIT CSS [components-flex-embed](https://github.com/suitcss/components-flex-embed), [components-arrange](https://github.com/suitcss/components-arrange), etc.
 - @mrmrs_'s [colors](https://github.com/mrmrs/colors)
-- Any individual or isolated unit of styles that can be reused from other frameworks ([InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
+- Any individual or isolated unit of styles that can be reused from other frameworks ([Tapestry](http://tapestry.wisembly.com/components), [InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
 
 #### Terminology / Designation
 @bradfrost's terminology : usually **Molecules**, maybe even **Organisms** / proposed alternatives (common designation) : **Components**, **Objects**, **Utilities**
