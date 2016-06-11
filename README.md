@@ -149,8 +149,8 @@ my-component/
     └── ...
 ```
 
-@TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
-@TODO : elaborate on approaches to extend components and/or to handle variation.
+TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
+TODO : elaborate on approaches to extend components and/or to handle variation.
 
 #### Terminology / Designation
 - modules : sometimes used to refer to individual components.
@@ -162,6 +162,7 @@ my-component/
 
 - Make an alternative to [Axure](http://www.axure.com/) tailored to that kind of design system, for ex. based on [Electron](https://github.com/sindresorhus/awesome-electron) (see also [Photon](https://github.com/connors/photon))
 - Look into [Yeoman](http://yeoman.io/) for boilerplate automation
+- Elaborate on Element Queries, essentially adjusting elements to their container instead of the entire viewport, which makes more sense in a modular, component-oriented system. See [css-element-queries](https://github.com/marcj/css-element-queries) and [elementqueries](http://elementqueries.com/).
 
 ### 1. `base/` : Bare HTML tags & global declarations
 This corresponds to the original [SMACSS category](http://snook.ca/archives/html_and_css/avoid-overstyling-base-styles) of the same name.
@@ -173,7 +174,7 @@ Additional considerations :
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
 
-Note : some base styles are likely specific to the current project (typographic settings, default tags appearance, etc) → @TODO : discuss alternative structures.
+Note : some base styles are likely specific to the current project (typographic settings, default tags appearance, etc) → TODO : discuss alternative structures.
 
 #### Terminology / Designation
 @bradfrost's terminology : **Atoms** / proposed alternative (common designation) : **Elements**
