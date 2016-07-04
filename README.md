@@ -2,7 +2,12 @@
 CSS organization
 ================
 
-[WIP] This is an example of CSS organization using PostCSS.
+This is an example of CSS organization using PostCSS.
+
+The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/).
+
+This repository is only meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), with the objective of laying the fondations of an elaborate design system (ex: [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)).
+
 
 ## Tools
 - [Gulp](http://gulpjs.com/)
@@ -25,9 +30,9 @@ gulp
 
 ## Principles
 
-Some fundamentals from @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
-
-Most importantly : [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ : use @csswizardry's methodology - [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
+- Some fundamentals from @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
+- [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ : use @csswizardry's methodology - [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
+- [@snookca's Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
 
 Very quick overview notes :
 - DRY / Single Source of truth - warnings : don't DRY if it's repeated coincidentally, just avoid duplicating data in source (repetition in compiled code is fine).
@@ -37,12 +42,39 @@ Very quick overview notes :
 - Open/Closed principle : never change anything at its source, always make change via extension - possibly the most useful principle for dealing with other people's code.
 - Orthogonality : avoid collisions - ex: using proper scoping
 - Moustache Principle : just because you can, it doesn't mean you should.
+- Moustache Principle : just because you can, it doesn't mean you should.
 
 
-## Structure
-Here are suggestions for organizaing CSS files. This section will be updated to elaborate on different approaches (because a single generic architecture may not always be the most appropriate for projects of different size or nature).
+## Existing approaches
+
+The organization of CSS in various libraries or frameworks usually aims to avoid common pitfalls of the *cascading* part of CSS in modular design system (i.e. preventing the accidental bleeding of rules).
+
+[@dakotaleemartinez provides an example](https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce) of a problematic Bootstrap 3 navbar component extension, illustrating some of the pains these approaches aim to ease.
+
+[@ahfarmer's article](http://andrewhfarmer.com/how-to-style-react/) gives a categorization of the tooling available as of 2016/04/16, and [@fat's talk](https://www.youtube.com/watch?v=iniwPUEbPUM) touches upon the origins of CSS, putting its evolution and uses in perspective - along with [@zackbloom's "The Languages Which Almost Became CSS"](https://eager.io/blog/the-languages-which-almost-were-css/).
+
+I find there are 2 types of approaches to "kill the cascade" in CSS :
+
+- Class naming conventions - ex: eCSS, ITCSS, etc (see below). This is the currently favored approach.  
+Such conventions already allow for implementing robust organization, and for projects that aren't going to need the kind of scaling that eCSS, ITCSS and the like are providing, we still can have the flexibility of a [SMACSS-based approach](https://snook.ca/archives/html_and_css/dealing-with-cascade-specificity), which means either picking classes or child selectors where appropriate - provided any potential "bleed" is at least documented and/or its scope really narrow.
+- Inlining all or most styles : see [@chriscoyier's recap](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/). And if we chose only to use utility classes (see below), [Tachyons](http://tachyons.io/) could also be used this way, and could get along with the naming convention approach above - provided we avoid class naming collisions.  
+[Atomic CSS](http://acss.io/) is probably the most explicit "inline-like" use of CSS classes.  
+Some tools even implement their own syntax (compiled to CSS) to achieve more advanced layout features, like [gridstylesheets.org's GSS](https://github.com/gss/engine) (inspired by [Constraint CSS](http://constraints.cs.washington.edu/web/ccss-uwtr.pdf) and [Apple's Visual Format Language](http://gridstylesheets.org/guides/vfl/)).
+
+
+## Architecture
+
+The organization of CSS may follow some categorization of styles. There is hardly one unique way of sorting out the styles for all imaginable projects out there, so this has to stay subjective (because a single generic architecture may not always be the most appropriate for projects of different size or nature).
+
+However, following some logic helps in reducing time spent in making "structural" decisions (good architecture = less questions to ask) - here's an illustration of ITCSS's :  
+![ITCSS categories](Inverted-Triangle.jpg)
+
+
+## File structure
+Here are suggestions for organizaing CSS files :
 
 ### Centralized, Single CSS folder
+Current structure of the source code available as an example in this repository (comes from a Drupal 7 theme).
 ```
 path/to/project/
     └── css/
@@ -59,7 +91,7 @@ path/to/project/
         └── critical.css    <- 4
 ```
 
-### Modular, Component-oriented, Self-contained Structure
+### Modular, Component-oriented structure
 Similar to [eCSS file organization (ch.5)](http://ecss.io/chapter5.html), inspired by [@necolas's talk](https://www.youtube.com/watch?v=m0oMHG6ZXvo).
 ```
 path/to/project/modules/
@@ -112,9 +144,9 @@ path/to/project/
 
 ### * Individual Components
 
-This is the central aspect in the process of establishing a standard design system component architecture, [such as GE’s Predix's for example](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891).
+Our present goal is to progressively publish a growing [library of open-source components](https://github.com/reusable-components), so that other projects can reuse these just like any other NPM package.
 
-The goal is to progressively publish a growing library of packaged components (ideally MIT-licensed, which was my original objective when I started the [reusable-components Github organization](https://github.com/reusable-components)), so that other projects can reuse these just like any other NPM package (e.g. in `node_modules/` gitignored folder).
+One of the main challenge is defining the "boundaries" between components, which can be very subjective. Here's some advice from a javascript perspective : *"[don't overdo components](http://calmm-js.github.io/documentation/training/#/9/3) - Your components should do something substantial. Does it have a non-trivial model ? Is it a combination of elements you use in lots of places ?"*
 
 Here's [@benfrain's (eCSS) example structure](http://ecss.io/chapter5.html) :
 ```
@@ -124,7 +156,7 @@ shopping-cart-template/
     └── shopping-cart.js
 ```
 
-Here's another proposition, focusing on transpilation for maximum reusability (across various project stacks - e.g. templates like Twig, Jade/Pug, etc.), planned [standard web-components](https://github.com/mateusortiz/webcomponents-the-right-way) support, and integration into existing [living styleguides](https://www.smashingmagazine.com/2015/04/an-in-depth-overview-of-living-style-guide-tools/) techniques :
+Here's another (work in progress) proposition, focusing on transpiling templates for maximum reusability (across various project stacks - e.g. Twig, Jade/Pug, etc.), planned [standard web-components](https://github.com/mateusortiz/webcomponents-the-right-way) support, and integration into existing [living styleguides](https://www.smashingmagazine.com/2015/04/an-in-depth-overview-of-living-style-guide-tools/) techniques :
 ```
 my-component/
     ├── src/
@@ -149,6 +181,8 @@ my-component/
     └── ...
 ```
 
+The only implementation example that I currently know that could be used as a source for transpiling into different template formats is [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65).
+
 TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
 TODO : elaborate on approaches to extend components and/or to handle variation.
 
@@ -170,6 +204,7 @@ This corresponds to the original [SMACSS category](http://snook.ca/archives/html
 File naming : use categories from [Josh Duck’s HTML Periodic Table](http://smm.zoomquiet.io/data/20110511083224/index.html) ([Screenshot](http://bradfrost.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-13-at-5.15.05-PM.png)) + [optional] use double extension `.vas.css` for files containing "low-level" variables.
 
 Additional considerations :
+- https://milligram.github.io/
 - @jonathantneal's [Sanitize.css](https://github.com/10up/sanitize.css) or @necolas's [Normalize](https://github.com/necolas/normalize.css/)
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
@@ -224,125 +259,16 @@ More info :
     - `b-` : box-model utilities : borders
     - `m-` : box-model utilities : margins
     - `p-` : box-model utilities : paddings
+    - `c-` : custom component (not reusable) - to discuss : use CamelCase for reusable components only ?
 - (to discuss) Double extension `.critical.css` for separate inline "critical" CSS compilation ?
 - Encourage [Meaningful Whitespace](http://cssguidelin.es/#meaningful-whitespace)
 - Components :
     - Consider additional namespace by vendor/author for portability (e.g. `fx-paulmicha-foobar`)
     - And/or implement dynamic prefixes with tools like [postcss-class-prefix](https://github.com/thompsongl/postcss-class-prefix) or [CSS Modules](https://github.com/css-modules/css-modules)
-- T-shirt sizes : common suffixes to indicate size or magnitude. Example :
-
-in file `_typography.vars.css` :
-```
-
-/**
- *  Typography CSS vars declarations.
- *
- *  1. Anything from 45 to 75 characters is widely regarded as a satisfactory
- *    length of line for a single-column page set in a serifed text face in a
- *    text size.
- *    The 66-character line (counting both letters and spaces) is widely
- *    regarded as ideal.
- *    For multiple column work, a better average is 40 to 50 characters.
- *    See http://webtypography.net/2.1.2
- *
- *  2. Letter-spacing values are not meant for lowercase text.
- *    See http://practicaltypography.com/letterspacing.html
- */
-
-:root {
-    --w-typo-ratio: 33; /* 1 */
-    --w-typo-ratio-l: 50;
-
-    --font-size-ratio: 1;
-    --font-size: calc(var(--font-size-ratio) * 16);
-    --line-height: 1.4;
-
-    --font-family: 'Raleway', sans-serif;
-    --font-weight: 500;
-    --font-weight-bold: 700;
-    --font-weight-light: 400;
-    --font-weight-thin: 200;
-
-    --letter-spacing: .1em; /* 2 */
-    --letter-spacing-m: .2em; /* 2 */
-    --letter-spacing-l: .25em; /* 2 */
-
-
-    /*  T-shirt sizes presets : XS < S < base < M < L < XL < XXL
-        Expansion examples :
-        XXS < XS < S < base < MS < M < ML < MLL < L < LL < LLL < XL < XLL < XXL < XXXL
-    */
-
-    --font-size-ratio-xs: .7;
-    --font-size-xs: calc(var(--font-size) * var(--font-size-ratio-xs));
-    --line-height-xs: 1.2;
-
-    --font-size-ratio-s: .8;
-    --font-size-s: calc(var(--font-size) * var(--font-size-ratio-s));
-    --line-height-s: 1.2;
-
-    --font-size-ratio-m: 1.25;
-    --font-size-m: calc(var(--font-size) * var(--font-size-ratio-m));
-    --line-height-m: var(--line-height);
-
-    --font-size-ratio-l: 1.5;
-    --font-size-l: calc(var(--font-size) * var(--font-size-ratio-l));
-    --line-height-l: var(--line-height);
-
-    --font-size-ratio-ll: 2.15;
-    --font-size-ll: calc(var(--font-size) * var(--font-size-ratio-ll));
-    --line-height-ll: 1.33;
-
-    --font-size-ratio-xl: 2.5;
-    --font-size-xl: calc(var(--font-size) * var(--font-size-ratio-xl));
-    --line-height-xl: 1.25;
-
-    --font-size-ratio-xll: 3;
-    --font-size-xll: calc(var(--font-size) * var(--font-size-ratio-xll));
-    --line-height-xll: 1.2;
-
-    --font-size-ratio-xxl: 4;
-    --font-size-xxl: calc(var(--font-size) * var(--font-size-ratio-xxl));
-    --line-height-xxl: 1.1;
-}
-```
-
-- Color variable aliases : allows for safer ulterior modifications, by separating declaration (changing value) from application (changing usage). Example :
-
-in file `_colors.vars.css` :
-```
-:root {
-    --color-1: #004281;
-    --color-2: #f25921;
-    --color-3: #d71920;
-
-    --color-grey-1: #151515;
-    --color-grey-2: #DDD;
-    --color-grey-3: #292929;
-
-    --color-grey-t-1: rgba(28, 28, 28, .88);
-    --color-grey-t-2: rgba(41, 41, 41, .88);
-    --color-grey-t-3: rgba(75, 75, 75, .88);
-
-    --color-black-t-1: rgba(0, 0, 0, .5);
-    --color-black-t-2: rgba(0, 0, 0, .8);
-    --color-black-t-3: rgba(0, 0, 0, .05);
-
-    --color-white-t-1: rgba(255, 255, 255, .5);
-    --color-white-t-2: rgba(255, 255, 255, .1);
-}
-```
-
-in file `_root.css` :
-```
-:root {
-    --html-bg-color: var(--color-1);
-    --text-color: white;
-    --text-color-inverse: var(--color-grey-4);
-}
-```
-
+- T-shirt sizes : common suffixes to indicate size or magnitude. Example : see file [`_typography.vars.css`](base/_typography.vars.css).
+- Color variable aliases : allows for safer ulterior modifications, by separating declaration (changing value) from application (changing usage). Example : see file [`_colors.vars.css`](base/_colors.vars.css) and file [`_root.css`](base/_root.css).
 On colors, see also [clrs.cc](http://clrs.cc/) and [accessible color combinations (contrasts) examples](http://clrs.cc/a11y/).
+
 
 ## Linting
 
@@ -352,6 +278,8 @@ It's worth noting that CSS Modules seem to have a similar stance : [*"For local 
 
 
 ## Regression Testing
+
+See [@justin_tulloss's Building Accurate Visual Diffs](https://blog.spotbot.qa/building-accurate-visual-diffs-6b41b09973a6).
 
 Here are a few tools that got my attention over the last few years :
 - [BackstopJS](https://css-tricks.com/automating-css-regression-testing/)

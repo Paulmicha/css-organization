@@ -1,0 +1,15 @@
+
+/**
+ *  Effects styles : horizontal slide
+ */
+
+.fx-slide-x {
+    transform: translateX(0);
+    will-change: translateX;
+    margin-right: -100%;
+}
+
+.fx-slide-x:target,
+.fx-slide-x[aria-hidden="false"] {
+    transform: translateX(-100%);
+}

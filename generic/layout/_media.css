@@ -1,0 +1,38 @@
+
+/**
+ * @stubbornella’s media object.
+ *
+ * Place any image- and text-like content side-by-side.
+ * Adapted from InuitCSS's.
+ *
+ * @see https://github.com/inuitcss/objects.media
+ * @see http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+
+:root {
+   --o-media-gutter: var(--margin-ratio-l)em;
+}
+
+.o-media {
+   display: block;
+}
+
+   .o-media__img {
+      display: inline-block;
+      padding: 0 var(--o-media-gutter) var(--o-media-gutter) 0;
+   }
+      .o-media__img > img {
+         display: block;
+      }
+
+   .o-media__body {
+      display: inline-block;
+   }
+
+   .o-media--rtl .o-media__img,
+   .o-media--adj-alt:nth-child(even) > .o-media__img,
+   :nth-child(even) > .o-media--adj-parent-alt > .o-media__img {
+      text-align: right;
+      margin-right: 0;
+      margin-left: var(--o-media-gutter);
+   }

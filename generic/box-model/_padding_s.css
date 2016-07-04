@@ -19,9 +19,16 @@
 .p-t--s {
     padding-top: var(--padding-ratio-s)rem;
 }
+
 .p-r--s {
     padding-right: var(--padding-ratio-s)rem;
 }
+@media (--mobile) {
+    .p-mobile-r--s {
+        padding-right: var(--padding-ratio-s)rem;
+    }
+}
+
 .p-b--s {
     padding-bottom: var(--padding-ratio-s)rem;
 }

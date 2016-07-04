@@ -1,14 +1,10 @@
 
 /**
- * @file
- * Basic styling for common markup.
- */
-
-/**
  * TableDrag behavior.
  *
  * @see tabledrag.js
  */
+
 tr.drag {
   background-color: #fffff0;
 }
@@ -22,3 +18,19 @@ body div.tabledrag-changed-warning {
   margin-bottom: 0.5em;
 }
 
+
+/*  Quiz questions form rows with table drag.
+    @example /node/23/questions
+*/
+
+.q-row.draggable > td:first-child {
+  white-space: nowrap;
+}
+  .q-row.draggable > td:first-child > * {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+  }
+    .q-row.draggable .tabledrag-handle {
+      padding-right: .5em;
+    }

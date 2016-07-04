@@ -12,6 +12,9 @@
 
     @todo consider scoping typography-related "grouping" styles to a rich-text
     context - e.g. ".s-rich-text".
+
+    1. Meanwhile, undo list-style on aria role "menubar".
+    @see chouette_menu_tree__menu_chouette_nav()
 */
 
 ul {
@@ -42,3 +45,19 @@ dd::after {
     display: block;
     clear: left;
 }
+
+
+/*  Horizontal separation with gradient.
+    See https://css-tricks.com/examples/hrs/
+*/
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+/*hr.inverse {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}*/

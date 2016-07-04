@@ -3,6 +3,8 @@
  *  Base : embedding content
  */
 
+img,
+picture,
 audio,
 video,
 canvas {
@@ -12,7 +14,6 @@ canvas {
 img {
     border: 0;
     max-width: 100%;
-    width: auto;
     height: auto;
 }
 

@@ -1,0 +1,12 @@
+
+/**
+ *  Root-level, global z-index values.
+ */
+
+:root {
+    --z-index-offcanvas: 16;
+    --z-index-overlay: 8;
+    --z-index-menu: 4;
+    --z-index-over: 2;
+    --z-index-std: 1;
+}

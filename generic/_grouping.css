@@ -11,3 +11,9 @@
     list-style: none;
     margin-left: 0;
 }
+
+.list-disc {
+  margin-left: 1em;
+  list-style: disc;
+  list-style-position: outside;
+}

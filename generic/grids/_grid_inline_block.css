@@ -2,34 +2,29 @@
 /**
  *  Inline-block-based Grid object
  *
- *  [1] Remove white space between children
- *  [2] Portability
- *  [3] Restore font-size from document,
+ *  1. Remove white space between children
+ *  2. Portability
+ *  3. Restore font-size from document,
  *      @see base/_typography.vars.css
- *  [4] Restore text-orientation inside grid item
+ *  4. Restore text-orientation inside grid item
  *      @todo bi-directionnal text support
+ *  5. Workaround documented here :
+ *  	@see http://stackoverflow.com/questions/11589590/text-align-justify-inline-block-elements-properly
+ *  	Update : doesn't seem to work.
+ *  	@todo : debug.
  *
  *  @require base/_typography.vars.css
  *  @require generic/_padding.css
  */
 
 :root {
-    --grid-padding-ratio: var(--padding-ratio);
-    --grid-padding-ratio-s: var(--padding-ratio-s);
-    --grid-padding-ratio-xs: .125;
+    --grid-padding-ratio: calc(var(--padding-ratio) / 2);
+    --grid-padding-percent: calc(var(--padding-percent) / 2);
+    /*--grid-padding-percent-s: calc(var(--padding-percent) / 3);*/
+    --grid-padding-ratio-s: calc(var(--padding-ratio-s) / 2);
+    --grid-padding-ratio-xs: calc(var(--padding-ratio-s) / 2.3);
+    --grid-line-height: var(--line-height);
 }
-
-
-/**
- * Inline-block-based Grid object.
- *
- * [1] Remove white space between children
- * [2] Portability
- * [3] Restore font-size from document
- * [4] Restore text-orientation inside grid item
- *
- * @todo bi-directionnal (text) support
- */
 
 .o-ibgrid {
     display: block;
@@ -73,6 +68,26 @@
     }
 
 
+.o-ibgrid--gutter-percent {
+    margin-right: -var(--grid-padding-percent);
+    margin-left: -var(--grid-padding-percent);
+}
+    .o-ibgrid--gutter-percent > .o-ibgrid__item {
+        box-sizing: border-box; /* [2] */
+        padding: 0 var(--grid-padding-percent);
+    }
+
+
+/*.o-ibgrid--gutter-percent-s {
+    margin-right: -var(--grid-padding-percent-s);
+    margin-left: -var(--grid-padding-percent-s);
+}
+    .o-ibgrid--gutter-percent-s > .o-ibgrid__item {
+        box-sizing: border-box; /* [2] *
+        padding: 0 var(--grid-padding-percent-s);
+    }*/
+
+
 .o-ibgrid--center,
 .o-ibgrid--center-desc {
     text-align: center;
@@ -80,6 +95,30 @@
     .o-ibgrid--center > .o-ibgrid__item {
         text-align: left; /* [4] */
     }
+
+
+/*.o-ibgrid--justify {
+    text-align: justify;
+    display: inline-block;
+    width: 100%;
+}
+    .o-ibgrid--justify > .o-ibgrid__item {
+        position: relative;
+        top: var(--grid-line-height)em; /* 5 *
+    }
+    .o-ibgrid--justify::before { /* 5 *
+        content: '';
+        display: block;
+        width: 100%;
+        margin-bottom: -var(--grid-line-height)em;
+        font-size: var(--font-size-ratio)rem;
+    }
+    .o-ibgrid--justify::after { /* 5 *
+        content: '';
+        display: inline-block;
+        width: 100%;
+        font-size: var(--font-size-ratio)rem;
+    }*/
 
 
     .o-ibgrid--inward > .o-ibgrid__item {

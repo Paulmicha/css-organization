@@ -1,0 +1,46 @@
+
+/**
+ * Titles components.
+ */
+
+.c-title {
+  font-family: var(--font-familyB);
+  font-weight: var(--font-weightB);
+  @extend %fs-xl;
+}
+.fontB-is-loaded .c-title {
+  font-family: var(--font-familyB-loaded);
+}
+
+@media(--mobile) {
+    .c-title {
+        @extend %fs-l;
+    }
+}
+@media(--tablet) {
+    .c-title {
+        font-weight: var(--font-weight-light);
+        @extend %fs-xll;
+    }
+}
+@media(--wide) {
+    .c-title {
+        font-weight: var(--font-weight-thin);
+        @extend %fs-xxl;
+    }
+}
+
+
+.c-title-1 {
+  padding-top: .1em;
+  padding-bottom: .3em;
+  font-family: var(--font-familyB);
+  font-weight: var(--font-weightB);
+  @extend %smallcaps;
+  @extend %fs-l;
+  line-height: 1;
+  color: var(--color-1);
+}
+.fontB-is-loaded .c-title-1 {
+  font-family: var(--font-familyB-loaded);
+}

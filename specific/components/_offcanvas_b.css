@@ -1,0 +1,70 @@
+
+/**
+ * Offcanvas component : bottom variant.
+ *
+ * Attempt to make it reusable : use 'rcomp' namespace.
+ * @see https://github.com/reusable-components
+ *
+ * 1. Avoid initial glitch trade-off : require JS for slide out animation.
+ * @see themes/chouette/vendor/Paulmicha/toggler.js
+ */
+
+:root {
+    --rcomp-offcanvas-b-w: var(--w-typo-ratio-l)em;
+    --rcomp-offcanvas-b-z-index: var(--z-index-offcanvas);
+    --rcomp-offcanvas-b-pad: 5%;
+    --tr-rcomp-offcanvas-b-duration: var(--tr-rcomp-offcanvas-duration);
+    --rcomp-offcanvas-b-close-btn-offset-t: calc(var(--rcomp-offcanvas-pad) / 6);
+    --rcomp-offcanvas-b-close-btn-offset-r: calc(var(--rcomp-offcanvas-pad) / 2);
+}
+
+
+@keyframes tr-rcomp-offcanvas-b-slide-in {
+    100% { transform: translateY(-100vh); }
+}
+@keyframes tr-rcomp-offcanvas-b-slide-out {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(0vh); }
+}
+
+
+.c-rcomp-offcanvas-b {
+    position: fixed;
+    z-index: var(--rcomp-offcanvas-b-z-index);
+    bottom: -100vh;
+    left: 0;
+    will-change: translateY;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+@media (--tablet) {
+    .c-rcomp-offcanvas-b--center {
+        left: 50%;
+        margin-left: -33%;
+        width: 66%;
+    }
+}
+
+.c-rcomp-offcanvas-b[aria-hidden="true"] {
+    animation: tr-rcomp-offcanvas-b-slide-out var(--tr-rcomp-offcanvas-b-duration) forwards; /* 1 */
+}
+.c-rcomp-offcanvas-b:target,
+.c-rcomp-offcanvas-b[aria-hidden="false"] {
+    animation: tr-rcomp-offcanvas-b-slide-in var(--tr-rcomp-offcanvas-b-duration) forwards;
+}
+
+    .c-rcomp-offcanvas-b__inner-wrap {
+       position: relative;
+       margin-right: auto;
+       margin-left: auto;
+       padding: var(--rcomp-offcanvas-b-pad);
+       width: var(--rcomp-offcanvas-b-w);
+       max-width: 100%;
+    }
+        .c-rcomp-offcanvas-b__close {
+           position: absolute;
+           top: var(--rcomp-offcanvas-b-close-btn-offset-t);
+           right: var(--rcomp-offcanvas-b-close-btn-offset-r);
+        }

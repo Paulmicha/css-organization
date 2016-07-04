@@ -1,0 +1,27 @@
+
+/**
+ * Paragraph with image component.
+ */
+
+:root {
+    --c-pimg-margin-v: var(--line-height);
+    --c-pimg-title-color: var(--color-1);
+}
+
+.c-pimg {
+    @extend %cf;
+    padding: 0 var(--padding-percent);
+}
+    .c-pimg__inner-wrap {
+        margin: var(--c-pimg-margin-v)em auto;
+        max-width: var(--w-typo-ratio-l)em;
+    }
+    .c-pimg + .c-pimg > .c-pimg__inner-wrap {
+        margin-top: 0;
+    }
+        .c-pimg__img {
+            margin-top: .33em;
+        }
+        .c-pimg__text {
+            max-width: var(--w-typo-ratio)em;
+        }

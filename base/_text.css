@@ -1,0 +1,193 @@
+
+/**
+ *  Text-level semantics base styles.
+ */
+
+/*  Headings.
+*/
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-familyB);
+    font-weight: var(--font-weightB);
+}
+.fontB-is-loaded h1,
+.fontB-is-loaded h2,
+.fontB-is-loaded h3 {
+    font-family: var(--font-familyB-loaded);
+}
+
+
+
+/*  Selected text.
+*/
+
+:root {
+    --selection-color: white;
+    --selection-bg-color: var(--text-color);
+}
+
+::selection {
+    background-color: #b3d4fc;
+    color: #000000;
+    text-shadow: none;
+}
+
+
+
+/*  @jonneal's decorative underline technique.
+    See https://codepen.io/jonneal/pen/PzGYEE?editors=1100
+    Update : ditched for now.
+*/
+
+/*:root {
+    --text-underline-opacity: .66;
+    --text-underline-color: currentColor;
+    /*--text-underline-background-color: #f5f5f5;*
+    --text-underline-background-color: transparent;
+    --text-underline-position: -.14em;
+    --text-underline-size: .02em;
+    --text-underline-gap: .05em;
+    --text-underline-gap-minimum: 1.5px;
+}*/
+
+%deco-underline {
+   border-bottom: 1px solid currentColor;
+
+    /*box-shadow:
+        inset 0 calc(var(--text-underline-position) + var(--text-underline-size)) 0 0 var(--text-underline-background-color),
+        inset 0 var(--text-underline-position) 0 0 color( var(--text-underline-background-color) alpha( calc( 1 - var(--text-underline-opacity) * 100% ) ) ),
+        inset 0 var(--text-underline-position) 0 0 var(--text-underline-color);
+    text-decoration: none;
+    text-shadow:
+        var(--text-underline-gap) 0 var(--text-underline-background-color),
+        calc(-var(--text-underline-gap)) 0 var(--text-underline-background-color),
+        var(--text-underline-gap-minimum) 0 var(--text-underline-background-color),
+        -var(--text-underline-gap-minimum) 0 var(--text-underline-background-color);*/
+
+    /*position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -.25em;
+        right: 0;
+        left: 0;
+        height: .1em;
+        background: currentColor;
+    }*/
+}
+
+%undo-deco-underline {
+   border: 0 none;
+
+   /*box-shadow: none;
+   text-shadow: none;*/
+
+   /*&::after {
+      display: none;
+   }*/
+}
+
+
+
+/*  Default (bare tag) links appearance.
+*/
+
+:root {
+    --link-color: var(--text-color);
+    --link-color-inverse: var(--color-1);
+    --link-color--hover: var(--color-5);
+    --link-color-inverse--hover: var(--color-3);
+    --link-color--focus: var(--link-color--hover);
+    --link-color--active: var(--link-color--hover);
+    --link-color--visited: var(--link-color);
+}
+
+/*  Links all underlined by default.
+    @evol try to avoid lots of undoing, by scoping this (e.g. in .s-rich-text).
+*/
+a,
+.link {
+    color: var(--link-color);
+    @extend %deco-underline;
+    transition: color .3s;
+}
+
+a.no-underline,
+.link.no-underline {
+    @extend %undo-deco-underline;
+}
+.no-underline--descendants a.no-underline,
+.no-underline--descendants .link.no-underline {
+    @extend %undo-deco-underline;
+}
+
+a:visited,
+.link:visited {
+    color: var(--link-color--visited);
+}
+a:focus,
+.link:focus {
+    color: var(--link-color--focus);
+}
+a.is-active,
+a.is-on,
+a:hover,
+.link.is-active,
+.link.is-on,
+.link:hover {
+    color: var(--link-color--hover);
+}
+a:active,
+.link:active {
+    color: var(--link-color--active);
+}
+
+
+/*  Here, default BG is dark, so the default text color is light.
+    But text content usually is wrapped inside a white bg container.
+    That scope needs to be reflected here, on the base tag.
+    This impacts Button class :
+    @see _form.css
+*/
+
+.messages a,
+.link--inverse {
+    color: var(--link-color-inverse);
+}
+.messages a:visited,
+.link--inverse:visited {
+    color: var(--link-color-inverse);
+}
+.messages a:focus,
+.link--inverse:focus {
+    color: var(--link-color-inverse);
+}
+.messages a.is-active,
+.link--inverse.is-active,
+.link--inverse.is-on,
+.link--inverse:hover {
+    color: var(--link-color-inverse--hover);
+}
+.messages a:active,
+.link--inverse:active {
+    color: var(--link-color-inverse);
+}
+
+
+/*  Undo decorative underline for ARIA menu markup.
+*/
+
+[role="menuitem"] a {
+    @extend %undo-deco-underline;
+}
+
+
+/*  Undo decorative underline for forms' Button elements.
+    @see base/_form.css
+*/
+
+a.Button {
+    @extend %undo-deco-underline;
+}

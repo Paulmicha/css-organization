@@ -6,6 +6,7 @@
 :root {
     --padding: calc(var(--font-size) * var(--line-height) / 2);
     --padding-ratio: calc(var(--line-height) / 2);
+    --padding-percent: 5%;
 }
 
 .no-p,
@@ -18,6 +19,15 @@
     padding: var(--padding-ratio)rem;
 }
 
+.p-percent {
+    padding: var(--padding-percent);
+}
+@media (--mobile) {
+    .p-mobile-percent {
+        padding: var(--padding-percent);
+    }
+}
+
 
 /*  Directions
 */
@@ -25,9 +35,19 @@
 .p-t {
     padding-top: var(--padding-ratio)rem;
 }
+.p-percent-t {
+    padding-top: var(--padding-percent);
+}
+
 .p-r {
     padding-right: var(--padding-ratio)rem;
 }
+@media (--tablet) {
+    .p-tablet-percent-r {
+        padding-right: var(--padding-percent);
+    }
+}
+
 .p-b {
     padding-bottom: var(--padding-ratio)rem;
 }
@@ -43,9 +63,30 @@
     padding-top: var(--padding-ratio)rem;
     padding-bottom: var(--padding-ratio)rem;
 }
+.p-percent-v {
+    padding-top: var(--padding-percent);
+    padding-bottom: var(--padding-percent);
+}
+
 .p-h {
     padding-right: var(--padding-ratio)rem;
     padding-left: var(--padding-ratio)rem;
+}
+.p-percent-h {
+    padding-right: var(--padding-percent);
+    padding-left: var(--padding-percent);
+}
+@media (--tablet) {
+    .p-tablet-h {
+        padding-right: var(--padding-ratio)rem;
+        padding-left: var(--padding-ratio)rem;
+    }
+}
+@media (--tablet-max) {
+    .p-tablet-max-h {
+        padding-right: var(--padding-ratio)rem;
+        padding-left: var(--padding-ratio)rem;
+    }
 }
 
 
@@ -84,15 +125,4 @@
 }
 .u-adjacent-p-l + .u-adjacent-p-l {
     padding-left: var(--padding-ratio)rem;
-}
-
-
-/*  Responsive behaviors.
-*/
-
-@media (--tablet-max) {
-    .p-tablet-max-h {
-        padding-right: var(--padding-ratio)rem;
-        padding-left: var(--padding-ratio)rem;
-    }
 }

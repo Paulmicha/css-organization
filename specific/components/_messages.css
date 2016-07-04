@@ -1,0 +1,30 @@
+
+/**
+ *  Messages component.
+ */
+
+:root {
+    --c-messages-zindex: var(--z-index-overlay);
+    --c-messages-bg-color: var(--color-grey-t-1);
+}
+
+.c-messages {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: var(--c-messages-zindex);
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+    .c-messages__content {
+        border-top-left-radius: .33em;
+        border-top-right-radius: .33em;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5%;
+        width: var(--w-typo-ratio-l)em;
+        max-width: 100%;
+        background-color: var(--c-messages-bg-color);
+    }

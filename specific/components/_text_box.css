@@ -1,0 +1,18 @@
+
+/**
+ * Text box component.
+ *
+ * 1. Inner space so that full-width text doesn't appear too squished on tiny
+ *   resolutions, but proportional to its container for when it gets bigger in
+ *   order to avoid unpleasant proportions (too close to the edges).
+ *   Update : testing separate padding.
+ *   @see generic/box-model/_padding.css
+ *
+ * 2. Max length of line for a single-column page (the 66-character line).
+ *   @see base/_typography.vars.css
+ */
+
+.c-text-box {
+  /*padding: var(--padding-percent);*/ /* 1 */
+  max-width: calc(var(--w-typo-ratio)em + (var(--padding-percent) * 2)); /* 2 */
+}

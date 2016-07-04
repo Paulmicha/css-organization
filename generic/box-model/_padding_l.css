@@ -6,6 +6,7 @@
 :root {
     --padding-l: calc(var(--font-size) * var(--line-height));
     --padding-ratio-l: var(--line-height);
+    --padding-percent-l: calc(var(--padding-percent) * 2);
 }
 
 .p--l {
@@ -19,9 +20,16 @@
 .p-t--l {
     padding-top: var(--padding-ratio-l)rem;
 }
+
 .p-r--l {
     padding-right: var(--padding-ratio-l)rem;
 }
+@media (--tablet) {
+    .p-tablet-percent-r--l {
+        padding-right: var(--padding-percent-l);
+    }
+}
+
 .p-b--l {
     padding-bottom: var(--padding-ratio-l)rem;
 }

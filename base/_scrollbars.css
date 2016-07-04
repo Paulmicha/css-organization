@@ -1,0 +1,41 @@
+
+/**
+ *  Scrollbars "native" browser styling.
+ *
+ *  Does not work in all browsers :
+ *  Chrome / webkit ok, Internet Explorer / Edge partial support.
+ */
+
+:root {
+    --scrollbar-drag-thickness: .66em;
+    --scrollbar-foreground-color: #a0a0a0;
+    --scrollbar-track-color: #efefef;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-drag-thickness);
+    height: var(--scrollbar-drag-thickness);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-foreground-color);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+}
+
+body,
+.scroll-zone {
+    scrollbar-face-color: var(--scrollbar-foreground-color);
+    scrollbar-track-color: var(--scrollbar-track-color);
+    scrollbar-base-color: var(--scrollbar-foreground-color);
+    scrollbar-3dlight-color: var(--scrollbar-foreground-color);
+    -ms-scrollbar-3dlight-color: var(--scrollbar-foreground-color);
+    scrollbar-highlight-color: var(--scrollbar-foreground-color);
+    scrollbar-arrow-color: black;
+    scrollbar-shadow-color: var(--scrollbar-foreground-color);
+    -ms-scrollbar-shadow-color: var(--scrollbar-foreground-color);
+    scrollbar-darkshadow-color: var(--scrollbar-foreground-color);
+    -ms-scrollbar-darkshadow-color: var(--scrollbar-foreground-color);
+}

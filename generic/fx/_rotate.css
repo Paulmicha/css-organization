@@ -1,16 +1,19 @@
 
 /**
- *  @file
- *  Effects styles
+ *  Rotate effect styles.
  */
 
-.fx-rotate {
+.fx-rotate-int {
     display: inline-block;
     transition-duration: 0.3s;
     transition-property: transform;
 }
-.fx-rotate:focus,
-.fx-rotate:hover {
+.fx-rotate-int:focus,
+.fx-rotate-int:hover {
     transform: rotate(10deg);
 }
 
+.fx-rotate-20 {
+    display: inline-block;
+    transform: rotate(20deg);
+}

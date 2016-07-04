@@ -1,6 +1,7 @@
 
 /**
  *  Document root : fundamental styles
+ *
  *  @require base/typography.vars.css
  *  @require base/colors.vars.css
  */
@@ -16,30 +17,31 @@
 }
 
 
-/*  No "root" font-size declaration.
-    @see http://www.filamentgroup.com/lab/how-we-learned-to-leave-body-font-size-alone.html
+/*  Bug : why is :root needed in the selector here ?
+    (tested without : breaks most base styles - can't find where / why for now)
+
+    1. See https://github.com/seaneking/postcss-responsive-type/
 */
-html,
-.domroot {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+:root,
+html {
     background: var(--html-bg-color);
     font-family: var(--font-family);
     font-weight: var(--font-weight);
     line-height: var(--line-height);
     color: var(--text-color);
     text-rendering: optimizeLegibility;
+    font-size: responsive; /* 1 */
+    min-font-size: 13px; /* 1 */
+    max-font-size: 18px; /* 1 */
+    lower-font-range: 328px; /* 1 */
+    upper-font-range: 1400px; /* 1 */
 }
-@media (--mobile) {
-    html,
-    .domroot {
-        font-size: var(--sm-font-size-modifier);
-    }
-}
-@media (--wide) {
-    html,
-    .domroot {
-        font-size: var(--xl-font-size-modifier);
-    }
+
+
+/*  FOIT prevention.
+    @see /sites/all/themes/chouette/js/main.js
+*/
+
+.fontA-is-loaded {
+    font-family: var(--font-family-loaded);
 }

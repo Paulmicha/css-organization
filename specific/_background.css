@@ -1,7 +1,6 @@
 
 /**
- *  @file
- *  Generic styles
+ *  Background-related utilities.
  */
 
 :root {
@@ -10,4 +9,13 @@
 
 .bg-primary {
     background: var(--bg-primary);
+}
+
+.u-bg-white {
+    background: white;
+    color: var(--text-color-inverse);
+}
+
+.u-bg-grey-t-1 {
+    background: var(--color-grey-t-1);
 }

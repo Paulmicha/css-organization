@@ -8,6 +8,8 @@
     "postcss-import": "8.x",
     "postcss-extend": "1.x",
     "postcss-cssnext": "2.x",
+    "postcss-responsive-type": "0.x",
+    "postcss-flexibility": "1.x",
     "gulp-postcss": "6.x",
     "sanitize.css": "3.x",
     "suitcss-components-flex-embed": "2.x"
@@ -18,7 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Paul Michalet @Paulmicha",
+  "author": "Paulmicha",
   "license": "MIT",
-  "description": "CSS files organization using PostCSS."
+  "description": "CSS for custom Drupal 7 theme."
 }

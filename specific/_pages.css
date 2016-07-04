@@ -10,3 +10,8 @@
 .page-user-achievements .region-content {
     @extend %s-content; /* 1 */
 }
+
+body.maintenance-page,
+body.maintenance-page #page {
+    background: inherit;
+}

@@ -1,0 +1,59 @@
+
+/**
+ * Offcanvas component.
+ *
+ * Attempt to make it reusable : use 'rcomp' namespace.
+ * @see https://github.com/reusable-components
+ *
+ * 1. Avoid initial glitch trade-off : require JS for slide out animation.
+ * @see themes/chouette/vendor/Paulmicha/toggler.js
+ */
+
+:root {
+    --rcomp-offcanvas-w: 42rem;
+    --rcomp-offcanvas-z-index: var(--z-index-offcanvas);
+    --rcomp-offcanvas-pad: 12.5%;
+    --rcomp-offcanvas-close-btn-offset-t: calc(var(--rcomp-offcanvas-pad) / 3);
+    --rcomp-offcanvas-close-btn-offset-r: calc(var(--rcomp-offcanvas-pad) / 2);
+    --tr-rcomp-offcanvas-duration: .33s;
+}
+
+
+@keyframes tr-rcomp-offcanvas-slide-in {
+    100% { transform: translateX(-100%); }
+}
+@keyframes tr-rcomp-offcanvas-slide-out {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+}
+
+
+.c-rcomp-offcanvas {
+    position: fixed;
+    z-index: var(--rcomp-offcanvas-z-index);
+    top: 0;
+    left: 100%;
+    will-change: translateX;
+    height: 100%;
+    width: var(--rcomp-offcanvas-w);
+    max-width: 100%;
+    overflow: auto;
+}
+
+.c-rcomp-offcanvas.has-triggered[aria-hidden="true"] {
+    animation: tr-rcomp-offcanvas-slide-out var(--tr-rcomp-offcanvas-duration) forwards; /* 1 */
+}
+.c-rcomp-offcanvas:target,
+.c-rcomp-offcanvas[aria-hidden="false"] {
+    animation: tr-rcomp-offcanvas-slide-in var(--tr-rcomp-offcanvas-duration) forwards;
+}
+
+    .c-rcomp-offcanvas__inner-wrap {
+       position: relative;
+       padding: var(--rcomp-offcanvas-pad);
+    }
+        .c-rcomp-offcanvas__close {
+           position: absolute;
+           top: var(--rcomp-offcanvas-close-btn-offset-t);
+           right: var(--rcomp-offcanvas-close-btn-offset-r);
+        }

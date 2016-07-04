@@ -1,0 +1,45 @@
+
+/**
+ * Text block component, kind of a text-box component variant.
+ *
+ * 1. Inner space so that full-width text doesn't appear too squished on tiny
+ *   resolutions, but proportional to its container for when it gets bigger in
+ *   order to avoid unpleasant proportions (too close to the edges).
+ *   Update : used separate padding utilities.
+ *   @see generic/box-model/_padding.css
+ *
+ * 2. Max length of line for a single-column page (the 66-character line).
+ *   @see base/_typography.vars.css
+ *
+ * 3. As a block, it should be centered inside its container (or root element).
+ */
+
+.c-text-block {
+  display: block;
+  margin-right: auto; /* 3 */
+  margin-left: auto; /* 3 */
+  /*padding: var(--padding-percent);*/ /* 1 */
+  /*max-width: calc(var(--w-typo-ratio)rem + (var(--padding-percent) * 2));*/ /* 2 */
+  max-width: var(--w-typo-ratio)em; /* 2 */
+}
+
+.c-text-block--l {
+  display: block;
+  margin-right: auto; /* 3 */
+  margin-left: auto; /* 3 */
+  max-width: var(--w-typo-ratio-l)em;
+}
+
+.c-text-block--xl {
+  display: block;
+  margin-right: auto; /* 3 */
+  margin-left: auto; /* 3 */
+  max-width: 69em;
+}
+
+.c-text-block--xxl {
+  display: block;
+  margin-right: auto; /* 3 */
+  margin-left: auto; /* 3 */
+  max-width: 85em;
+}

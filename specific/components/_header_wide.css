@@ -1,0 +1,30 @@
+
+/**
+ * Header component (homepage) : wide + breakpoints.
+ */
+
+@media (--wide) {
+
+  .c-header {
+    padding-bottom: 50rem;
+  }
+    .c-header__inner-wrap {
+      position: static;
+      left: 0;
+      width: auto;
+    }
+
+  .c-header__title {
+    top: 1.25rem;
+  }
+
+  .c-header__nav {
+    left: 51%;
+    padding-top: 16%;
+    width: 49%;
+  }
+
+  .c-header__part2 {
+    width: auto;
+  }
+}

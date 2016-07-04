@@ -18,12 +18,17 @@
 .o-tgrid {
     display: table;
     table-layout: auto;
-    min-width: 100%;
+    width: 100%;
 }
-
+.o-tgrid--fixed {
+    table-layout: fixed;
+}
 .o-tgrid--equal {
     table-layout: fixed;
-    width: 100%;
+}
+
+.o-tgrid--space-around {
+    border-spacing: var(--tgrid-padding-ratio)rem 0;
 }
 
     .o-tgrid__item {

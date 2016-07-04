@@ -1,0 +1,85 @@
+
+/**
+ * Contrib module CSS override : visual_select_file.
+ */
+
+html .views-exposed-widgets {
+  position: relative;
+}
+html .form-item-vsf-formatter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9px;
+  background: #eee;
+}
+
+
+.view-visual-select-file {
+  @extend %bg-content;
+  padding: 0 .66em .66em .66em;
+}
+
+
+.view.visual-select-file .vsf-row {
+  vertical-align: middle;
+  cursor: pointer;
+  padding: .66em;
+}
+
+
+.view.visual-select-file .vsf-row:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.view.visual-select-file .vsf-row.vsf-selected {
+  background-color: #afa;
+}
+.view.visual-select-file .vsf-row.vsf-selected:hover {
+  background-color: #8f8;
+}
+
+
+.view.visual-select-file .views-view-grid td {
+  text-align: center;
+}
+
+.view.visual-select-file .views-view-grid.cols-6 td {
+  width: 16.67%;
+  width: calc(100% / 6);
+}
+.view.visual-select-file .views-view-grid.cols-5 td {
+  width: 20%;
+  width: calc(100% / 5);
+}
+.view.visual-select-file .views-view-grid.cols-4 td {
+  width: 25%;
+  width: calc(100% / 4);
+}
+.view.visual-select-file .views-view-grid.cols-3 td {
+  width: 33.33%;
+  width: calc(100% / 3);
+}
+.view.visual-select-file .views-field-filename {
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+html .views-exposed-form .views-exposed-widgets *,
+html .view-header .fieldset-wrapper > *,
+html .view-header .fieldset-wrapper .form-type-managed-file > * {
+  display: inline-block;
+  margin: 0;
+}
+
+html .views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 0;
+}
+
+html .views-exposed-form .views-exposed-widget {
+  float: none;
+  padding: 0;
+}
+
+html .item-list ul.action-links li {
+  list-style-type: none;
+}

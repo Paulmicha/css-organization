@@ -1,0 +1,118 @@
+
+/**
+ * Main menu component.
+ *
+ * 1. Homepage only : different background.
+ * 2. Shame : @evol fix offset differently (figur out where it comes from).
+ */
+
+:root {
+    --menu-main-item-bg-color: var(--color-white-t-2);
+    --menu-main-item-bg-color-hover: white;
+    --menu-main-tr-duration: .2s;
+    --menu-main-item-link-color-hover: var(--text-color-inverse);
+}
+
+.c-menu-main {
+    font-family: var(--font-familyB);
+    font-weight: var(--font-weightB);
+}
+.fontB-is-loaded .c-menu-main {
+    font-family: var(--font-familyB-loaded);
+}
+
+    .c-menu-main__btn {
+        display: block;
+        @media (--mobile) {
+            padding-right: .5em;
+        }
+        @media (--tablet) {
+            position: relative; /* 2 */
+            top: -.2em; /* 2 */
+        }
+        @media (--desktop) {
+            top: -.3em; /* 2 */
+        }
+    }
+
+    .c-menu-main__item {
+        position: relative;
+        text-align: center;
+        @extend %fs-xs;
+        @media (--tablet) {
+            font-size: var(--font-size-ratio-s)rem;
+            line-height: var(--line-height-s);
+        }
+    }
+    @media (--mobile) {
+        .c-menu-main__item {
+            padding: 0 1%;
+        }
+    }
+    @media (--tablet) {
+        .c-header--home .c-menu-main__item { /* 1 */
+            margin-bottom: .33em;
+            background: var(--menu-main-item-bg-color);
+            transition: background-color var(--menu-main-tr-duration) linear;
+        }
+        .c-header--home .c-menu-main__item:hover { /* 1 */
+            margin-bottom: .33em;
+            background: var(--menu-main-item-bg-color-hover);
+        }
+            .c-header--home .c-menu-main__item:hover > .c-menu-main__link, /* 1 */
+            .c-header--home .c-menu-main__item > .c-menu-main__link:hover,
+            .c-header--home .c-menu-main__item > .c-menu-main__link:focus,
+            .c-header--home .c-menu-main__item > .c-menu-main__link:active { /* 1 */
+                color: var(--menu-main-item-link-color-hover);
+            }
+    }
+
+        .c-menu-main__deco {
+            display: none;
+            position: absolute;
+            top: -3.25rem;
+            left: 50%;
+            margin-left: -7rem;
+            width: 13rem;
+        }
+        @media (--tablet) {
+            .c-menu-main__item.is-active > .c-menu-main__deco {
+                display: block;
+            }
+        }
+        .c-menu-main__deco-img {
+            transform: scaleX(-1);
+        }
+
+
+        .c-menu-main__link {
+            transition: color var(--menu-main-tr-duration) linear;
+        }
+
+        .c-menu-main .menu-shape,
+        .c-menu-main__link {
+            position: relative;
+            z-index: 1;
+        }
+        .c-menu-main__link,
+        .c-menu-main__link:hover,
+        .c-menu-main__link:focus,
+        .c-menu-main__link:active {
+            border: 0 none;
+        }
+        @media (--mobile) {
+            .c-menu-main__link {
+                display: inline-block;
+            }
+            .c-menu-main__link.active,
+            .c-menu-main__item.is-active > .c-menu-main__link {
+                border-bottom: 1px solid white;
+            }
+        }
+        @media (--tablet) {
+            .c-menu-main__link.active,
+            .c-menu-main__item.is-active > .c-menu-main__link {
+                border-top: 2px solid white;
+                padding-top: .35rem;
+            }
+        }

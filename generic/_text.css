@@ -6,6 +6,18 @@
  */
 
 
+/*  Font-families.
+*/
+
+.u-fontB {
+    font-family: var(--font-familyB);
+    font-weight: var(--font-weightB);
+}
+.fontB-is-loaded .u-fontB {
+    font-family: var(--font-familyB-loaded);
+}
+
+
 /*  Alignments
 */
 
@@ -21,9 +33,8 @@
 
 
 /*  Styles
-        @todo smallcaps ?
-        @todo kerning ?
-        @todo text-indent ?
+    @todo kerning ?
+    @todo text-indent ?
 */
 
 .u-bold {
@@ -32,25 +43,72 @@
 .u-light {
     font-weight: var(--font-weight-light);
 }
+.u-thin {
+    font-weight: var(--font-weight-thin);
+}
 .u-italic {
     font-style: italic;
 }
-.u-uppercase {
+
+%uppercase {
     text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+}
+.u-uppercase {
+    @extend %uppercase;
+}
+
+%smallcaps {
+    font-variant: small-caps;
+    letter-spacing: var(--letter-spacing-s);
 }
 .u-smallcaps {
-    font-variant: small-caps;
+    @extend %smallcaps;
 }
+
 .u-break-all {
     word-break: break-all;
     hyphens: auto;
 }
 
 .u-ls {
-    letter-spacing: .0625em;
+    letter-spacing: var(--letter-spacing);
 }
 .u-ls--l {
-    letter-spacing: .3125em;
+    letter-spacing: var(--letter-spacing-l);
+}
+
+
+/*  Drop Caps (IE9+).
+
+    @todo debug different browsers inconsistent rendering (or use alternative).
+    @see http://blogs.adobe.com/webplatform/2014/08/13/one-weird-trick-to-baseline-align-text/
+*/
+
+.u-dropcap:first-child:first-letter,
+.u-dropcap-1st-child > :first-child:first-letter {
+    float: left;
+    padding-right: .5rem;
+    font-size: 300%;
+    line-height: .9;
+}
+
+.u-dropcap--l:first-letter,
+.u-dropcap-child--l > :first-child:first-letter {
+    float: left;
+    padding-right: .5rem;
+    font-size: 300%;
+    line-height: .9;
+}
+@media (--desktop) {
+    .u-dropcap--l:first-letter,
+    .u-dropcap-child--l > :first-child:first-letter {
+        font-size: 490%;
+        line-height: .85;
+        font-weight: var(--font-weight-light);
+        display: inline-block;
+        margin-bottom: -.1em;
+    }
 }
 
 
@@ -69,30 +127,80 @@
 /*  Sizes
 */
 
-.u-fs-reset {
+%fs-reset {
     font-size: var(--font-size-ratio)rem;
     line-height: var(--line-height);
 }
+.u-fs-reset {
+    @extend %fs-reset;
+}
 
-.u-fs-xs {
+%fs-xs {
     font-size: var(--font-size-ratio-xs)rem;
     line-height: var(--line-height-xs);
 }
-.u-fs-s {
+.u-fs-xs {
+    @extend %fs-xs;
+}
+
+%fs-s {
     font-size: var(--font-size-ratio-s)rem;
     line-height: var(--line-height-s);
 }
-.u-fs-m {
+.u-fs-s {
+    @extend %fs-s;
+}
+
+%fs-m {
     font-size: var(--font-size-ratio-m)rem;
     line-height: var(--line-height-m);
+
+    @media(--desktop) {
+        font-weight: var(--font-weight-light);
+    }
 }
-.u-fs-l {
+.u-fs-m.u-fs-m {
+    @extend %fs-m;
+}
+
+%fs-l {
     font-size: var(--font-size-ratio-l)rem;
     line-height: var(--line-height-l);
 }
-.u-fs-xl {
+.u-fs-l {
+    @extend %fs-l;
+}
+
+%fs-ll {
+    font-size: var(--font-size-ratio-ll)rem;
+    line-height: var(--line-height-ll);
+}
+.u-fs-ll {
+    @extend %fs-ll;
+}
+
+%fs-xl {
     font-size: var(--font-size-ratio-xl)rem;
     line-height: var(--line-height-xl);
+}
+.u-fs-xl {
+    @extend %fs-xl;
+}
+
+%fs-xll {
+    font-size: var(--font-size-ratio-xll)rem;
+    line-height: var(--line-height-xll);
+}
+.u-fs-xll {
+    @extend %fs-xll;
+}
+
+%fs-xxl {
+    font-size: var(--font-size-ratio-xxl)rem;
+    line-height: var(--line-height-xxl);
+}
+.u-fs-xxl {
+    @extend %fs-xxl;
 }
 
 
@@ -103,6 +211,9 @@
     .u-fs-xl {
         font-size: var(--font-size-ratio-l)rem;
         line-height: var(--line-height-l);
+    }
+    .u-fs-m {
+        font-size: 1.111111rem;
     }
 }
 
@@ -130,6 +241,17 @@
 }
 .u-fs-4x {
     font-size: 400%;
+}
+
+
+/*  Line-heights.
+*/
+
+.u-lh-1 {
+    line-height: 1;
+}
+.u-lh-1of2 {
+    line-height: .5;
 }
 
 

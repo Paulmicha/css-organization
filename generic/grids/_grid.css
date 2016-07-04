@@ -1,0 +1,82 @@
+
+/**
+ * Flexbox-based grid object.
+ *
+ * 1. LTR only.
+ * 	@evol naming / scope convention ?
+ *
+ * @todo finish remaining features.
+ * @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+
+:root {
+    --grid-padding-ratio: var(--padding-ratio);
+    --grid-padding-ratio-s: var(--padding-ratio-s);
+}
+
+
+.o-grid {
+    display: flex;
+}
+
+
+/*  Line-break (single or multi line).
+    default : no wrap.
+*/
+
+.o-grid--wrap {
+    flex-wrap: wrap;
+}
+.o-grid--wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+
+/*  Horizontal alignment.
+*/
+
+.o-grid--center {
+    justify-content: center;
+}
+.o-grid--r, /* 1 */
+.o-grid--end {
+    justify-content: flex-end;
+}
+.o-grid--l, /* 1 */
+.o-grid--start {
+    justify-content: flex-start;
+}
+
+
+/*  Horizontal spacing.
+*/
+
+.o-grid--justify,
+.o-grid--space-between {
+    justify-content: space-between;
+}
+.o-grid--space-around {
+    justify-content: space-around;
+}
+
+
+/*  Vertical alignment.
+*/
+
+.o-grid--middle {
+    align-items: center;
+}
+.o-grid--bottom {
+    align-items: flex-end;
+}
+.o-grid--baseline {
+    align-items: baseline;
+}
+
+
+    /*  Children widths.
+    */
+
+    .o-grid--equal > .o-grid__item {
+        flex-grow: 1;
+    }

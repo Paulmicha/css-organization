@@ -1,0 +1,26 @@
+
+/**
+ *  Rotate continuously effect styles.
+ */
+
+:root {
+    --fx-spin-speed: 15s;
+    --fx-spin-speed--pause: 5s;
+}
+
+@keyframes fx-kf-spin {
+    100% { transform: rotate(360deg); }
+}
+@keyframes fx-kf-spin--pause {
+    33% { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fx-spin {
+    animation: fx-kf-spin var(--fx-spin-speed) linear infinite;
+    will-change: transform;
+}
+
+.fx-spin--pause {
+    animation: fx-kf-spin--pause var(--fx-spin-speed--pause) ease-in-out infinite;
+}

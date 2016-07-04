@@ -1,0 +1,49 @@
+
+/**
+ * Header component (homepage) : desktop breakpoint.
+ */
+
+@media (--desktop) {
+
+  .c-header {
+    padding-bottom: 60%;
+  }
+    .c-header__inner-wrap {
+      position: relative;
+      left: 3%;
+      width: 94%;
+    }
+
+  .c-header__title-p1 {
+    font-size: var(--font-size-ratio-xxl)rem;
+    line-height: 1.45;
+    letter-spacing: var(--letter-spacing);
+  }
+  .c-header__title-p2 {
+    padding-top: 5.15rem;
+    @extend %fs-reset;
+  }
+
+  .c-header__nav {
+    padding-top: 16.3%;
+  }
+
+  .c-header__intro {
+    padding-top: 20.5%;
+    left: 56%;
+    max-width: var(--w-typo-ratio)rem;
+  }
+
+  .c-header__part2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 3%;
+    padding-top: 38%;
+    color: white;
+    width: 70%;
+  }
+    .c-header__courses-title {
+      background: transparent;
+    }
+}

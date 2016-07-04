@@ -1,15 +1,31 @@
 
 /**
- *  Quick fixes.
+ * Quick fixes.
  *
- *  @see http://csswizardry.com/2013/04/shame-css
+ * 1. Mobile : admin menu must stay on top of main menu decoration.
+ * 2. Keep admin menu z-index in check.
+ *
+ * @see http://csswizardry.com/2013/04/shame-css
  */
 
-/*  Because we've split the top arrow of a message bubble
-    from its container, the white space creates a gap.
-    This relative displacement is an attempt to close it.
-*/
-#collapsible-user-menu {
-    position: relative;
-    top: -0.0625rem;
+.slicknav_menu {
+    position: relative; /* 1 */
+    z-index: 5; /* 1 */
 }
+
+#admin-menu,
+#admin-menu .dropdown {
+    z-index: var(--z-index-menu); /* 2 */
+}
+
+
+/*  Mysterious inline style disabling .icon-facebook : unknown origin.
+    Failed to override.
+    @todo find origin (local browser add-on / ad-blocker ?)
+*/
+
+/*[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}*/

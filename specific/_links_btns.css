@@ -17,24 +17,14 @@
     --tab-h-padding-h-ratio: .4;
 }
 
-a.is-active {
-    color: var(--link-color--hover);
-    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
-}
-a.is-active.no-b {
-    border-bottom: 0 none;
-}
-
 th > a,
 th > a.active,
 th > a.is-on {
     color: var(--link-color);
-    border-bottom: var(--link-border-width) solid var(--link-border-color);
 }
 
 th > a:hover {
     color: var(--link-color--hover);
-    border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover);
 }
 
 

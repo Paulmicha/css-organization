@@ -15,13 +15,15 @@
 */
 @import "./base/_typography.vars.css";
 @import "./base/_colors.vars.css";
+@import "./base/_zindex.vars.css";
 
 @import "./base/_root.css";
 @import "./base/_print.css";
-@import "./base/_links.css";
+@import "./base/_text.css";
 @import "./base/_embedding.css";
 @import "./base/_grouping.css";
 @import "./base/_form.css";
+@import "./base/_scrollbars.css";
 
 
 /*  Generic.
@@ -47,9 +49,51 @@
 
 @import "./generic/grids/_grid_inline_block.css";
 @import "./generic/grids/_grid_table.css";
+@import "./generic/grids/_grid.css";
+
+@import "./generic/layout/_vcenter.css";
+@import "./generic/layout/_media_tablet.css";
 
 @import "./generic/fx/_box_shadow.css";
-@import "./generic/fx/_slide_maxh.css";
+@import "./generic/fx/_slide_x.css";
+@import "./generic/fx/_easing.css";
+@import "./generic/fx/_fade.css";
+@import "./generic/fx/_rotate.css";
+@import "./generic/fx/_spin.css";
+
+@import "./generic/shapes/_menu.css";
+@import "./generic/shapes/_point_burst.css";
+
+/*  Specific : custom styles.
+*/
+@import "./specific/_background.css";
+@import "./specific/_containers.css";
+@import "./specific/_containers_bubbles.css";
+@import "./specific/_icons.css";
+@import "./specific/_links_btns.css";
+@import "./specific/_form.css";
+@import "./specific/_form_ief.css";
+@import "./specific/_tables.css";
+@import "./specific/_views.css";
+@import "./specific/_nodes.css";
+@import "./specific/_pages.css";
+@import "./specific/_forum.css";
+@import "./specific/_shame.css";
+
+/*  Specific : components.
+*/
+@import "./specific/components/_text_box.css";
+@import "./specific/components/_text_block.css";
+@import "./specific/components/_header.css";
+@import "./specific/components/_header_tablet.css";
+@import "./specific/components/_header_desktop.css";
+@import "./specific/components/_header_wide.css";
+@import "./specific/components/_offcanvas.css";
+@import "./specific/components/_offcanvas_b.css";
+@import "./specific/components/_menu_main.css";
+@import "./specific/components/_breadcrumb.css";
+@import "./specific/components/_title.css";
+@import "./specific/components/_pimg.css";
 
 
 /*  Specific : Drupal core and contrib replacements.
@@ -58,6 +102,7 @@
     • copy/paste the file to override from drupal core into specific/drupal dir
     • rename and import like below
     • prevent original css file load in hook_css_alter()
+    @see chouette_css_alter() in template.php
 */
 @import "./specific/drupal/_system.base.css";
 @import "./specific/drupal/_system.messages.css";
@@ -67,15 +112,18 @@
 @import "./specific/drupal/_tableselect.css";
 @import "./specific/drupal/_field.css";
 @import "./specific/drupal/_views.css";
+@import "./specific/drupal/_visual_select_file.modal.css";
 
 
 /*  Custom media queries.
     Must be placed after all imports.
 */
-@custom-media --narrow (max-width:20.5rem);
-@custom-media --mobile (max-width:40rem);
-@custom-media --tablet (min-width:40rem);
-@custom-media --tablet-max (max-width:55rem);
-@custom-media --desktop (min-width:55rem);
-@custom-media --desktop-max (max-width:62.5rem);
-@custom-media --wide (min-width:81.25rem);
+@custom-media --narrow (max-width:20.5em);
+@custom-media --mobile-l (min-width:26.5em);
+@custom-media --mobile (max-width:43em);
+@custom-media --tablet (min-width:43em);
+@custom-media --tablet-max (max-width:55em);
+@custom-media --desktop (min-width:75em); /* ~ 1200px */
+@custom-media --desktop-max (max-width:75em); /* ~ 1200px */
+@custom-media --wide (min-width:81.25em);
+@custom-media --xl (min-width:115em);

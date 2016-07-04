@@ -23,8 +23,10 @@ gulp.task('stylesheets', function()
         //.pipe(sourcemaps.init())
         .pipe(postcss([
             require("postcss-import")(),
-            require("postcss-cssnext")(),
+            require("postcss-responsive-type")(),
+            require("postcss-cssnext")({features: {rem: {html: false}}}),
             require("postcss-extend")(),
+            require("postcss-flexibility")(),
             require("cssnano")()
         ]))
         .pipe(concat('main.css'))

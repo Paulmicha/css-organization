@@ -6,8 +6,11 @@
 
 div.messages {
   border: 1px solid;
-  margin: 0 auto var(--margin-ratio-l)em auto;
   padding: var(--padding-ratio)em;
+}
+
+.messages + .messages {
+  margin-top: var(--margin-ratio)em;
 }
 
 div.status {

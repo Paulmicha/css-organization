@@ -256,7 +256,7 @@ input[type="search"] {
     border-bottom: var(--input-text-border-width-ratio)em solid var(--input-text-border-color);
     padding: var(--input-text-padding-ratio-s)rem 0;
     background: var(--input-text-background);
-    min-width: 15em;
+    min-width: 3em;
     max-width: 100%;
     color: var(--input-text-color);
 }

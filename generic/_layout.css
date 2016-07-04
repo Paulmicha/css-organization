@@ -11,6 +11,13 @@
     display: inline-block;
 }
 
+.u-relative {
+    position: relative;
+}
+.u-absolute {
+    position: absolute;
+}
+
 .u-float-l {
     float: left;
 }
@@ -44,27 +51,6 @@
 .u-overflow-hidden {
     overflow: hidden;
 }
-
-
-/*  Vertical centering :
-    inline-block-only children method.
-*/
-
-.o-vcenter {
-    white-space: nowrap;
-}
-    .o-vcenter::before {
-        content: "";
-        height: 100%;
-    }
-    .o-vcenter > *,
-    .o-vcenter::before {
-        display: inline-block;
-        vertical-align: middle !important;
-    }
-    .o-vcenter > * {
-        white-space: normal;
-    }
 
 
 /*  Squared container

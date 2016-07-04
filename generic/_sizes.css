@@ -4,11 +4,6 @@
  *  Size utils
  */
 
-:root {
-    --w-typo-ratio: 33;
-    --w-typo-ratio-l: 50;
-}
-
 .u-w-100,
 .u-w-full {
     width: 100%;
@@ -27,6 +22,9 @@
     min-width: 10em;
 }
 
+.u-minw-10 {
+    min-width: 10%;
+}
 
 
 /*  Max-widths.
@@ -41,6 +39,7 @@
 .u-maxw-typo {
     max-width: var(--w-typo-ratio)em;
 }
+
 .u-mxw-logo-pic {
     max-width: 6.7em;
 }
@@ -49,6 +48,16 @@
         max-width: 5em;
     }
 }
+
+
+.u-maxw-cta-burst {
+    max-width: 10em;
+    @media (--mobile) {
+        max-width: 8em;
+    }
+}
+
+
 .u-mxw-user-pic--s {
     max-width: 3.125rem;
 }

@@ -1,0 +1,51 @@
+
+/**
+ *  Point Burst shapes.
+ *
+ *  1. requires container which already has some height.
+ *  	@example .o-squared + .o-squared__content
+ *
+ *  See https://css-tricks.com/examples/ShapesOfCSS/
+ */
+
+:root {
+    --burst-shape-12-color: var(--text-color-inverse);
+    --burst-shape-12-bg-color: white;
+    --burst-shape-12-color-inverse: var(--text-color);
+    --burst-shape-12-bg-color-inverse: var(--html-bg-color);
+    --burst-shape-12-w: 100%;
+}
+
+
+.burst-shape-12 {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    background: var(--burst-shape-12-bg-color);
+    width: var(--burst-shape-12-w);
+    height: var(--burst-shape-12-w);
+    color: var(--burst-shape-12-color);
+}
+
+.burst-shape-12--inverse {
+    background: var(--burst-shape-12-bg-color-inverse);
+    color: var(--burst-shape-12-color-inverse);
+}
+
+    .burst-shape-12::before,
+    .burst-shape-12::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: var(--burst-shape-12-w);
+        width: var(--burst-shape-12-w);
+        background: var(--burst-shape-12-bg-color);
+    }
+
+    .burst-shape-12::before {
+        transform: rotate(30deg);
+    }
+    .burst-shape-12::after {
+        transform: rotate(60deg);
+    }

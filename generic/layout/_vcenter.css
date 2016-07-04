@@ -1,0 +1,42 @@
+
+/**
+ *  Vertical centering : inline-block method.
+ *
+ *  Applies to a "vertically pre-filled" container, such as FlexEmbed.
+ *
+ *  1. Prevent superfluous whitespace betwenn children.
+ *  2. Prepend a pseudo-element expanding the whole container's height, so that
+ *  	other elements are vertically centered in relation to its total height.
+ *  3. Inline-block triggers the layout behavior for centering items vertically.
+ *  4. Restore font-size in children elements.
+ *
+ *  @see https://github.com/suitcss/components-flex-embed
+ */
+
+.o-vcenter {
+   font-size: 0; /* 1 */
+}
+
+.o-vcenter--nowrap {
+   white-space: nowrap;
+}
+
+   .o-vcenter::before {
+      content: "";
+      height: 100%; /* 2 */
+   }
+
+   .o-vcenter > *,
+   .o-vcenter::before {
+      display: inline-block; /* 3 */
+      vertical-align: middle;
+   }
+
+   .o-vcenter--nowrap > *,
+   .o-vcenter--nowrap::before {
+      white-space: normal;
+   }
+
+   .o-vcenter > * {
+      font-size: var(--font-size-ratio)rem; /* 4 */
+   }

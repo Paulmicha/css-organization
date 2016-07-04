@@ -22,20 +22,15 @@
     & a.is-on,
     & a:hover {
         color: var(--link-color-inverse--hover); /* 1 */
-        border-bottom: var(--link-border-width--hover) solid var(--link-border-color--hover); /* 1 */
     }
     & a:focus {
         color: var(--link-color-inverse); /* 1 */
-        border-bottom: var(--link-border-width--focus) solid var(--link-border-color--focus); /* 1 */
     }
     & a:visited {
         color: var(--link-color-inverse); /* 1 */
-        border-bottom: var(--link-border-width--visited) solid var(--link-border-color--visited); /* 1 */
     }
     & a:active {
         color: var(--link-color-inverse); /* 1 */
-        border-bottom: var(--link-border-width--active) solid var(--link-border-color--active); /* 1 */
-        transition: none;
     }
 }
 .bg-content {

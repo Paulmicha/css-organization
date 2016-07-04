@@ -149,6 +149,20 @@ td .form-item > .description {
 }
 
 
+.filefield-sources-list {
+    padding-bottom: .66em;
+}
+    .filefield-sources-list > a {
+        display: inline-block;
+        padding: 0 .5em;
+    }
+    .filefield-sources-list > a,
+    .filefield-sources-list > a:hover {
+        border: 0 none !important;
+    }
+
+
+
 /*      Misc.
 */
 
@@ -359,4 +373,13 @@ table.system-status-report tr.error {
 .node-form > div > .form-actions > * + *,
 .node-form > div > .form-actions > input[type=submit] + input[type=submit] {
     margin-left: 1em;
+}
+
+
+/*  (Hack) Hide IEF entity Form preview + URL Redirect fieldset.
+*/
+
+.field-widget-inline-entity-form .ief-row-entity-form,
+.field-widget-inline-entity-form .redirect-list {
+  display: none;
 }

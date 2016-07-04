@@ -49,6 +49,7 @@
 }
 
 
+#question-list,
 .views-table,
 .forum-table,
 table.sticky-header,
@@ -56,3 +57,9 @@ table.sticky-header,
 .s-rich-text table { /* 1 */
     @extend %readable-table;
 }
+
+/*
+.opigno-quiz-app-results-table {
+    @extend %s-content;
+}
+*/

@@ -1,0 +1,24 @@
+
+/**
+ * Breadcrumb component.
+ */
+
+:root {
+    --breadcrumb-bg-color: var(--color-white-t-3);
+}
+
+.c-breadcrumb__inner-wrap {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    background: var(--breadcrumb-bg-color);
+    box-shadow: 0 0 .4em .5em var(--breadcrumb-bg-color);
+    @extend %fs-xs;
+}
+    .c-breadcrumb a,
+    .c-breadcrumb span {
+        display: inline-block;
+    }
+    .c-breadcrumb__sep {
+        vertical-align: -.05em;
+    }

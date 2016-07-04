@@ -1,0 +1,57 @@
+
+/**
+ * Media object variant : only active from tablet breakpoint.
+ *
+ * Place any image- and text-like content side-by-side.
+ * Adapted from InuitCSS's.
+ *
+ * 1. Even when media layout behaviour should only start at given breakpoint,
+ * 	we need the bottom padding for spacing out the image (mobile-first).
+ *
+ * 2. When image is placed on the same line, we don't need it anymore (see 1).
+ *
+ * @see https://github.com/inuitcss/objects.media
+ * @see http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+
+:root {
+   --o-tablet-media-gutter: var(--margin-ratio-l)em;
+}
+
+/*    @todo find out why @extend does not work inside media queries.
+*/
+.o-tablet-media {
+   @extend %cf;
+}
+
+.o-tablet-media__img {
+   padding-bottom: var(--o-tablet-media-gutter); /* 1 */
+}
+
+@media (--tablet) {
+
+   .o-tablet-media {
+      display: block;
+   }
+
+      .o-tablet-media__img {
+         float: left;
+         padding: 0 var(--o-tablet-media-gutter) 0 0; /* 2 */
+      }
+         .o-tablet-media__img > img {
+            display: block;
+         }
+
+      .o-tablet-media__body {
+         float: left;
+         display: block;
+      }
+
+      .o-tablet-media--rtl .o-tablet-media__img,
+      .o-tablet-media--adj-alt:nth-child(even) > .o-tablet-media__img,
+      :nth-child(even) > .o-tablet-media--adj-parent-alt > .o-tablet-media__img {
+         float: right;
+         padding-right: 0;
+         padding-left: var(--o-tablet-media-gutter);
+      }
+}
