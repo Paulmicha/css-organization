@@ -132,10 +132,10 @@ path/to/project/
     │   │   ├── my-component/   <- *
     │   │   │   └── ...
     │   │   └── ...
-    │   ├── specific/           <- 3
-    │   │   ├── my-component/   <- *
-    │   │   │   └── ...
-    │   │   └── ...
+    │   └── specific/           <- 3
+    │       ├── my-component/   <- *
+    │       │   └── ...
+    │       └── ...
     ├── dist/
     │   ├── critical.css        <- 4
     │   ├── main.css            <- Output (compiled result)
@@ -172,6 +172,8 @@ my-component/
     │   │   └── my-component.jsx
     │   ├── phptemplate/
     │   │   └── my-component.tpl.php
+    │   ├── pug/
+    │   │   └── my-component.pug
     │   ├── twig/
     │   │   └── my-component.html.twig
     │   └── ...
@@ -262,7 +264,7 @@ More info :
     - `b-` : box-model utilities : borders
     - `m-` : box-model utilities : margins
     - `p-` : box-model utilities : paddings
-    - `c-` : custom component (not reusable) - to discuss : use CamelCase for reusable components only ?
+    - `c-` : custom component (not reusable) - to discuss : use PascalCase for reusable components only ?
 - (to discuss) Double extension `.critical.css` for separate inline "critical" CSS compilation ?
 - Encourage [Meaningful Whitespace](http://cssguidelin.es/#meaningful-whitespace)
 - Components :
