@@ -42,7 +42,9 @@ Very quick overview notes :
 - Open/Closed principle : never change anything at its source, always make change via extension - possibly the most useful principle for dealing with other people's code.
 - Orthogonality : avoid collisions - ex: using proper scoping
 - Moustache Principle : just because you can, it doesn't mean you should.
-- Moustache Principle : just because you can, it doesn't mean you should.
+- Depth of Applicability : number of generations that are affected by a given rule. The further the distance from the parent to the deepest descendent element, the more complex and rigid the HTML structure needs to be for the selectors to work.
+- Component Boundaries : if the component is more than 3 levels deep, it might be up for breaking apart into smaller components.
+- Shell/Content Pattern : often, there’s a shell (container), and then the content that goes within that - can be a great way to recognize when to break things down from one larger component into a few smaller components.
 
 
 ## Existing approaches
@@ -146,7 +148,8 @@ path/to/project/
 
 Our present goal is to progressively publish a growing [library of open-source components](https://github.com/reusable-components), so that other projects can reuse these just like any other NPM package.
 
-One of the main challenge is defining the "boundaries" between components, which can be very subjective. Here's some advice from a javascript perspective : *"[don't overdo components](http://calmm-js.github.io/documentation/training/#/9/3) - Your components should do something substantial. Does it have a non-trivial model ? Is it a combination of elements you use in lots of places ?"*
+One of the main challenge is defining the "boundaries" between components, which can be very subjective - see the *Component Boundaries* and *Shell/Content Pattern* above.  
+Here's some more advice from a javascript perspective : *"[don't overdo components](http://calmm-js.github.io/documentation/training/#/9/3) - Your components should do something substantial. Does it have a non-trivial model ? Is it a combination of elements you use in lots of places ?"*
 
 Here's [@benfrain's (eCSS) example structure](http://ecss.io/chapter5.html) :
 ```
@@ -184,7 +187,8 @@ my-component/
 The only implementation example that I currently know that could be used as a source for transpiling into different template formats is [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65).
 
 TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
-TODO : elaborate on approaches to extend components and/or to handle variation.
+TODO : elaborate on approaches to extend components and/or to handle variation.  
+TODO : javascript components ?
 
 #### Terminology / Designation
 - modules : sometimes used to refer to individual components.
@@ -193,7 +197,6 @@ TODO : elaborate on approaches to extend components and/or to handle variation.
 - UI design pattern : user interface components or interaction patterns.
 
 #### Roadmap
-
 - Make an alternative to [Axure](http://www.axure.com/) tailored to that kind of design system, for ex. based on [Electron](https://github.com/sindresorhus/awesome-electron) (see also [Photon](https://github.com/connors/photon))
 - Look into [Yeoman](http://yeoman.io/) for boilerplate automation
 - Elaborate on Element Queries, essentially adjusting elements to their container instead of the entire viewport, which makes more sense in a modular, component-oriented system. See [css-element-queries](https://github.com/marcj/css-element-queries) and [elementqueries](http://elementqueries.com/).
