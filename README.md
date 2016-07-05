@@ -2,7 +2,7 @@
 CSS organization
 ================
 
-This repository is meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), aiming at accelerating the building of design systems (ex: [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)).
+This repository is meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), aiming at accelerating the building of [(living) styleguides](http://styleguides.io/) and/or design systems (ex: [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc).
 
 The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/). It also serves as an example of CSS organization using PostCSS.
 
@@ -31,10 +31,11 @@ gulp
 References :
 - @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
 - @csswizardry's [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ - **methodology** : [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
+- @christianmaioli's [Writing good code: how to reduce the cognitive load of your code](http://chrismm.com/blog/writing-good-code-reduce-the-cognitive-load/)
 - @snookca's [Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
 - @mikaelsandin's [Creating components](https://medium.com/building-a-component-library/creating-components-e08ccc632722).
 
-General CSS principles :
+General principles :
 - **DRY / Single Source of truth** - warnings : don't DRY if it's repeated coincidentally, just avoid duplicating data in source (repetition in compiled code is fine).
 - **Single Responsability** (context encapsulation, composability) : do one thing, and one thing well - break into individual concerns.
 - **Separation of concerns** - notably : don't bind JS onto CSS classes
@@ -42,6 +43,9 @@ General CSS principles :
 - **Open/Closed principle** : never change anything at its source, always make change via extension - possibly the most useful principle for dealing with other people's code.
 - **Orthogonality** : avoid collisions - ex: using proper scoping
 - **Moustache Principle** : just because you can, it doesn't mean you should.
+- Make it **readable** : work towards having a predictable architecture
+- Make it **easy to digest** : concisely explain the reasoning behind a solution (document the *why*, not the *what*)
+- **Avoid distraction** : don’t code "your way" - just follow the coding standards. Make your code predictable and easy to read by coding the way people expect.
 
 Component-oriented, modular design principles :
 - **Depth of Applicability** : number of generations that are affected by a given rule. The further the distance from the parent to the deepest descendent element, the more complex and rigid the HTML structure needs to be for the selectors to work.
@@ -87,19 +91,20 @@ However, following some logic helps in reducing time spent in making "structural
 - **Components** : designed components, chunks of UI (more explicitly named)
 - **Utils** or *trumps* : helpers and overrides, only affects one piece of the DOM (usually `!important`)
 
-While we're looking into what makes an architecture "good", the goal of having *less questions to ask* should be appended with *oneself* - see one of [Steve Krug's *Don't Make me think*](https://www.sensible.com/dmmt.html) illustration :
+Looking into what makes an architecture "good", the goal of having *less questions to ask* can be illustrated in one of [Steve Krug's *Don't Make me think*](https://www.sensible.com/dmmt.html) eloquent strip :
 
 ![Steve Krug's illustration : Obvious VS Requires-Thought](Dont-Make-Me-Think-Steve-Krug-Obvious-VS-Requires-Thought.jpg)
 
-Even though it describes a hesitation about the [naming](http://martinfowler.com/bliki/TwoHardThings.html) of a button label, a similar "cost" would be incurred by an architecture (or any set of rules) that would be unclear, or not obvious to the developer. In other words, and especially in a composable, modular system, *"we need to care about one another's scarce cognitive resources"* - see [Kathy Sierra (Serious Pony) keynote](https://www.youtube.com/watch?v=FKTxC9pl-WM).  
-*Naming things* is regularly brought up because it can significantly speed up (or slow down) the understanding, communication, and ultimately, the adoption of a component, pattern, or organization in our case.
+Even though this particular illustration describes a hesitation about the [naming](http://martinfowler.com/bliki/TwoHardThings.html) of a button [label](https://uxplanet.org/microcopy-tiny-words-with-a-huge-ux-impact-90140acc6e42), a similar "cost" would be incurred by an architecture (or any set of rules) that would be unclear, or not obvious to the developer. In other words, and especially in a composable, modular system, *"we need to care about one another's scarce cognitive resources"* - see [Kathy Sierra (Serious Pony) keynote](https://www.youtube.com/watch?v=FKTxC9pl-WM).  
+Among other factors, *naming things* is part of important architectural decisions, as it can contribute to speed up (or slow down) the understanding, communication, and ultimately, the adoption of a component, pattern, or organization in our case.  
 
-In an attempt to simplify the general structure of our CSS filebase, and hopefully to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of a 3-part categorization is illustrated below.
+In an attempt to simplify the general structure of the CSS codebase, and to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of a 3-part categorization is explained below.
 
 
 ## File structure
-Here are suggestions for organizing CSS files into 3 subfolders (base, generic, and specific) - each of which can perfectly be further sub-divided into as many levels as necessary.  
-The "starting" folder itself may either be plcaed in a dedicated CSS folder, or integrated into a modular, component-oriented folder structure :
+
+Here are suggestions for organizing CSS files into 3 sub-folders (base, generic, and specific) - each of which can perfectly be further sub-divided into as many sub-categories as necessary. Both folder and file names can be considered categories.  
+The *generic* folder may also be used as an "incubator" of potential future abstract, reusable components - suggesting a component "maturation" process.  
 
 ### Centralized, Single CSS folder
 Current structure of the source code available as an example in this repository (comes from a Drupal 7 theme).
@@ -212,8 +217,8 @@ TODO : mix in javascript components - look into recent developments in JS archit
 
 #### Roadmap
 - Make an alternative to [Axure](http://www.axure.com/) tailored to that kind of design system, for ex. based on [Electron](https://github.com/sindresorhus/awesome-electron) (see also [Photon](https://github.com/connors/photon))
-- Look into [Yeoman](http://yeoman.io/) for boilerplate automation
-- Elaborate on Element Queries, essentially adjusting elements to their container instead of the entire viewport, which makes more sense in a modular, component-oriented system. See [css-element-queries](https://github.com/marcj/css-element-queries) and [elementqueries](http://elementqueries.com/).
+- Look into [Slush](http://slushjs.github.io/) or [Yeoman](http://yeoman.io/) for boilerplate automation
+- Elaborate on [Element Queries](http://www.jonathantneal.com/blog/thoughts-on-media-queries-for-elements/), essentially adjusting elements to their container instead of the entire viewport, which makes more sense in a modular, component-oriented system. See @marcj's [css-element-queries](https://github.com/marcj/css-element-queries) and [elementqueries.com](http://elementqueries.com/).
 
 
 ## Categorization
@@ -248,10 +253,10 @@ File naming (sub-categories) :
 - [optional] use double extension `.vars.css` for files containing "low-level", global variables (settings) - ex: `base/_typography.vars.css`, `base/_colors.vars.css`, `base/_zindex.vars.css`.
 
 Additional considerations :
-- https://milligram.github.io/
 - @jonathantneal's [Sanitize.css](https://github.com/10up/sanitize.css) or @necolas's [Normalize](https://github.com/necolas/normalize.css/)
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
+- https://milligram.github.io/ etc.
 
 
 ### 2. `generic/`
@@ -268,12 +273,12 @@ Corresponds to :
 
 Styles with potential for reuse. Ideally, these should be included as third-party / vendor components (e.g. `node_modules`), but sometimes we need a place to start something reusable outside of the other folders. See the **"individual components"** section regarding reusability.
 
-Important consideration : look at what [CSS Modules](https://github.com/css-modules) are doing for this.
+Important consideration : look at what [CSS Modules](http://glenmaddern.com/articles/css-modules) are doing for this.
 
 Examples of styles belonging in this category :
 - SUIT CSS [components-flex-embed](https://github.com/suitcss/components-flex-embed), [components-arrange](https://github.com/suitcss/components-arrange), etc.
 - @mrmrs_'s [colors](https://github.com/mrmrs/colors)
-- Any individual or isolated unit of styles that can be reused from other frameworks ([Tapestry](http://tapestry.wisembly.com/components), [InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
+- Any individual or isolated unit of styles that can be reused from other frameworks ([Tapestry](http://tapestry.wisembly.com/components), [InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), [Layers CSS](http://eiskis.net/layers/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
 
 
 ### 3. `specific/`
