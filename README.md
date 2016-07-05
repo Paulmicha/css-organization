@@ -2,11 +2,9 @@
 CSS organization
 ================
 
-This is an example of CSS organization using PostCSS.
+This repository is meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), aiming at accelerating the building of design systems (ex: [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)).
 
-The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/).
-
-This repository is only meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), with the objective of laying the fondations of an elaborate design system (ex: [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)).
+The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/). It also serves as an example of CSS organization using PostCSS.
 
 
 ## Tools
@@ -30,21 +28,29 @@ gulp
 
 ## Principles
 
-- Some fundamentals from @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
-- [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ : use @csswizardry's methodology - [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
-- [@snookca's Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
+References :
+- @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
+- @csswizardry's [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ - **methodology** : [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
+- @snookca's [Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
+- @mikaelsandin's [Creating components](https://medium.com/building-a-component-library/creating-components-e08ccc632722).
 
-Very quick overview notes :
-- DRY / Single Source of truth - warnings : don't DRY if it's repeated coincidentally, just avoid duplicating data in source (repetition in compiled code is fine).
-- Single Responsability (context encapsulation, composability) : do one thing, and one thing well - break into individual concerns.
-- Separation of concerns - notably : don't bind JS onto CSS classes
-- Immutability - the only time to use !important
-- Open/Closed principle : never change anything at its source, always make change via extension - possibly the most useful principle for dealing with other people's code.
-- Orthogonality : avoid collisions - ex: using proper scoping
-- Moustache Principle : just because you can, it doesn't mean you should.
-- Depth of Applicability : number of generations that are affected by a given rule. The further the distance from the parent to the deepest descendent element, the more complex and rigid the HTML structure needs to be for the selectors to work.
-- Component Boundaries : if the component is more than 3 levels deep, it might be up for breaking apart into smaller components.
-- Shell/Content Pattern : often, there’s a shell (container), and then the content that goes within that - can be a great way to recognize when to break things down from one larger component into a few smaller components.
+General CSS principles :
+- **DRY / Single Source of truth** - warnings : don't DRY if it's repeated coincidentally, just avoid duplicating data in source (repetition in compiled code is fine).
+- **Single Responsability** (context encapsulation, composability) : do one thing, and one thing well - break into individual concerns.
+- **Separation of concerns** - notably : don't bind JS onto CSS classes
+- **Immutability** - the only time to use `!important`
+- **Open/Closed principle** : never change anything at its source, always make change via extension - possibly the most useful principle for dealing with other people's code.
+- **Orthogonality** : avoid collisions - ex: using proper scoping
+- **Moustache Principle** : just because you can, it doesn't mean you should.
+
+Component-oriented, modular design principles :
+- **Depth of Applicability** : number of generations that are affected by a given rule. The further the distance from the parent to the deepest descendent element, the more complex and rigid the HTML structure needs to be for the selectors to work.
+- **Component Boundaries** : if the component is more than 3 levels deep, it might be up for breaking apart into smaller components.
+- **Shell/Content Pattern** : often, there’s a shell (container), and then the content that goes within that - can be a great way to recognize when to break things down from one larger component into a few smaller components.
+- **Repetition is better than the wrong abstraction** : when in doubt, keep components separated (duplication of code) :
+    - *Appearance* – If something looks visually very different it’s probably best to create two separate components, even though they might share the same content model.
+    - *Purpose* – if two things look visually alike but actually serves different purposes, ask yourself: Are they just coincidentally similar right now? Do you see them develop in different directions over time? If the answer is yes, maybe it better to create two separate components.
+    - *Content model* – Do they share the same content model and look similar and have a similar purpose, then maybe you can come up with a more abstract name and merge the two components into one.
 
 
 ## Existing approaches
@@ -57,8 +63,9 @@ The organization of CSS in various libraries or frameworks usually aims to avoid
 
 I find there are 2 types of approaches to "kill the cascade" in CSS :
 
-- Class naming conventions - ex: eCSS, ITCSS, etc (see below). This is the currently favored approach.  
-Such conventions already allow for implementing robust organization, and for projects that aren't going to need the kind of scaling that eCSS, ITCSS and the like are providing, we still can have the flexibility of a [SMACSS-based approach](https://snook.ca/archives/html_and_css/dealing-with-cascade-specificity), which means either picking classes or child selectors where appropriate - provided any potential "bleed" is at least documented and/or its scope really narrow.
+- Class naming conventions - ex: eCSS, ITCSS, etc (see below).  
+Such conventions already allow for implementing robust organization, and for projects that aren't going to need the kind of scaling that eCSS, ITCSS and the like are providing, we still can have the flexibility of a [SMACSS-based approach](https://snook.ca/archives/html_and_css/dealing-with-cascade-specificity), which means either picking classes or child selectors where appropriate - provided any potential "bleed" is at least documented and/or its scope really narrow.   
+This is the approach currently favored here, but we may find opportunities for complementary implementations.
 - Inlining all or most styles : see [@chriscoyier's recap](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/). And if we chose only to use utility classes (see below), [Tachyons](http://tachyons.io/) could also be used this way, and could get along with the naming convention approach above - provided we avoid class naming collisions.  
 [Atomic CSS](http://acss.io/) is probably the most explicit "inline-like" use of CSS classes.  
 Some tools even implement their own syntax (compiled to CSS) to achieve more advanced layout features, like [gridstylesheets.org's GSS](https://github.com/gss/engine) (inspired by [Constraint CSS](http://constraints.cs.washington.edu/web/ccss-uwtr.pdf) and [Apple's Visual Format Language](http://gridstylesheets.org/guides/vfl/)).
@@ -68,12 +75,31 @@ Some tools even implement their own syntax (compiled to CSS) to achieve more adv
 
 The organization of CSS may follow some categorization of styles. There is hardly one unique way of sorting out the styles for all imaginable projects out there, so this has to stay subjective (because a single generic architecture may not always be the most appropriate for projects of different size or nature).
 
-However, following some logic helps in reducing time spent in making "structural" decisions (good architecture = less questions to ask) - here's an illustration of ITCSS's :  
+However, following some logic helps in reducing time spent in making "structural" decisions (good architecture = less questions to ask) - here's an illustration of the Inverted Triangle - [ITCSS](https://speakerdeck.com/dafed/managing-css-projects-with-itcss) metaphore :
+
 ![ITCSS categories](Inverted-Triangle.jpg)
+
+- **Settings** : global variables, colors, config switches...
+- **Tools** : default mixins and functions
+- **Generic** : ground-zero / root styles (resets, normalize.css, box-sizing...)
+- **Base** : unclassed html elements
+- **Objects** : cosmetic-free design patterns (OOCSS, agnostically named)
+- **Components** : designed components, chunks of UI (more explicitly named)
+- **Utils** or *trumps* : helpers and overrides, only affects one piece of the DOM (usually `!important`)
+
+While we're looking into what makes an architecture "good", the goal of having *less questions to ask* should be appended with *oneself* - see one of [Steve Krug's *Don't Make me think*](https://www.sensible.com/dmmt.html) illustration :
+
+![Steve Krug's illustration : Obvious VS Requires-Thought](Dont-Make-Me-Think-Steve-Krug-Obvious-VS-Requires-Thought.jpg)
+
+Even though it describes a hesitation about the [naming](http://martinfowler.com/bliki/TwoHardThings.html) of a button label, a similar "cost" would be incurred by an architecture (or any set of rules) that would be unclear, or not obvious to the developer. In other words, and especially in a composable, modular system, *"we need to care about one another's scarce cognitive resources"* - see [Kathy Sierra (Serious Pony) keynote](https://www.youtube.com/watch?v=FKTxC9pl-WM).  
+*Naming things* is regularly brought up because it can significantly speed up (or slow down) the understanding, communication, and ultimately, the adoption of a component, pattern, or organization in our case.
+
+In an attempt to simplify the general structure of our CSS filebase, and hopefully to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of a 3-part categorization is illustrated below.
 
 
 ## File structure
-Here are suggestions for organizaing CSS files :
+Here are suggestions for organizing CSS files into 3 subfolders (base, generic, and specific) - each of which can perfectly be further sub-divided into as many levels as necessary.  
+The "starting" folder itself may either be plcaed in a dedicated CSS folder, or integrated into a modular, component-oriented folder structure :
 
 ### Centralized, Single CSS folder
 Current structure of the source code available as an example in this repository (comes from a Drupal 7 theme).
@@ -96,30 +122,7 @@ path/to/project/
 ### Modular, Component-oriented structure
 Similar to [eCSS file organization (ch.5)](http://ecss.io/chapter5.html), inspired by [@necolas's talk](https://www.youtube.com/watch?v=m0oMHG6ZXvo).
 ```
-path/to/project/modules/
-    ├── node_modules/       <- (gitignored deps)
-    │   ├── sanitize.css/
-    │   └── ...
-    ├── base/               <- 1
-    │   ├── my-component/   <- *
-    │   │   └── ...
-    │   └── ...
-    ├── generic/            <- 2
-    │   ├── my-component/   <- *
-    │   │   └── ...
-    │   └── ...
-    ├── specific/           <- 3
-    │   ├── my-component/   <- *
-    │   │   └── ...
-    │   └── ...
-    ├── critical.css        <- 4
-    ├── main.css            <- Output (compiled result)
-    ├── main.js
-    └── ...
-```
-Another example explicitly differencing sources from compiled files (can be `src/` / `dist`, `build`, etc.) :
-```
-path/to/project/
+path/to/project/front-end-modules/
     ├── node_modules/       <- (gitignored deps)
     │   ├── sanitize.css/
     │   └── ...
@@ -139,7 +142,6 @@ path/to/project/
     ├── dist/
     │   ├── critical.css        <- 4
     │   ├── main.css            <- Output (compiled result)
-    │   ├── main.js
     │   └── ...
     └── ...
 ```
@@ -163,36 +165,46 @@ Here's another (work in progress) proposition, focusing on transpiling templates
 ```
 my-component/
     ├── src/
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── index.*                         <- source for transpiling into different tpl formats
+    │   └── ...
+    ├── dist/
     │   ├── my-component.css
     │   ├── my-component.js
-    │   ├── my-component.*                  <- source for transpiling into different tpl formats
-    │   └── ...
-    ├── tpl/                                <- transpiled template formats (e.g. for CMSes)
-    │   ├── jsx/
-    │   │   └── my-component.jsx
-    │   ├── phptemplate/
-    │   │   └── my-component.tpl.php
-    │   ├── pug/
-    │   │   └── my-component.pug
-    │   ├── twig/
-    │   │   └── my-component.html.twig
-    │   └── ...
-    ├── my-component.html                   <- standard-compliant Web Component (à la Polymer)
-    ├── index.html                          <- static, standard-compliant HTML (e.g. for living styleguides)
-    ├── index.css
-    ├── index.js
+    │   ├── my-component.html               <- standard-compliant Web Component (à la Polymer)
+    │   └── tpl/                            <- transpiled template formats (e.g. for CMSes)
+    │       ├── jsx/
+    │       │   └── my-component.jsx
+    │       ├── phptemplate/
+    │       │   └── my-component.tpl.php
+    │       ├── pug/
+    │       │   └── my-component.pug
+    │       ├── twig/
+    │       │   └── my-component.html.twig
+    │       └── ...
+    ├── index.html                          <- demo, static HTML (e.g. for living styleguides)
     ├── README.md                           <- usage, building, contributing instructions, etc.
     ├── package.json
     └── ...
 ```
 
-The only implementation example that I currently know that could be used as a source for transpiling into different template formats is [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65).
+Transpiling templates implementation research :
+- [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65)
+- [CSS modules in HTML](https://github.com/maltsev/posthtml-css-modules)
+- [Pug (ex-Jade) templates CSS Modules integration](https://github.com/css-modules/postcss-modules)
+
+Documentation of individual components which could be part of `index.html` and/or `README.md` in our proposition above :  
+- A short summary the describes the purpose of the component
+- Dependencies (e.g. to CSS, javascript, icons, images...)
+- Examples of how to use the component
 
 TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
 TODO : elaborate on approaches to extend components and/or to handle variation.  
-TODO : javascript components ?
+TODO : variables, parameters, attributes : evaluate the feasability of abstracting templates.  
+TODO : mix in javascript components - look into recent developments in JS architecture, e.g. [Immutable App Architecture](https://vimeo.com/album/3953264/video/166790294) - because they are fundamental structural choices about front-end implementations. Specifically, verify if the relationships between models and views have an impact on the decisions about the "boundaries" of CSS components (they shouldn't), and wether it matters at all.
 
-#### Terminology / Designation
+#### Terminology
 - modules : sometimes used to refer to individual components.
 - components : designate any reusable, modular, differenciable fragment or pattern of the interface.
 - (design) pattern : traditional software engineering principle, sometimes used for meaning UI design pattern.
@@ -203,10 +215,37 @@ TODO : javascript components ?
 - Look into [Yeoman](http://yeoman.io/) for boilerplate automation
 - Elaborate on Element Queries, essentially adjusting elements to their container instead of the entire viewport, which makes more sense in a modular, component-oriented system. See [css-element-queries](https://github.com/marcj/css-element-queries) and [elementqueries](http://elementqueries.com/).
 
-### 1. `base/` : Bare HTML tags & global declarations
-This corresponds to the original [SMACSS category](http://snook.ca/archives/html_and_css/avoid-overstyling-base-styles) of the same name.
 
-File naming : use categories from [Josh Duck’s HTML Periodic Table](http://smm.zoomquiet.io/data/20110511083224/index.html) ([Screenshot](http://bradfrost.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-13-at-5.15.05-PM.png)) + [optional] use double extension `.vas.css` for files containing "low-level" variables.
+## Categorization
+
+
+### 1. `base/`
+
+Corresponds to :
+- [SMACSS category](http://snook.ca/archives/html_and_css/avoid-overstyling-base-styles) : **Base styles**
+- [ITCSS](https://github.com/itcss/itcss-netmag/tree/master/css) layers 1, 3, 4 :
+    - **Settings** global variables, colors, config switches...
+    - **Generic** ground-zero / root styles (resets, normalize.css, box-sizing...)
+    - **Base** unclassed html elements
+- **Atoms** in @bradfrost's atomic design system terminology
+
+Some base styles are likely specific to the current project, sucha as typographic settings, default tags appearance, colors, etc. - which is why it's been separated from the reusable, generic category (see below).  
+TODO : should we follow the "is reusable" logic, and move generic resets like *normalize.css* into the next category ?
+
+File naming (sub-categories) :
+
+![HTML Periodic Table of elements](base/HTML-Elements-Periodic-Table-by-Josh-Duck.png)
+
+- use categories from [Josh Duck’s HTML Periodic Table](http://smm.zoomquiet.io/data/20110511083224/index.html) (see [screenshot](http://bradfrost.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-13-at-5.15.05-PM.png) pictured above) :
+    - `base/_root.css` : `html` and `:root` (global) styles
+    - `base/_sections.css` : sectionning
+    - `base/_grouping.css` : grouping
+    - `base/_table.css` : tabular data
+    - `base/_text.css` : text-level semantics
+    - `base/_form.css` : inputs and forms
+    - `base/_embedding.css` : embedding content, media
+    - `base/_interactive.css` : `menu`, `details`, `command`, `summary` tags
+- [optional] use double extension `.vars.css` for files containing "low-level", global variables (settings) - ex: `base/_typography.vars.css`, `base/_colors.vars.css`, `base/_zindex.vars.css`.
 
 Additional considerations :
 - https://milligram.github.io/
@@ -214,12 +253,19 @@ Additional considerations :
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
 
-Note : some base styles are likely specific to the current project (typographic settings, default tags appearance, etc) → TODO : discuss alternative structures.
 
-#### Terminology / Designation
-@bradfrost's terminology : **Atoms** / proposed alternative (common designation) : **Elements**
+### 2. `generic/`
 
-### 2. `generic/` : Immutable Utilities, Objects, Components
+Corresponds to :
+- [SMACSS categories](https://smacss.com/book/categorizing) : **Layout**, **Module**, **State**
+- [ITCSS](https://github.com/itcss/itcss-netmag/tree/master/css) layers 2, 5, 6, 7 :
+    - **Tools** : default mixins and functions
+    - **Objects** : cosmetic-free design patterns (OOCSS, agnostically named)
+    - **Components** : designed components, chunks of UI (more explicitly named)
+    - **Utils** or *trumps* : helpers and overrides, only affects one piece of the DOM (usually `!important`)
+- **Molecules**, **Organisms** in @bradfrost's atomic design system terminology
+
+
 Styles with potential for reuse. Ideally, these should be included as third-party / vendor components (e.g. `node_modules`), but sometimes we need a place to start something reusable outside of the other folders. See the **"individual components"** section regarding reusability.
 
 Important consideration : look at what [CSS Modules](https://github.com/css-modules) are doing for this.
@@ -229,10 +275,13 @@ Examples of styles belonging in this category :
 - @mrmrs_'s [colors](https://github.com/mrmrs/colors)
 - Any individual or isolated unit of styles that can be reused from other frameworks ([Tapestry](http://tapestry.wisembly.com/components), [InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
 
-#### Terminology / Designation
-@bradfrost's terminology : usually **Molecules**, maybe even **Organisms** / proposed alternatives (common designation) : **Components**, **Objects**, **Utilities**
 
-### 3. `specific/` : Current Project Styles
+### 3. `specific/`
+
+Corresponds to any of the `generic/` category, plus :
+- [SMACSS category](https://smacss.com/book/categorizing) : **Theme**
+- **Templates** and **Pages** in @bradfrost's atomic design system terminology
+
 Low potential for reuse, but these styles shouldn't necessarily be unstructured either.
 Within that folder, the organization should accomodate the size of the current project, and/or personal preference - ex : transposing @HugoGiraudel's [Architecture for a Sass Project](http://www.sitepoint.com/architecture-sass-project/)
 Examples :
@@ -241,11 +290,9 @@ Examples :
 - *Theme* modifiers (as in @csswizardry's namespace terminology)
 - Custom components
 
-#### Terminology / Designation
-@bradfrost's terminology : should mostly relate to **Organisms**, **Templates** and **Pages**, but could also include lower-level styles like **Molecules**  / proposed alternatives (common designation) : same as • 2. `generic/` + **Scopes**, **Compositions**.
-
 
 ### 4. `critical.css`
+
 Experimental / to discuss :
 This file is the result of a separate compilation, taking any CSS file ending with `.critical.css` (double extension), and optionally (TODO : compilation options) folders like `base/` or `generic/` (as the main layout and typography are usually abstracted - like grids, widths, box-model measures or scales).
 Alternative tool to generate this file : @filamentgroup's [criticalCSS](https://github.com/filamentgroup/criticalCSS)
@@ -256,8 +303,9 @@ More info :
 
 
 ## CSS Coding Style and Naming Conventions
+
 - All imported CSS files should have the `_` prefix in their filename.
-- File naming convention may also follow [InuitCSS's file naming conventions](https://github.com/inuitcss/getting-started) or [ITCSS](http://itcss.io/) ([Inverted Triangle](http://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731/2) metaphore - see [example](https://github.com/itcss/itcss-netmag/tree/master/css)).
+- File naming convention may also follow [InuitCSS's file naming conventions](https://github.com/inuitcss/getting-started) or [ITCSS](http://itcss.io/) - see [example](https://github.com/itcss/itcss-netmag/tree/master/css)).
 - Selectors may use ANY of the following conventions : @csswizardry's [Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) (see [BEMIT](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) and @DaveOrDead's [Additional Tips](https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/)), [SUIT CSS naming convention](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md), [Enduring CSS (eCSS)](http://ecss.io/), [Tapestry](https://github.com/Wisembly/tapestry)... as long as it helps enforcing the principles outlined in the methodology.
 - Additional BEMIT namespaces (custom class prefixes) suggestions :
     - `fx-` : effects or interactions
