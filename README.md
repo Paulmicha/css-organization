@@ -2,26 +2,38 @@
 CSS organization
 ================
 
-This repository is meant to provide context in the form of a case study to evaluate and discuss the design of an [open-source reusable component library](https://github.com/reusable-components) (ex: [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg*), aiming at accelerating the building of [(living) styleguides](http://styleguides.io/) and/or design systems (ex: [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc).
 
-The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/). It also serves as an example of CSS organization using PostCSS.
+The problem we're trying to address here is *how to design an [open-source](https://github.com/reusable-components), reusable component library aiming at building [(living) styleguides](http://styleguides.io/) and design systems*.
+
+*Component library* ?  
+→ see [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg* as an example.  
+*Design systems* ?  
+→ see [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc.
+
+A solution-first approach that emphasize ideal final results (e.g. [ARIZ](https://en.wikipedia.org/wiki/TRIZ)) seems appropriate here. However, the purpose of the current research at this stage is to detail what would such an ideal final result be, precisely. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles, to expose some basis of the reasoning behind the decision process.
+
+So here's roughly what the methodology presently looks like :
+- Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential solutions.
+- The general value and relevance of principles and tools is evaluated with factors related to communicability, developer experience (and of course, fitness for purpose).
+- The curation (selection and exclusion) of references or resources involves criterias such as maturity, "history", standard-compliance, portability, and adoption.
 
 
-## Tools
+## Source code in this repository
+
+The source code included in this repository is generously allowed to be made publicly available under the MIT license by [Chouette - Institut de français](https://www.chouette.net.br/).  
+It is meant to provide context in the form of a case study to evaluate and discuss the present research, and it also serves as an example of CSS organization using PostCSS.
+
+### Tools
 - [Gulp](http://gulpjs.com/)
 - [cssnext](http://cssnext.io/) (collection of [postcss](https://github.com/postcss/postcss) plugins)
 
-
-## Installation
+### Installation
 ```
 npm install
 ```
 
-
-## Usage
+### Usage
 ```
-cd /path/to/docroot
-
 # Watch (default Gulp task)
 gulp
 ```
@@ -32,6 +44,7 @@ References :
 - @necolas's [HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) - namely : preference to use the "multi-class" pattern, more scalable.
 - @csswizardry's [CSS Guidelines](http://cssguidelin.es/) - sections _Architectural Principles_, _CSS Selectors_, and _Specificity_ - **methodology** : [applying traditional software engineering to CSS](https://speakerdeck.com/csswizardry/css-for-software-engineers-for-css-developers) (see also this [video conference](https://vimeo.com/140641366)).
 - @christianmaioli's [Writing good code: how to reduce the cognitive load of your code](http://chrismm.com/blog/writing-good-code-reduce-the-cognitive-load/)
+- @craftui's [The Language of Modular Design](http://alistapart.com/article/language-of-modular-design)
 - @snookca's [Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
 - @mikaelsandin's [Creating components](https://medium.com/building-a-component-library/creating-components-e08ccc632722).
 
@@ -48,6 +61,7 @@ General principles :
 - **Avoid distraction** : don’t code "your way" - just follow the coding standards. Make your code predictable and easy to read by coding the way people expect.
 
 Component-oriented, modular design principles :
+- **Establish a language foundation** : The agreed-upon name determines how the element will be built and encourages consistent usage across the team - *"If you don’t get agreement up front, prepare for more work later."*
 - **Depth of Applicability** : number of generations that are affected by a given rule. The further the distance from the parent to the deepest descendent element, the more complex and rigid the HTML structure needs to be for the selectors to work.
 - **Component Boundaries** : if the component is more than 3 levels deep, it might be up for breaking apart into smaller components.
 - **Shell/Content Pattern** : often, there’s a shell (container), and then the content that goes within that - can be a great way to recognize when to break things down from one larger component into a few smaller components.
@@ -70,8 +84,7 @@ I find there are 2 types of approaches to "kill the cascade" in CSS :
 - Class naming conventions - ex: eCSS, ITCSS, etc (see below).  
 Such conventions already allow for implementing robust organization, and for projects that aren't going to need the kind of scaling that eCSS, ITCSS and the like are providing, we still can have the flexibility of a [SMACSS-based approach](https://snook.ca/archives/html_and_css/dealing-with-cascade-specificity), which means either picking classes or child selectors where appropriate - provided any potential "bleed" is at least documented and/or its scope really narrow.   
 This is the approach currently favored here, but we may find opportunities for complementary implementations.
-- Inlining all or most styles : see [@chriscoyier's recap](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/). And if we chose only to use utility classes (see below), [Tachyons](http://tachyons.io/) could also be used this way, and could get along with the naming convention approach above - provided we avoid class naming collisions.  
-[Atomic CSS](http://acss.io/) is probably the most explicit "inline-like" use of CSS classes.  
+- Inlining all or most styles : see [@chriscoyier's recap](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/). And if we chose only to use utility classes (see below), [Tachyons](http://tachyons.io/) could also be used this way, and could get along with the naming convention approach above - provided we avoid class naming collisions. [Atomic CSS](http://acss.io/) is probably the most explicit "inline-like" use of CSS classes.  
 Some tools even implement their own syntax (compiled to CSS) to achieve more advanced layout features, like [gridstylesheets.org's GSS](https://github.com/gss/engine) (inspired by [Constraint CSS](http://constraints.cs.washington.edu/web/ccss-uwtr.pdf) and [Apple's Visual Format Language](http://gridstylesheets.org/guides/vfl/)).
 
 
@@ -96,7 +109,9 @@ Looking into what makes an architecture "good", the goal of having *less questio
 ![Steve Krug's illustration : Obvious VS Requires-Thought](Dont-Make-Me-Think-Steve-Krug-Obvious-VS-Requires-Thought.jpg)
 
 Even though this particular illustration describes a hesitation about the [naming](http://martinfowler.com/bliki/TwoHardThings.html) of a button [label](https://uxplanet.org/microcopy-tiny-words-with-a-huge-ux-impact-90140acc6e42), a similar "cost" would be incurred by an architecture (or any set of rules) that would be unclear, or not obvious to the developer. In other words, and especially in a composable, modular system, *"we need to care about one another's scarce cognitive resources"* - see [Kathy Sierra (Serious Pony) keynote](https://www.youtube.com/watch?v=FKTxC9pl-WM).  
-Among other factors, *naming things* is part of important architectural decisions, as it can contribute to speed up (or slow down) the understanding, communication, and ultimately, the adoption of a component, pattern, or organization in our case.  
+Among other factors, *naming things* is part of important architectural decisions, as it can contribute to speed up (or slow down) the understanding, communication, and ultimately, the adoption of a component, pattern, or organization in our case.
+
+*"Remember that no language (aside from a few exceptions) exists in isolation. By evolving and strengthening your design language, you have an opportunity to contribute to the larger language of the web, and to help make it more consistent and coherent for everyone."* - excerpt from [the Language of Modular Design](http://alistapart.com/article/language-of-modular-design).
 
 In an attempt to simplify the general structure of the CSS codebase, and to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of a 3-part categorization is explained below.
 
@@ -155,10 +170,13 @@ path/to/project/front-end-modules/
 
 Our present goal is to progressively publish a growing [library of open-source components](https://github.com/reusable-components), so that other projects can reuse these just like any other NPM package.
 
-One of the main challenge is defining the "boundaries" between components, which can be very subjective - see the *Component Boundaries* and *Shell/Content Pattern* above.  
+See also this discussion about Drupal's ongoing evolution of front-end implementations :  
+→ [Component-based rendering (enables pattern library, style guides, interface previews, client-side re-rendering)](https://www.drupal.org/node/2702061).
+
+One of the main challenge is defining the "boundaries" between components, which can be very subjective - see the *Component Boundaries* and *Shell/Content Pattern* in the *principles* section above.  
 Here's some more advice from a javascript perspective : *"[don't overdo components](http://calmm-js.github.io/documentation/training/#/9/3) - Your components should do something substantial. Does it have a non-trivial model ? Is it a combination of elements you use in lots of places ?"*
 
-Here's [@benfrain's (eCSS) example structure](http://ecss.io/chapter5.html) :
+Regarding file structure, take [@benfrain's (eCSS) example](http://ecss.io/chapter5.html) :
 ```
 shopping-cart-template/
     ├── shopping-cart.html
@@ -166,7 +184,7 @@ shopping-cart-template/
     └── shopping-cart.js
 ```
 
-Here's another (work in progress) proposition, focusing on transpiling templates for maximum reusability (across various project stacks - e.g. Twig, Jade/Pug, etc.), planned [standard web-components](https://github.com/mateusortiz/webcomponents-the-right-way) support, and integration into existing [living styleguides](https://www.smashingmagazine.com/2015/04/an-in-depth-overview-of-living-style-guide-tools/) techniques :
+Now here's another (work in progress) proposition, that would allow transpiling templates for maximum reusability (across various project stacks - e.g. Twig, Jade/Pug, etc.), planned [standard web-components](https://github.com/mateusortiz/webcomponents-the-right-way) support, and integration into existing [living styleguides](https://www.smashingmagazine.com/2015/04/an-in-depth-overview-of-living-style-guide-tools/) techniques :
 ```
 my-component/
     ├── src/
@@ -194,12 +212,21 @@ my-component/
     └── ...
 ```
 
-Transpiling templates implementation research :
+Transpiling templates aims at achieving some degree of **interoperability** for these components. Even though everyone has probably seen this famous [XKCD about standards](https://xkcd.com/927/), the automation that potential "boilerplate" code generator provide could, for instance :
+- produce templates (and/or assets) directly inside current project sources (via NPM, Gulp, Yeoman / Slush, Drupal Console, etc.)
+- avoid the need to compile from any single particular source format
+- handle backward-compatibility
+
+All of which would "only" leave the design of an intial architecture for individual components to do...
+
+![Automation meme](Automate-All-The-Things.jpg)
+
+Here's a few leads I've gathered for later study on transpiling templates :
 - [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65)
 - [CSS modules in HTML](https://github.com/maltsev/posthtml-css-modules)
 - [Pug (ex-Jade) templates CSS Modules integration](https://github.com/css-modules/postcss-modules)
 
-Documentation of individual components which could be part of `index.html` and/or `README.md` in our proposition above :  
+Documentation guidelines of individual components which could be part of `index.html` and/or `README.md` in our proposition above :  
 - A short summary the describes the purpose of the component
 - Dependencies (e.g. to CSS, javascript, icons, images...)
 - Examples of how to use the component
@@ -256,7 +283,7 @@ Additional considerations :
 - @jonathantneal's [Sanitize.css](https://github.com/10up/sanitize.css) or @necolas's [Normalize](https://github.com/necolas/normalize.css/)
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
 - Bits and pieces to adapt from @paulrobertlloyd's [Barebones](https://github.com/paulrobertlloyd/barebones)
-- https://milligram.github.io/ etc.
+- https://milligram.github.io/, https://github.com/matejlatin/Gutenberg, etc.
 
 
 ### 2. `generic/`
@@ -271,14 +298,15 @@ Corresponds to :
 - **Molecules**, **Organisms** in @bradfrost's atomic design system terminology
 
 
-Styles with potential for reuse. Ideally, these should be included as third-party / vendor components (e.g. `node_modules`), but sometimes we need a place to start something reusable outside of the other folders. See the **"individual components"** section regarding reusability.
-
-Important consideration : look at what [CSS Modules](http://glenmaddern.com/articles/css-modules) are doing for this.
+Styles with potential for reuse. Utlimately, these would end up forming third-party dependencies (e.g. packaged `node_modules`), but in this folder we may start work-in-progress components, which reusability could then be evaluated in several projects before deciding to make a release out of it.
 
 Examples of styles belonging in this category :
 - SUIT CSS [components-flex-embed](https://github.com/suitcss/components-flex-embed), [components-arrange](https://github.com/suitcss/components-arrange), etc.
 - @mrmrs_'s [colors](https://github.com/mrmrs/colors)
 - Any individual or isolated unit of styles that can be reused from other frameworks ([Tapestry](http://tapestry.wisembly.com/components), [InuitCSS](https://github.com/inuitcss), [Material Design Lite Components](https://github.com/google/material-design-lite), [PureCSS](http://purecss.io/), [BassCSS](http://www.basscss.com/), [Layers CSS](http://eiskis.net/layers/), or even some [Zurb Foundation](https://github.com/zurb/foundation-sites) and [Bootstrap](https://github.com/twbs/bootstrap/) components)
+
+TODO : define groundwork ? e.g. [some](https://robinrendle.com/essays/new-web-typography/) [typographic](https://viljamis.com/2016/typography-for-user-interfaces/) [design](http://lawsofsimplicity.com/) [best](http://utility-opentype.kennethormandy.com/) [practices](https://ia.net/know-how/responsive-typography-the-basics) & [grid](http://www.thinkingwithtype.com/contents/grid/) [systems](http://thegridsystem.net/), [accessible](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) - [universal](https://adactio.com/journal/10665) - [progressively enhanced](https://www.filamentgroup.com/lab/enhancing-optimistically.html) design...  
+TODO : evaluate [CSS Modules](http://glenmaddern.com/articles/css-modules).
 
 
 ### 3. `specific/`
