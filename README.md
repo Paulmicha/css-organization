@@ -10,7 +10,7 @@ The problem we're trying to address here is *how to design an [open-source](http
 *Design systems* ?  
 → see [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc.
 
-A solution-first approach that emphasize ideal final results (e.g. [ARIZ](https://en.wikipedia.org/wiki/TRIZ)) seems appropriate here. However, the purpose of the current research at this stage is to detail what would such an ideal final result be, precisely. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles, to expose some basis of the reasoning behind the decision process.
+The purpose of the current research at this stage is to detail what would such an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles in order to expose some basis of the reasoning behind the decision process.
 
 So here's roughly what the methodology presently looks like :
 - Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential solutions.
@@ -216,10 +216,10 @@ my-component/
     └── ...
 ```
 
-Transpiling templates aims at achieving some degree of **interoperability** for these components. Even though everyone has probably seen this famous [XKCD about standards](https://xkcd.com/927/), the automation that potential "boilerplate" code generator provide could, for instance :
+Transpiling templates aims at achieving some degree of **interoperability** for these components. Even though everyone has probably seen this famous [XKCD about standards](https://xkcd.com/927/), the automation that potential code generators - like [generator-suit](https://github.com/suitcss/generator-suit) - provide could, for instance :
 - produce templates (and/or assets) directly inside current project sources (via NPM, Gulp, Yeoman / Slush, Drupal Console, etc.)
-- avoid the need to compile from any single particular source format
-- handle backward-compatibility
+- avoid the need to compile from any single particular source format (following original discussion : standard HTML5 is considered, possibly using custom attributes e.g. directed at transpilers)
+- handle backward-compatibility ?
 
 All of which would "only" leave the design of an intial architecture for individual components to do...
 
