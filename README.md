@@ -113,13 +113,17 @@ Among other factors, *naming things* is part of important architectural decision
 
 *"Remember that no language (aside from a few exceptions) exists in isolation. By evolving and strengthening your design language, you have an opportunity to contribute to the larger language of the web, and to help make it more consistent and coherent for everyone."* - excerpt from [the Language of Modular Design](http://alistapart.com/article/language-of-modular-design).
 
-In an attempt to simplify the general structure of the CSS codebase, and to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of a 3-part categorization is explained below.
+In an attempt to simplify the general structure of the CSS codebase, and to cut down the time spent thinking about structural decisions (by trying to make things more obvious and *predictable*), another proposition of categorization is explained below.
 
 
 ## File structure
 
 Here are suggestions for organizing CSS files into 3 sub-folders (base, generic, and specific) - each of which can perfectly be further sub-divided into as many sub-categories as necessary. Both folder and file names can be considered categories.  
-The *generic* folder may also be used as an "incubator" of potential future abstract, reusable components - suggesting a component "maturation" process.  
+The *generic* folder may also be used as an "incubator" of potential future abstract, reusable components - suggesting a component "maturation" process.
+
+**Alternative to discuss** :  
+Only use 2 main categories, clearly indicating the intent : reusable or not.  
+See *naming alternatives* below.
 
 ### Centralized, Single CSS folder
 Current structure of the source code available as an example in this repository (comes from a Drupal 7 theme).
@@ -297,8 +301,12 @@ Corresponds to :
     - **Utils** or *trumps* : helpers and overrides, only affects one piece of the DOM (usually `!important`)
 - **Molecules**, **Organisms** in @bradfrost's atomic design system terminology
 
-
 Styles with potential for reuse. Utlimately, these would end up forming third-party dependencies (e.g. packaged `node_modules`), but in this folder we may start work-in-progress components, which reusability could then be evaluated in several projects before deciding to make a release out of it.
+
+Naming alternatives to discuss :
+- `reusable/`
+- `abstract/`
+- `patterns/` (or `ui-patterns/`)
 
 Examples of styles belonging in this category :
 - SUIT CSS [components-flex-embed](https://github.com/suitcss/components-flex-embed), [components-arrange](https://github.com/suitcss/components-arrange), etc.
@@ -316,6 +324,11 @@ Corresponds to any of the `generic/` category, plus :
 - **Templates** and **Pages** in @bradfrost's atomic design system terminology
 
 Low potential for reuse, but these styles shouldn't necessarily be unstructured either.
+
+Naming alternatives to discuss :
+- `project/`
+- `current/` (or `current-project/`)
+
 Within that folder, the organization should accomodate the size of the current project, and/or personal preference - ex : transposing @HugoGiraudel's [Architecture for a Sass Project](http://www.sitepoint.com/architecture-sass-project/)
 Examples :
 - Variables overrides (media queries values, objects and utilities customizations, etc.)
@@ -339,8 +352,14 @@ More info :
 
 - All imported CSS files should have the `_` prefix in their filename.
 - File naming convention may also follow [InuitCSS's file naming conventions](https://github.com/inuitcss/getting-started) or [ITCSS](http://itcss.io/) - see [example](https://github.com/itcss/itcss-netmag/tree/master/css)).
-- Selectors may use ANY of the following conventions : @csswizardry's [Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) (see [BEMIT](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) and @DaveOrDead's [Additional Tips](https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/)), [SUIT CSS naming convention](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md), [Enduring CSS (eCSS)](http://ecss.io/), [Tapestry](https://github.com/Wisembly/tapestry)... as long as it helps enforcing the principles outlined in the methodology.
-- Additional BEMIT namespaces (custom class prefixes) suggestions :
+- General coding style and selectors may use ANY of the following conventions, as long as it helps enforcing the principles outlined in the methodology (see also *Linting* section below) :
+    - [Principles of writing consistent, idiomatic CSS](https://github.com/necolas/idiomatic-css),
+    - [SUIT CSS naming convention](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md),
+    - @csswizardry's [Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) (see [BEMIT](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) and @DaveOrDead's [Additional Tips](https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/)),
+    - [Enduring CSS (eCSS)](http://ecss.io/),
+    - [Tapestry](https://github.com/Wisembly/tapestry),
+    - etc.
+- Additional namespaces (custom class prefixes) suggestions :
     - `fx-` : effects or interactions
     - `b-` : box-model utilities : borders
     - `m-` : box-model utilities : margins
