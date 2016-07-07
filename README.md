@@ -2,7 +2,6 @@
 CSS organization
 ================
 
-
 The problem we're trying to address here is *how to design an [open-source](https://github.com/reusable-components), reusable component library aiming at building [(living) styleguides](http://styleguides.io/) and design systems*.
 
 *Component library* ?  
@@ -10,7 +9,7 @@ The problem we're trying to address here is *how to design an [open-source](http
 *Design systems* ?  
 → see [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc.
 
-The purpose of the current research at this stage is to detail what would such an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles in order to expose some basis of the reasoning behind the decision process.
+The purpose of the current research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles in order to expose some basis of the reasoning behind the decision process.
 
 So here's roughly what the methodology presently looks like :
 - Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential solutions.
@@ -223,15 +222,26 @@ Transpiling templates aims at achieving some degree of **interoperability** (acr
 
 ![Automation meme](Automate-All-The-Things.jpg)
 
-About **documentation**, here are some guidelines for individual components, to include in `index.html` and/or `README.md` (in file structure above) :  
+About the **wiring** or *bridging* of data structure, variable names, objects ~ in other words, model → view correspondance (+ "hydration" ?) :  
+There seems to be some amount of consensus in the Drupal 8 discussion mentionned earlier around the concept of *Presenter* (from the [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) design pattern) - essentially, a transformation to make data from both ends correspond.  
+This is described in @wimleers's [comment 51](https://www.drupal.org/node/2702061#comment-11200749) as : *"ensuring that components can be Angular, Ember, whatever components - that the inputs a presenter passes on to components are serializable (into JSON)"* + [comment 55](https://www.drupal.org/node/2702061#comment-11296041) : *"Make components non-Drupal-specific AKA implement what John Albin describes in [30](https://www.drupal.org/node/2702061#comment-11133841)"*.  
+→ @JohnAlbin's proposition to *avoid tying the data variable name to the HTML display* depends on a feature of Twig (`embed`, `block` / `include` ... `with` - which also exists in Pug/ex-Jade : `extend`, `block` / `append`) :
+- define a set of common variable names used in all reusable, abstract components (ex: `modifier_class`) - TODO : elaborate on Drupal's *Paragraphs* entities with the *Shell / Content* pattern to orient the standardization of a common *language* (e.g. exact same variable names across different technologies ?)
+- create an "intermediary" template handling the correspondance, essentially maintaining *two separate groups of Twig files* - a.k.a : the **dual-Twig method** - TODO : elaborate on Pug/ex-Jade equivalence ?
+
+To take a bit further this promising lead, our "ideal solution" pursuit would also aim to be applicable in different contexts - i.e. architectures such as [CALMM.js's ~ maintaining consistent state in the face of async inputs](http://calmm-js.github.io/documentation/training/#/2) and ["Immutable App"](https://vimeo.com/album/3953264/video/166790294) :
+
+!["Immutable App Architecture" schema, Lee Byron, Render 2016](Immutable-App-Architecture-Lee-Byron-Render2016--Schema-resized.jpg)
+
+About **documentation**, here are some guidelines for individual components, to include in `index.html` and/or `README.md` (in file structure above) :
 - A short summary the describes the purpose of the component (document the *why*)
 - Dependencies (e.g. to CSS, javascript, icons, images...) - note : dependencies to already packaged / released components would reside in `package.json` to be handled by NPM
 - Examples of how to use the component
 
 TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
-TODO : elaborate on approaches to *extend* components e.g. how to handle *variation* and *combination*.
+TODO : elaborate on approaches to *extend* components e.g. how to handle *variation* and *combination*.  
 TODO : variables, parameters, attributes : evaluate the feasability of abstracting templates.  
-TODO : mix in javascript components - look into recent developments in JS architecture, e.g. [Immutable App Architecture](https://vimeo.com/album/3953264/video/166790294) - because they are fundamental structural choices about front-end implementations. Specifically, verify if the relationships between models and views have an impact on the decisions about the "boundaries" of CSS components (they shouldn't), and wether it matters at all.
+TODO : mix in javascript components - look into recent developments in JS architecture, e.g. [Immutable App Architecture](https://vimeo.com/album/3953264/video/166790294) - because they are fundamental structural choices about front-end implementations. Specifically, verify if the relationships between models and views have an impact on the decisions about the "boundaries" of CSS components (ideally, they shouldn't), and wether it matters at all (ideally, it shouldn't).
 
 #### Terminology
 - modules : sometimes used to refer to individual components.
