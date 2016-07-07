@@ -216,27 +216,20 @@ my-component/
     └── ...
 ```
 
-Transpiling templates aims at achieving some degree of **interoperability** for these components. Even though everyone has probably seen this famous [XKCD about standards](https://xkcd.com/927/), the automation that potential code generators - like [generator-suit](https://github.com/suitcss/generator-suit) - provide could, for instance :
-- produce templates (and/or assets) directly inside current project sources (via NPM, Gulp, Yeoman / Slush, Drupal Console, etc.)
-- avoid the need to compile from any single particular source format (following original discussion : standard HTML5 is considered, possibly using custom attributes e.g. directed at transpilers)
+Transpiling templates aims at achieving some degree of **interoperability** (across different types of projects - e.g. Drupal, Wordpress, NodeJS) for these components. Automation that code generators like [generator-suit](https://github.com/suitcss/generator-suit) provide could, for instance :
+- produce templates (and/or assets) directly inside current project sources (alternative : standalone or framework-specific "bridges", like @JohnAlbin's [Component Libraries](https://www.drupal.org/project/components) for Drupal 8)
+- avoid the need to compile from any single particular source format, by designing transpiler to accept different formats as input. Or, attempt to reuse existing [standards](https://xkcd.com/927/) (e.g. @mikaelsandin's use of [XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65), [CSS modules in HTML](https://github.com/maltsev/posthtml-css-modules) / [Pug (ex-Jade) templates CSS Modules integration](https://github.com/css-modules/postcss-modules)...) ~ standard HTML5 could be considered (possibly using custom attributes for use by transpilers which could then be removed in compiled templates, and/or "guessing" variables ?)
 - handle backward-compatibility ?
-
-All of which would "only" leave the design of an intial architecture for individual components to do...
 
 ![Automation meme](Automate-All-The-Things.jpg)
 
-Here's a few leads I've gathered for later study on transpiling templates :
-- [@mikaelsandin's use of XML, XSD and XSL](https://medium.com/building-a-component-library/an-overview-of-the-component-framework-architecture-9ef83d7ebe65)
-- [CSS modules in HTML](https://github.com/maltsev/posthtml-css-modules)
-- [Pug (ex-Jade) templates CSS Modules integration](https://github.com/css-modules/postcss-modules)
-
-Documentation guidelines of individual components which could be part of `index.html` and/or `README.md` in our proposition above :  
-- A short summary the describes the purpose of the component
-- Dependencies (e.g. to CSS, javascript, icons, images...)
+About **documentation**, here are some guidelines for individual components, to include in `index.html` and/or `README.md` (in file structure above) :  
+- A short summary the describes the purpose of the component (document the *why*)
+- Dependencies (e.g. to CSS, javascript, icons, images...) - note : dependencies to already packaged / released components would reside in `package.json` to be handled by NPM
 - Examples of how to use the component
 
 TODO : list a few Living Styleguides tools and quick setup / getting started instructions here.  
-TODO : elaborate on approaches to extend components and/or to handle variation.  
+TODO : elaborate on approaches to *extend* components e.g. how to handle *variation* and *combination*.
 TODO : variables, parameters, attributes : evaluate the feasability of abstracting templates.  
 TODO : mix in javascript components - look into recent developments in JS architecture, e.g. [Immutable App Architecture](https://vimeo.com/album/3953264/video/166790294) - because they are fundamental structural choices about front-end implementations. Specifically, verify if the relationships between models and views have an impact on the decisions about the "boundaries" of CSS components (they shouldn't), and wether it matters at all.
 
