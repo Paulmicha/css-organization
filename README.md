@@ -89,6 +89,8 @@ Some tools even implement their own syntax (compiled to CSS) to achieve more adv
 
 ## Architecture
 
+I'm using the term *architecture* to refer to the conceptual level of organization, and *file structure* its concrete, physical implementation.
+
 The organization of CSS may follow some categorization of styles. There is hardly one unique way of sorting out the styles for all imaginable projects out there, so this has to stay subjective (because a single generic architecture may not always be the most appropriate for projects of different size or nature).
 
 However, following some logic helps in reducing time spent in making "structural" decisions (good architecture = less questions to ask) - here's an illustration of the Inverted Triangle - [ITCSS](https://speakerdeck.com/dafed/managing-css-projects-with-itcss) metaphore :
@@ -173,9 +175,6 @@ path/to/project/front-end-modules/
 
 Our present goal is to progressively publish a growing [library of open-source components](https://github.com/reusable-components), so that other projects can reuse these just like any other NPM package.
 
-See also this discussion about Drupal's ongoing evolution of front-end implementations :  
-→ [Component-based rendering (enables pattern library, style guides, interface previews, client-side re-rendering)](https://www.drupal.org/node/2702061).
-
 One of the main challenge is defining the "boundaries" between components, which can be very subjective - see the *Component Boundaries* and *Shell/Content Pattern* in the *principles* section above.  
 Here's some more advice from a javascript perspective : *"[don't overdo components](http://calmm-js.github.io/documentation/training/#/9/3) - Your components should do something substantial. Does it have a non-trivial model ? Is it a combination of elements you use in lots of places ?"*
 
@@ -223,7 +222,7 @@ Transpiling templates aims at achieving some degree of **interoperability** (acr
 ![Automation meme](Automate-All-The-Things.jpg)
 
 About the **wiring** or *bridging* of data structure, variable names, objects ~ in other words, model → view correspondance (+ "hydration" ?) :  
-There seems to be some amount of consensus in the Drupal 8 discussion mentionned earlier around the concept of *Presenter* (from the [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) design pattern) - essentially, a transformation to make data from both ends correspond.  
+There seems to be some consensus in this discussion about Drupal's ongoing evolution of front-end implementations ([Component-based rendering](https://www.drupal.org/node/2702061)) around the concept of *Presenter* (from the [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) design pattern) - essentially, a transformation that prepares data for placement in markup (HTML) by correspondance (translation).  
 This is described in @wimleers's [comment 51](https://www.drupal.org/node/2702061#comment-11200749) as : *"ensuring that components can be Angular, Ember, whatever components - that the inputs a presenter passes on to components are serializable (into JSON)"* + [comment 55](https://www.drupal.org/node/2702061#comment-11296041) : *"Make components non-Drupal-specific AKA implement what John Albin describes in [30](https://www.drupal.org/node/2702061#comment-11133841)"*.  
 → @JohnAlbin's proposition to *avoid tying the data variable name to the HTML display* depends on a feature of Twig (`embed`, `block` / `include` ... `with` - which also exists in Pug/ex-Jade : `extend`, `block` / `append`) :
 - define a set of common variable names used in all reusable, abstract components (ex: `modifier_class`) - TODO : elaborate on Drupal's *Paragraphs* entities with the *Shell / Content* pattern to orient the standardization of a common *language* (e.g. exact same variable names across different technologies ?)
