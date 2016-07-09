@@ -9,12 +9,10 @@ The problem we're trying to address here is *how to design an [open-source](http
 *Design systems* ?  
 → see [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc.
 
-The purpose of the current research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles in order to expose some basis of the reasoning behind the decision process.
-
-So here's roughly what the methodology presently looks like :
-- Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential solutions.
-- The general value and relevance of principles and tools is evaluated with factors related to communicability, developer experience (and of course, fitness for purpose).
-- The curation (selection and exclusion) of references or resources involves criterias such as maturity, "history", standard-compliance, portability, and adoption.
+The purpose of the current research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles - here's roughly what the methodology looks like :
+- Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential ("ideal") solutions.
+- The general value and relevance of principles, tools and references is evaluated with factors related to communicability, developer experience (and of course, fitness for purpose).
+- Their curation (collection, selection) involves criterias such as maturity, "history", standard-compliance, portability, and adoption.
 
 
 ## Source code in this repository
@@ -70,15 +68,13 @@ Component-oriented, modular design principles :
     - *Content model* – Do they share the same content model and look similar and have a similar purpose, then maybe you can come up with a more abstract name and merge the two components into one.
 
 
-## Existing approaches
+## CSS frameworks
 
-The organization of CSS in various libraries or frameworks usually aims to avoid common pitfalls of the *cascading* part of CSS in modular design system (i.e. preventing the accidental bleeding of rules).
+The organization of CSS in various libraries or frameworks usually aims to avoid common pitfalls of the *cascading* part of CSS in modular design systems (i.e. preventing the accidental bleeding of rules).
 
-[@dakotaleemartinez provides an example](https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce) of a problematic Bootstrap 3 navbar component extension, illustrating some of the pains these approaches aim to ease.
+[@dakotaleemartinez provides an example](https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce) of a problematic Bootstrap 3 navbar component extension, illustrating some of the pains these approaches aim to ease. [@ahfarmer's article](http://andrewhfarmer.com/how-to-style-react/) gives a categorization of the tooling available as of 2016/04/16, and [@fat's talk](https://www.youtube.com/watch?v=iniwPUEbPUM) touches upon the origins of CSS, putting its evolution and uses in perspective - along with [@zackbloom's "The Languages Which Almost Became CSS"](https://eager.io/blog/the-languages-which-almost-were-css/).
 
-[@ahfarmer's article](http://andrewhfarmer.com/how-to-style-react/) gives a categorization of the tooling available as of 2016/04/16, and [@fat's talk](https://www.youtube.com/watch?v=iniwPUEbPUM) touches upon the origins of CSS, putting its evolution and uses in perspective - along with [@zackbloom's "The Languages Which Almost Became CSS"](https://eager.io/blog/the-languages-which-almost-were-css/).
-
-I find there are 2 types of approaches to "kill the cascade" in CSS :
+I find there are 2 types of approaches to composable, modular design in CSS :
 
 - Class naming conventions - ex: eCSS, ITCSS, etc (see below).  
 Such conventions already allow for implementing robust organization, and for projects that aren't going to need the kind of scaling that eCSS, ITCSS and the like are providing, we still can have the flexibility of a [SMACSS-based approach](https://snook.ca/archives/html_and_css/dealing-with-cascade-specificity), which means either picking classes or child selectors where appropriate - provided any potential "bleed" is at least documented and/or its scope really narrow.   
@@ -87,9 +83,26 @@ This is the approach currently favored here, but we may find opportunities for c
 Some tools even implement their own syntax (compiled to CSS) to achieve more advanced layout features, like [gridstylesheets.org's GSS](https://github.com/gss/engine) (inspired by [Constraint CSS](http://constraints.cs.washington.edu/web/ccss-uwtr.pdf) and [Apple's Visual Format Language](http://gridstylesheets.org/guides/vfl/)).
 
 
+## Process
+
+The gist of our interest in design systems and front-end frameworks here is *how reusability is managed*. What reusable (and *modular*) means is to allow the adaptation or customization ("theme" creation), extension (variation) and composition (mix components without breaking their "abstract" intent) of some generic, abstract pieces of CSS and their corresponding HTML counterpart.  
+We've seen above a [typical problem](https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce) this aims to address, there seems to be a general [UNIX-inspired](https://en.wikipedia.org/wiki/Unix_philosophy) trend across different stacks. An "ideal" process should be easily integrated with current organizations, and allow to produce useful (shared, open) components.
+
+What I mean by process is how to integrate and make such abstractions (or *systems*) as part of the front-end work - in other words : how patterns are identified, selected, how they apply or even why some new approach might be designed. The design process itself may also inform how decisions are actually made.  
+A side note on methodology : this is not just about clear thinking (meant literally), as potential future algorithmic automation might as well make use of some degree of formalism in the design process itself.
+
+Here's @yaili's [flow chart](http://design.canonical.com/2016/07/getting-vanilla-ready-for-v1-the-roadmap/) on the process to submit a new pattern to Ubuntu's [Vanilla framework](http://ubuntudesign.github.io/vanilla-framework/) :
+
+![Ubuntu's Vanilla framework new pattern flow chart](Ubuntu-Vanilla-Framework-Flow-Chart-New-Pattern.png)
+
+Of course, this can hardly ever be "formal" in the sense that it will require evaluating patterns - which already are abstractions of problems themselves - and wether it has value for reuse, e.g. worth the effort of making it generic at all.
+
+TODO : include a few more analyses.
+
+
 ## Architecture
 
-I'm using the term *architecture* to refer to the conceptual level of organization, and *file structure* its concrete, physical implementation.
+I'm using the term *architecture* to refer to the *conceptual* level of organization, and *file structure* its concrete, physical implementation.
 
 The organization of CSS may follow some categorization of styles. There is hardly one unique way of sorting out the styles for all imaginable projects out there, so this has to stay subjective (because a single generic architecture may not always be the most appropriate for projects of different size or nature).
 
@@ -330,6 +343,7 @@ Low potential for reuse, but these styles shouldn't necessarily be unstructured 
 Naming alternatives to discuss :
 - `project/`
 - `current/` (or `current-project/`)
+- `not-reusable/`
 
 Within that folder, the organization should accomodate the size of the current project, and/or personal preference - ex : transposing @HugoGiraudel's [Architecture for a Sass Project](http://www.sitepoint.com/architecture-sass-project/)
 Examples :
