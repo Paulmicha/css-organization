@@ -12,7 +12,28 @@ See [@danielmall's research](http://danielmall.com/articles/researching-design-s
 - [GE's Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)
 - [Google's Material Design](https://material.google.com/)
 
-The purpose of the current research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles - here's roughly what the methodology looks like :
+
+## Here's the plan
+
+Maintain 2 projects in parallel :
+1. A base, [generic design system](https://github.com/Typographic-Design-System) providing guidelines and corresponding "low-level" components - also serving as an example/case-study/documentation of the process of integrating reusable components in such systems
+2. Some tool(s) to generate reusable components (not restricted for use in the generic design system in • 1, see interoperability in individual components below), progressively made available in the following forms :
+    - a command line generator
+    - a web-based interface to create, modify, or extend components (to discuss)
+    - a desktop app essentially wrapping the web-based interface (e.g. in [Electron](https://github.com/sindresorhus/awesome-electron))
+
+Here's what the **workflow** would look like :
+- start with a solid typographic fondation (screen-optimized font-families, [color](http://practicaltypography.com/color.html) - base [font size](https://www.filamentgroup.com/lab/how-we-learned-to-leave-body-font-size-alone.html), [line height](https://www.smashingmagazine.com/2012/12/css-baseline-the-good-the-bad-and-the-ugly/), comfortable [measure](http://webtypography.net/2.1.2) or [line length](http://practicaltypography.com/line-length.html))
+- init generic utils (optional [type scale](http://type-scale.com/) with some box-model generic [spacing](https://github.com/stephenhutchings/visible-grid) utilities)
+- init hierarchy (e.g. headings and smallprints, with or without using a [type scale](http://www.modularscale.com/))
+- then integrate : personalize, extend desired reusable components into specific and/or private project front-end systems (goal : personality, difference)
+
+The tooling could also have some synchronizing mecanism to fetch/upload our own, private and/or public, open-source reusable components to/from external repositories, ideally integrating by default Github, Bitbucket and Gitlab support.
+
+
+## Current status
+
+The purpose of the research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles - here's roughly what the methodology looks like :
 - Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential ("ideal") solutions.
 - The general value and relevance of principles, tools and references is evaluated with factors related to communicability, developer experience (and of course, fitness for purpose).
 - Their curation (collection, selection) involves criterias such as maturity, "history", standard-compliance, portability, and adoption.
