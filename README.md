@@ -4,10 +4,13 @@ CSS organization
 
 The problem we're trying to address here is *how to design an [open-source](https://github.com/reusable-components), reusable component library aiming at building [(living) styleguides](http://styleguides.io/) and design systems*.
 
-*Component library* ?  
-→ see [@mikaelsandin's series of articles](https://medium.com/building-a-component-library) for the *City of Gothenburg* as an example.  
 *Design systems* ?  
-→ see [BBC's Global Experience Language](http://www.bbc.co.uk/gel), [GE’s Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891), etc.
+See [@danielmall's research](http://danielmall.com/articles/researching-design-systems/), and these examples:
+- [@brad_frost's Atomic Design](http://atomicdesign.bradfrost.com/)
+- [Salesforce's Lightning Design System](https://www.lightningdesignsystem.com/)
+- [BBC's Global Experience Language](http://www.bbc.co.uk/gel)
+- [GE's Predix Design System](https://medium.com/ge-design/ges-predix-design-system-8236d47b0891)
+- [Google's Material Design](https://material.google.com/)
 
 The purpose of the current research at this stage is to detail what would an [ideal](https://en.wikipedia.org/wiki/TRIZ) final result be. Later on, we may move on to analyze concrete options, challenges and compromises. But for now, we'll start with a list of guiding principles - here's roughly what the methodology looks like :
 - Distilled from experience, the very nature of existing guidelines and principles already makes them blueprints of and/or pointers to potential ("ideal") solutions.
@@ -243,6 +246,8 @@ This is described in @wimleers's [comment 51](https://www.drupal.org/node/270206
 To take a bit further this promising lead, our "ideal solution" pursuit would also aim to be applicable in different contexts - i.e. architectures such as [CALMM.js's ~ maintaining consistent state in the face of async inputs](http://calmm-js.github.io/documentation/training/#/2) and ["Immutable App"](https://vimeo.com/album/3953264/video/166790294) :
 
 !["Immutable App Architecture" schema, Lee Byron, Render 2016](Immutable-App-Architecture-Lee-Byron-Render2016--Schema-resized.jpg)
+
+See also https://github.com/jumpsuit/jumpsuit and https://www.reindex.io/blog/redux-and-relay/
 
 About **documentation**, here are some guidelines for individual components, to include in `index.html` and/or `README.md` (in file structure above) :
 - A short summary the describes the purpose of the component (document the *why*)
