@@ -92,7 +92,7 @@ Component-oriented, modular design principles :
     - *Content model* – Do they share the same content model and look similar and have a similar purpose, then maybe you can come up with a more abstract name and merge the two components into one.
 
 
-## CSS frameworks
+## Frameworks
 
 The organization of CSS in various libraries or frameworks usually aims to avoid common pitfalls of the *cascading* part of CSS in modular design systems (i.e. preventing the accidental bleeding of rules).
 
@@ -105,6 +105,8 @@ Such conventions already allow for implementing robust organization, and for pro
 This is the approach currently favored here, but we may find opportunities for complementary implementations.
 - Inlining all or most styles : see [@chriscoyier's recap](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/). And if we chose only to use utility classes (see below), [Tachyons](http://tachyons.io/) could also be used this way, and could get along with the naming convention approach above - provided we avoid class naming collisions. [Atomic CSS](http://acss.io/) is probably the most explicit "inline-like" use of CSS classes.  
 Some tools even implement their own syntax (compiled to CSS) to achieve more advanced layout features, like [gridstylesheets.org's GSS](https://github.com/gss/engine) (inspired by [Constraint CSS](http://constraints.cs.washington.edu/web/ccss-uwtr.pdf) and [Apple's Visual Format Language](http://gridstylesheets.org/guides/vfl/)).
+
+Here's a notable example of a mixed approach : [@TranscendMikey's Journey to Enjoyable, Maintainable Styling with React, ITCSS, and CSS-in-JS](https://medium.com/maintainable-react-apps/journey-to-enjoyable-maintainable-styling-with-react-itcss-and-css-in-js-632cfa9c70d6)
 
 
 ## Process
