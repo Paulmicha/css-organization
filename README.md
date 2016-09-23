@@ -13,6 +13,19 @@ See [@danielmall's research](http://danielmall.com/articles/researching-design-s
 - [Google's Material Design](https://material.google.com/)
 
 
+## Problem & Solution
+
+[@MarcoSuarez's *Designed for Growth* article](https://medium.com/@MarcoSuarez/designed-for-growth-cdc2a01a8a8a) describes most eloquently what motivates this research :
+
+> As tech companies grow and age you begin to feel the debt you’re acquiring, not financial debt, but technical and design debt. Debt is acquired by building for the short-term. The interest accrued is the amount of time to manage, repair, rewrite, and build upon the poorly written and designed code.
+>
+> Design debt is acquired by design teams creating non-reusable solutions for isolated problems. Design debt is made up of an over abundance of non-reusable and inconsistent styles, treatments, and interactions and the interest is the impossible task of their management and modification.
+
+> Debt is a weight around your neck. Its existence cost time, resources, and risk which prevents quality products from being built at a timely pace. By having a system, and yielding to it, we’re able to move more quickly and build better products.
+
+> Instead of creating more custom solutions, which adds to our debt, create solutions to be fed back into the system. If everything we create uses the system or feeds back into it then all design becomes systems design.
+
+
 ## Here's the plan
 
 Maintain 2 projects in parallel :
