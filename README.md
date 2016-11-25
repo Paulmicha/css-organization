@@ -340,6 +340,9 @@ File naming (sub-categories) :
     - `base/_interactive.css` : `menu`, `details`, `command`, `summary` tags
 - [optional] use double extension `.vars.css` for files containing "low-level", global variables (settings) - ex: `base/_typography.vars.css`, `base/_colors.vars.css`, `base/_zindex.vars.css`.
 
+This point is between something generic (identical structure, e.g. files or variable names) and specific to individual projects (e.g. variable values).  
+See @nathanacurtis's [Space in design systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) for a "structural" kind of design convention (and potential naming system for variables).
+
 Additional considerations :
 - @jonathantneal's [Sanitize.css](https://github.com/10up/sanitize.css) or @necolas's [Normalize](https://github.com/necolas/normalize.css/)
 - @mrmrs_'s [tachyons-box-sizing](https://github.com/tachyons-css/tachyons-box-sizing)
