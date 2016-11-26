@@ -83,6 +83,7 @@ References :
 - @craftui's [The Language of Modular Design](http://alistapart.com/article/language-of-modular-design)
 - @snookca's [Considerations in Component Design](https://snook.ca/archives/html_and_css/component-design).
 - @mikaelsandin's [Creating components](https://medium.com/building-a-component-library/creating-components-e08ccc632722).
+- @heydonworks's [CSS Inheritance, The Cascade And Global Scope: Your New Old Worst Best Friends](https://www.smashingmagazine.com/2016/11/css-inheritance-cascade-global-scope-new-old-worst-best-friends/).
 
 General principles :
 - **DRY / Single Source of truth** - warnings : don't DRY if it's repeated coincidentally, just avoid duplicating data in source (repetition in compiled code is fine).
